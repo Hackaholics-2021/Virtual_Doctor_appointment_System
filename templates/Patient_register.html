@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Register</title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="../static/css/Patient_register.css">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300&family=Open+Sans&family=Titillium+Web:wght@200&family=Urbanist:wght@200&display=swap&family=Roboto+Slab&display=swap" rel="stylesheet">
+        <style>
+            body {
+              background-color: #343937;
+            }
+            </style>
+    </head>
+	<body>
+		<div class="container">
+			<div class = "left">
+				<span class="nature-img"><img src = "..\static\doctor.png" height = "300px" width="300px"></span>
+				<div class="below-pic">
+					"YOUR HEALTH MATTERS"<br>WE4U
+				</div>
+			</div>
+			<div class="right">
+				<div class="signup-container">
+					<div class="signup-box">
+						<span class="signup">SIGNUP</span>
+					</div>
+					<div class="signup-form">
+						<form>
+							<label for = "username" class="username">UserName:</label>
+							<input type="text" name="username" placeholder="Enter user name" class="form-input">
+							<br>
+							<label for = "email" class="email">Email:</label>
+							<input type="text" name="email" placeholder="Enter email" class="form-input">
+							<br>
+							<label for = "password" class="password">Password:</label>
+                            <input type="password" name="password" id="myInput" class="form-input" placeholder="Enter Password">
+                            <br>
+                            <span class="p-viewer">
+                                <i class="fa fa-eye" aria-hidden="true" id="myInput"onclick="myFunction()"></i>
+                            </span>
+                            <!-- <i class="far fa-eye" id="myInput" style="margin-left:100px"onclick="myFunction()">&emsp;Show Password</i> -->
+                            <script>
+                            function myFunction() {
+                            var x = document.getElementById("myInput");
+                            if (x.type === "password") {
+                                x.type = "text";
+                            } else {
+                                x.type = "password";
+                            }
+                            }
+                            </script>
+                            <label for = "mobileno" class="mobileno">Mobileno:</label>
+							<input type="text" name="mobileno" placeholder="Enter mobileno" class="form-input">
+							<br><br>
+                            <label for = "gender" class = "lbl"> Gender: </label>
+                            &emsp;&emsp;&emsp;<input type="Radio" name="Gender" Value="Male" class="lbl">Male
+                            &emsp;<input type="Radio" name="Gender" Value="Female" class="lbl">Female
+                            <br>
+                            
+                            <div class="state">
+                            <label for="state">State:</label>
+                                                <select class="form-control" id="state"name="C_state"  required style="margin-right:100px;width:100px"> 
+                                                    <option value="SelectState"> Select States</option>
+                                                    <option value="Andra Pradesh">Andra Pradesh</option>
+                                                    <option value="Arunachal Pradesh">Arunachal Pradesh</option>
+                                                    <option value="Assam">Assam</option>
+                                                    <option value="Bihar">Bihar</option>
+                                                    <option value="Chhattisgarh">Chhattisgarh</option>
+                                                    <option value="Goa">Goa</option>
+                                                    <option value="Gujarat">Gujarat</option>
+                                                    <option value="Haryana">Haryana</option>
+                                                    <option value="Himachal Pradesh">Himachal Pradesh</option>
+                                                    <option value="Jammu and Kashmir">Jammu and Kashmir</option>
+                                                    <option value="Jharkhand">Jharkhand</option>
+                                                    <option value="Karnataka">Karnataka</option>
+                                                    <option value="Kerala">Kerala</option>
+                                                    <option value="Madya Pradesh">Madya Pradesh</option>
+                                                    <option value="Maharashtra">Maharashtra</option>
+                                                    <option value="Manipur">Manipur</option>
+                                                    <option value="Meghalaya">Meghalaya</option>
+                                                    <option value="Mizoram">Mizoram</option>
+                                                    <option value="Nagaland">Nagaland</option>
+                                                    <option value="Orissa">Orissa</option>
+                                                    <option value="Punjab">Punjab</option>
+                                                    <option value="Rajasthan">Rajasthan</option>
+                                                    <option value="Sikkim">Sikkim</option>
+                                                    <option value="Tamil Nadu">Tamil Nadu</option>
+                                                    <option value="Telangana">Telangana</option>
+                                                    <option value="Tripura">Tripura</option>
+                                                    <option value="Uttaranchal">Uttaranchal</option>
+                                                    <option value="Uttar Pradesh">Uttar Pradesh</option>
+                                                    <option value="West Bengal">West Bengal</option>
+                                                    <option disabled style="background-color:#aaa; color:#fff">UNION Territories</option>
+                                                    <option value="Andaman and Nicobar Islands">Andaman and Nicobar Islands</option>
+                                                    <option value="Chandigarh">Chandigarh</option>
+                                                    <option value="Dadar and Nagar Haveli">Dadar and Nagar Haveli</option>
+                                                    <option value="Daman and Diu">Daman and Diu</option>
+                                                    <option value="Delhi">Delhi</option>
+                                                    <option value="Lakshadeep">Lakshadeep</option>
+                                                    <option value="Pondicherry">Pondicherry</option>
+                                                </select>
+                                            </div>
+                                           
+                             
+                
+                            <br>
+							<button type="submit" name="signup" class="form-input signup-btn" >Signup</button>
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+	</body>
+</html>
