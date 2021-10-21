@@ -19,7 +19,15 @@ def Home():
     if request.method=="GET":
         return render_template('Doctor_home.html')
 
+@app.route('/Patients',methods=["POST","GET"])
+def Patients():
+    if request.method=="GET":
+        return render_template('Patients.html',link1="https://crello.com/user/projects/61399d9bdbf5fb5638f51543/")
 
+@app.route('/Logout')
+def Logout():
+    session.pop('User_name',None)
+    return redirect(url_for('Doctor_home.html'))
 
 if __name__ =='__main__':  
     app.run(debug = True) 

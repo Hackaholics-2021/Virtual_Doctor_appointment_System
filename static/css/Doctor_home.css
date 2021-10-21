@@ -6,18 +6,52 @@ body{
     height:100%;
 }
 
+/* Scrollbar Styling */
+::-webkit-scrollbar {
+    width: 15px;
+}
+ 
+::-webkit-scrollbar-track {
+    background: #F0F5F7;   
+    -webkit-border-radius: 10px;
+    border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+    -webkit-border-radius: 10px;
+    border-radius: 10px; 
+    background-color:#6AC6C4;
+}
+
 
 /* Buttons */
 .button{
     background-color:#6AC6C4;
     border-radius: 50px;
     padding:8px 20px;
+    color: white;
     text-decoration: none;
     border: none;
+    
 }
 .button:hover{
     background-color: #35B680;
+    /* box-shadow: 0 12px 16px 0 rgba(138, 137, 137, 0.24), 0 17px 50px 0 rgba(134, 134, 134, 0.19); */
 }
+
+/* Heading for Gabriela */
+.heading{
+    font-family: 'Gabriela', serif;
+    padding: 20px;
+}
+
+/* Titles */
+.title p{
+    font-size: x-large;
+}
+
+
+/* Doctor Home Page */
 
 /* Navigation */
 .navigation{
@@ -77,4 +111,53 @@ li a{
 .rem{
     background-color: white;
     margin-bottom:50px;
+}
+@media screen and (max-width: 800px) {
+    .left,.middle,.right{
+      background-color: bisque;
+    }
+  }
+
+/* Patients  */
+
+/* Patients' list */
+.list{
+    background-color: #343937;
+    overflow: auto;
+    text-align: center;
+    height:550px;
+    border-radius: 5px;
+}
+.patient{
+    width:250px;
+    margin:15px;
+    background-color: #343937;
+}
+.patient:focus{
+    background-color: #6AC6C4;
+}
+
+/* Patients' details */
+.details{
+    padding-left: 40px;
+    background-color: #F0F5F7;    
+}
+.latest{    
+    overflow:auto;
+    height:220px;
+    background-color: rgb(255, 255, 255);
+}
+.diagnostics{
+    background-color: rgb(255, 255, 255);
+    padding: 30px;
+    border-radius: 5px; 
+    height:480px;
+    overflow:auto ;
+}
+.diagnostics a{
+    margin: 5px;
+    text-decoration: none;
+}
+.diagnostics button{
+    background-color: #F0F5F7;
 }
