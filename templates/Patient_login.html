@@ -12,16 +12,16 @@
         <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300&family=Open+Sans&family=Titillium+Web:wght@200&family=Urbanist:wght@200&display=swap&family=Roboto+Slab&display=swap" rel="stylesheet">
         <style>
             body {
-              background-color: #343937;
+              background-color: #84a59d;
             }
             </style>
     </head>
 	<body>
-		<div class="container">
+		<div class="body-container">
 			<div class = "left">
 				<span class="nature-img"><img src = "..\static\medical-checkup.png" height = "300px" width="300px"></span>
 				<div class="below-pic">
-					"YOUR HEALTH MATTERS"<br>WE4U
+					"YOUR HEALTH MATTERS"<br>WE4U<br>
 				</div>
 			</div>
 			<div class="right">
@@ -35,19 +35,24 @@
 							<input type="text" name="email" placeholder="Enter email" class="form-input">
 							<br><br>
 							<label for = "password" class="password">Password:</label>
-                            <input type="password" name="password" id="myInput" class="form-input" placeholder="Enter Password">
-                            <br>
-                            <span class="p-viewer">
-                                <i class="fa fa-eye" aria-hidden="true" id="myInput"onclick="myFunction()"></i>
+                            <span><input type="password" name="password" id="myInput" class="form-input" placeholder="Enter Password">
+                                <span class="p-viewer">
+                                    <img src="../static/images/view.png" id="myInputicon" onclick="myFunction()" height="20px" width="20px">
+                                </span>
                             </span>
+                            <br>
+                            
                             <!-- <i class="far fa-eye" id="myInput" style="margin-left:100px"onclick="myFunction()">&emsp;Show Password</i> -->
                             <script>
                             function myFunction() {
                             var x = document.getElementById("myInput");
+                            
                             if (x.type === "password") {
                                 x.type = "text";
+                                document.getElementById("myInputicon").setAttribute("src","../static/images/hidden.png");
                             } else {
                                 x.type = "password";
+                                document.getElementById("myInputicon").setAttribute("src","../static/images/view.png");
                             }
                             }
                             </script>

@@ -10,10 +10,9 @@ a{
 	text-decoration:none;
 }
 
-.container{
+.body-container{
 	margin:90px 120px;
-	background-color:#818181;
-	color:white;
+	background-color:#d8e2dc;
 	display:flex;
 	justify-content:space-between;
 }
@@ -76,11 +75,9 @@ a{
 
 h7{
     margin-left:60px;
-    font-family: 'Urbanist', sans-serif;
 }
 h8{
     margin-left:100px;
-    font-family: 'Urbanist', sans-serif;
 }
 .email{
 	margin-right:32px;
@@ -101,7 +98,7 @@ h8{
 }
 .p-viewer {
 	z-index:2500;
-	position: absolute;
+	/* position: absolute; */
 	left:1010px;
 	margin-top: -35px;
 }

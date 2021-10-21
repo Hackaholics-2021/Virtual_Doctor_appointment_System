@@ -13,7 +13,6 @@
 body{
 	margin:0;
 	padding:0;
-	background-color:#42535B;
 	font-family: 'Urbanist', sans-serif;
 	align-items:center;
 }
@@ -22,10 +21,9 @@ a{
 	text-decoration:none;
 }
 
-.container{
+.body-container{
 	margin:90px 120px;
-	background-color:#494949;
-	color:white;
+	background-color:#d8e2dc;
 	display:flex;
 	justify-content:space-between;
 }
@@ -105,7 +103,7 @@ a{
 }
 .p-viewer {
 	z-index: 9999;
-	position: absolute;
+	/* position: absolute; */
 	left:1010px;
 	margin-top: -35px;
 }

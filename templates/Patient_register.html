@@ -12,16 +12,18 @@
         <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300&family=Open+Sans&family=Titillium+Web:wght@200&family=Urbanist:wght@200&display=swap&family=Roboto+Slab&display=swap" rel="stylesheet">
         <style>
             body {
-              background-color: #343937;
+              background-color: #84a59d;
             }
             </style>
     </head>
 	<body>
-		<div class="container">
+		<div class="body-container">
 			<div class = "left">
 				<span class="nature-img"><img src = "..\static\doctor.png" height = "300px" width="300px"></span>
 				<div class="below-pic">
 					"YOUR HEALTH MATTERS"<br>WE4U
+                    <br><br>
+                    <div>Already a member? <a href="#">Login</a></div>
 				</div>
 			</div>
 			<div class="right">
@@ -38,19 +40,24 @@
 							<input type="text" name="email" placeholder="Enter email" class="form-input">
 							<br>
 							<label for = "password" class="password">Password:</label>
-                            <input type="password" name="password" id="myInput" class="form-input" placeholder="Enter Password">
-                            <br>
-                            <span class="p-viewer">
-                                <i class="fa fa-eye" aria-hidden="true" id="myInput"onclick="myFunction()"></i>
+                            <span><input type="password" name="password" id="myInput" class="form-input" placeholder="Enter Password">
+                                <span class="p-viewer">
+                                    <img src="../static/images/view.png" id="myInputicon" onclick="myFunction()" height="20px" width="20px">
+                                </span>
                             </span>
+                            <br>
+                            
                             <!-- <i class="far fa-eye" id="myInput" style="margin-left:100px"onclick="myFunction()">&emsp;Show Password</i> -->
                             <script>
                             function myFunction() {
                             var x = document.getElementById("myInput");
+                            
                             if (x.type === "password") {
                                 x.type = "text";
+                                document.getElementById("myInputicon").setAttribute("src","../static/images/hidden.png");
                             } else {
                                 x.type = "password";
+                                document.getElementById("myInputicon").setAttribute("src","../static/images/view.png");
                             }
                             }
                             </script>
@@ -63,47 +70,47 @@
                             <br>
                             
                             <div class="state">
-                            <label for="state">State:</label>
-                            <select class="form-control" id="state"name="C_state"  required style="margin-right:100px;width:100px"> 
-                                <option value="SelectState"> Select States</option>
-                                <option value="Andra Pradesh">Andra Pradesh</option>
-                                <option value="Arunachal Pradesh">Arunachal Pradesh</option>
-                                <option value="Assam">Assam</option>
-                                <option value="Bihar">Bihar</option>
-                                <option value="Chhattisgarh">Chhattisgarh</option>
-                                <option value="Goa">Goa</option>
-                                <option value="Gujarat">Gujarat</option>
-                                <option value="Haryana">Haryana</option>
-                                <option value="Himachal Pradesh">Himachal Pradesh</option>
-                                <option value="Jammu and Kashmir">Jammu and Kashmir</option>
-                                <option value="Jharkhand">Jharkhand</option>
-                                <option value="Karnataka">Karnataka</option>
-                                <option value="Kerala">Kerala</option>
-                                <option value="Madya Pradesh">Madya Pradesh</option>
-                                <option value="Maharashtra">Maharashtra</option>
-                                <option value="Manipur">Manipur</option>
-                                <option value="Meghalaya">Meghalaya</option>
-                                <option value="Mizoram">Mizoram</option>
-                                <option value="Nagaland">Nagaland</option>
-                                <option value="Orissa">Orissa</option>
-                                <option value="Punjab">Punjab</option>
-                                <option value="Rajasthan">Rajasthan</option>
-                                <option value="Sikkim">Sikkim</option>
-                                <option value="Tamil Nadu">Tamil Nadu</option>
-                                <option value="Telangana">Telangana</option>
-                                <option value="Tripura">Tripura</option>
-                                <option value="Uttaranchal">Uttaranchal</option>
-                                <option value="Uttar Pradesh">Uttar Pradesh</option>
-                                <option value="West Bengal">West Bengal</option>
-                                <option disabled style="background-color:#aaa; color:#fff">UNION Territories</option>
-                                <option value="Andaman and Nicobar Islands">Andaman and Nicobar Islands</option>
-                                <option value="Chandigarh">Chandigarh</option>
-                                <option value="Dadar and Nagar Haveli">Dadar and Nagar Haveli</option>
-                                <option value="Daman and Diu">Daman and Diu</option>
-                                <option value="Delhi">Delhi</option>
-                                <option value="Lakshadeep">Lakshadeep</option>
-                                <option value="Pondicherry">Pondicherry</option>
-                            </select>
+                                <label for="state">State:</label>
+                                <select class="form-control" id="state"name="C_state"  required style="margin-right:100px;width:150px"> 
+                                    <option value="SelectState"> Select States</option>
+                                    <option value="Andra Pradesh">Andra Pradesh</option>
+                                    <option value="Arunachal Pradesh">Arunachal Pradesh</option>
+                                    <option value="Assam">Assam</option>
+                                    <option value="Bihar">Bihar</option>
+                                    <option value="Chhattisgarh">Chhattisgarh</option>
+                                    <option value="Goa">Goa</option>
+                                    <option value="Gujarat">Gujarat</option>
+                                    <option value="Haryana">Haryana</option>
+                                    <option value="Himachal Pradesh">Himachal Pradesh</option>
+                                    <option value="Jammu and Kashmir">Jammu and Kashmir</option>
+                                    <option value="Jharkhand">Jharkhand</option>
+                                    <option value="Karnataka">Karnataka</option>
+                                    <option value="Kerala">Kerala</option>
+                                    <option value="Madya Pradesh">Madya Pradesh</option>
+                                    <option value="Maharashtra">Maharashtra</option>
+                                    <option value="Manipur">Manipur</option>
+                                    <option value="Meghalaya">Meghalaya</option>
+                                    <option value="Mizoram">Mizoram</option>
+                                    <option value="Nagaland">Nagaland</option>
+                                    <option value="Orissa">Orissa</option>
+                                    <option value="Punjab">Punjab</option>
+                                    <option value="Rajasthan">Rajasthan</option>
+                                    <option value="Sikkim">Sikkim</option>
+                                    <option value="Tamil Nadu">Tamil Nadu</option>
+                                    <option value="Telangana">Telangana</option>
+                                    <option value="Tripura">Tripura</option>
+                                    <option value="Uttaranchal">Uttaranchal</option>
+                                    <option value="Uttar Pradesh">Uttar Pradesh</option>
+                                    <option value="West Bengal">West Bengal</option>
+                                    <option disabled style="background-color:#aaa; color:#fff">UNION Territories</option>
+                                    <option value="Andaman and Nicobar Islands">Andaman and Nicobar Islands</option>
+                                    <option value="Chandigarh">Chandigarh</option>
+                                    <option value="Dadar and Nagar Haveli">Dadar and Nagar Haveli</option>
+                                    <option value="Daman and Diu">Daman and Diu</option>
+                                    <option value="Delhi">Delhi</option>
+                                    <option value="Lakshadeep">Lakshadeep</option>
+                                    <option value="Pondicherry">Pondicherry</option>
+                                </select>
                             </div>
                             <br>
 							<button type="submit" name="signup" class="form-input signup-btn" >Signup</button>
