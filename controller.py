@@ -13,6 +13,10 @@ def Register():
     if request.method=="GET":
         return render_template('Patient_register.html')
 
-if(__name__=="__main__"):
-    app.run(debug = True)
+@app.route('/login',methods=["GET"])
+def Login():
+    if request.method=="GET":
+        return render_template('Patient_login.html')
 
+if __name__ == '__main__':
+    app.run(debug=True)
