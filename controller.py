@@ -7,6 +7,7 @@ app=Flask(__name__)
 @app.route("/Patient_home",methods=["GET","POST"])
 def Patient_home():
     return render_template("Patient_home.html")
+    
 @app.route('/register',methods=["GET"])
 def Register():
     if request.method=="GET":
