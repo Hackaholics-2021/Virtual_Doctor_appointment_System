@@ -1,10 +1,13 @@
-from flask import *   
-from flask_mail import *
-from random import *
-app = Flask(__name__) #creating the Flask class object  
-app.secret_key="ak"
 
-@app.route('/',methods=["GET"])
+from flask import *
+
+app=Flask(__name__)
+
+# Patient_home
+@app.route("/Patient_home",methods=["GET","POST"])
+def Patient_home():
+    return render_template("Patient_home.html")
+@app.route('/register',methods=["GET"])
 def Register():
     if request.method=="GET":
         return render_template('Patient_register.html')
