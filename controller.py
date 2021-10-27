@@ -18,5 +18,15 @@ def Login():
     if request.method=="GET":
         return render_template('Patient_login.html')
 
+@app.route('/doc_reg',methods=["GET"])
+def Doc_Register():
+    if request.method=="GET":
+        return render_template('Doctor_register.html')
+
+@app.route('/doc_log',methods=["GET"])
+def Doc_Login():
+    if request.method=="GET":
+        return render_template('Doctor_login.html')
+
 if __name__ == '__main__':
     app.run(debug=True)
