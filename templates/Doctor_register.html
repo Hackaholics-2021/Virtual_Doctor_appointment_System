@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Register</title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="../static/css/Doctor_register.css">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <script  type="text/javascript" src="C:\Users\aksha\Documents\GitHub\Virtual_Doctor_appointment_System\static\jquery\web.js"></script>
+        <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300&family=Open+Sans&family=Titillium+Web:wght@200&family=Urbanist:wght@200&display=swap&family=Roboto+Slab&display=swap" rel="stylesheet">
+        <style>
+            body {
+              background-color: #778da9;
+            }
+            </style>
+    </head>
+	<body>
+		<div class="body-container">
+			<div class = "left">
+				<span class="nature-img"><img src = "..\static\images\doc_reg.png" height = "300px" width="300px"></span>
+				<div class="below-pic">
+					"YOUR HEALTH MATTERS"<br>WE4U
+                    <br><br>
+                    <div>Already a member? <a href="#">Login</a></div>
+				</div>
+			</div>
+			<div class="right">
+				<div class="signup-container">
+					<div class="signup-box">
+						<span class="signup">SIGNUP</span>
+					</div>
+					<div class="signup-form">
+						<form>
+							<label for = "username" class="name">Name:</label>
+							<input type="text" name="username" placeholder="Enter user name" class="form-input">
+							<br>
+							<label for = "email" class="email">Email:</label>
+							<input type="text" name="email" placeholder="Enter email" class="form-input">
+							<br>
+							<label for = "password" class="password">Password:</label>
+                            <span><input type="password" name="password" id="myInput" class="form-input" placeholder="Enter Password">
+                                <span class="p-viewer">
+                                    <img src="../static/images/view.png" id="myInputicon" onclick="myFunction()" height="20px" width="20px">
+                                </span>
+                            </span>
+                            <br>
+                            
+                            <!-- <i class="far fa-eye" id="myInput" style="margin-left:100px"onclick="myFunction()">&emsp;Show Password</i> -->
+                            <script>
+                            function myFunction() {
+                            var x = document.getElementById("myInput");
+                            
+                            if (x.type === "password") {
+                                x.type = "text";
+                                document.getElementById("myInputicon").setAttribute("src","../static/images/hidden.png");
+                            } else {
+                                x.type = "password";
+                                document.getElementById("myInputicon").setAttribute("src","../static/images/view.png");
+                            }
+                            }
+                            </script>
+                            <label for = "Age" class="Age">Age:</label>
+							<input type="text" name="Age" placeholder="Enter Age" class="form-input">
+                            <br><br>
+                            <label for = "About" class="About">About:</label>
+							<input type="text" name="About" placeholder="Describe yourself in few words" class="form-input">
+                            <br><br>
+                            <label for="quantity" class="exp">Experience:</label>
+                            <input type="number" id="quantity" name="quantity" min="1" max="40">
+                            <br><br>
+                            <label for = "gender" class = "gender"> Gender: </label>
+                            &emsp;&emsp;&emsp;<input type="Radio" name="Gender" Value="Male" class="lbl">Male
+                            &emsp;<input type="Radio" name="Gender" Value="Female" class="lbl">Female
+                            
+                            <div class="state">
+                                <label for="state">State:&emsp14;&emsp14;&emsp13;&emsp13;&emsp13;&emsp13;&emsp13;&emsp13;&emsp13;&emsp13;&emsp13;&emsp13;&emsp13;</label>
+                                <select class="form-control" id="state"name="C_state"  required style="margin-right:160px;width:200px"> 
+                                    <option value="SelectState"> Select States</option>
+                                    <option value="Andra Pradesh">Andra Pradesh</option>
+                                    <option value="Arunachal Pradesh">Arunachal Pradesh</option>
+                                    <option value="Assam">Assam</option>
+                                    <option value="Bihar">Bihar</option>
+                                    <option value="Chhattisgarh">Chhattisgarh</option>
+                                    <option value="Goa">Goa</option>
+                                    <option value="Gujarat">Gujarat</option>
+                                    <option value="Haryana">Haryana</option>
+                                    <option value="Himachal Pradesh">Himachal Pradesh</option>
+                                    <option value="Jammu and Kashmir">Jammu and Kashmir</option>
+                                    <option value="Jharkhand">Jharkhand</option>
+                                    <option value="Karnataka">Karnataka</option>
+                                    <option value="Kerala">Kerala</option>
+                                    <option value="Madya Pradesh">Madya Pradesh</option>
+                                    <option value="Maharashtra">Maharashtra</option>
+                                    <option value="Manipur">Manipur</option>
+                                    <option value="Meghalaya">Meghalaya</option>
+                                    <option value="Mizoram">Mizoram</option>
+                                    <option value="Nagaland">Nagaland</option>
+                                    <option value="Orissa">Orissa</option>
+                                    <option value="Punjab">Punjab</option>
+                                    <option value="Rajasthan">Rajasthan</option>
+                                    <option value="Sikkim">Sikkim</option>
+                                    <option value="Tamil Nadu">Tamil Nadu</option>
+                                    <option value="Telangana">Telangana</option>
+                                    <option value="Tripura">Tripura</option>
+                                    <option value="Uttaranchal">Uttaranchal</option>
+                                    <option value="Uttar Pradesh">Uttar Pradesh</option>
+                                    <option value="West Bengal">West Bengal</option>
+                                    <option disabled style="background-color:#aaa; color:#fff">UNION Territories</option>
+                                    <option value="Andaman and Nicobar Islands">Andaman and Nicobar Islands</option>
+                                    <option value="Chandigarh">Chandigarh</option>
+                                    <option value="Dadar and Nagar Haveli">Dadar and Nagar Haveli</option>
+                                    <option value="Daman and Diu">Daman and Diu</option>
+                                    <option value="Delhi">Delhi</option>
+                                    <option value="Lakshadeep">Lakshadeep</option>
+                                    <option value="Pondicherry">Pondicherry</option>
+                                </select>
+                            </div>
+                            <div class="specialization">
+                                <label for="state">Specialization:</label>
+                                <select class="form-control" id="state"name="C_state"  required style="margin-right:150px;width:200px"> 
+                                    <option value="SelectState"> Select Specialization</option>
+                                    <option value="Andra Pradesh">Allergy And Immunology</option>
+                                    <option value="Arunachal Pradesh">Anesthesiology</option>
+                                    <option value="Assam">Cardiology</option>
+                                    <option value="Bihar">Deficiency</option>
+                                    <option value="Chhattisgarh">Dermatology</option>
+                                    <option value="Goa">Disability</option>
+                                    <option value="Gujarat">Emergency</option>
+                                    <option value="Haryana">Endocrinology</option>
+                                    <option value="Himachal Pradesh">Epidemiology</option>
+                                    <option value="Jammu and Kashmir">Fitness</option>
+                                    <option value="Jharkhand">Gasteroenterology</option>
+                                    <option value="Karnataka">Geriatrics</option>
+                                    <option value="Kerala">Hematology</option>
+                                    <option value="Madya Pradesh">Hepatology</option>
+                                    <option value="Maharashtra">Infectious Disease</option>
+                                    <option value="Manipur">Internal Medicine</option>
+                                    <option value="Meghalaya">Microbiology</option>
+                                    <option value="Mizoram">Neonatology</option>
+                                    <option value="Nagaland">Nephrology</option>
+                                    <option value="Orissa">Neurology</option>
+                                    <option value="Punjab">NeuroSurgeon</option>
+                                    <option value="Rajasthan">Nutrition</option>
+                                    <option value="Sikkim">Oncology</option>
+                                    <option value="Tamil Nadu">Opthalmology</option>
+                                    <option value="Telangana">Orthopedics</option>
+                                    <option value="Tripura">Pediatrics</option>
+                                    <option value="Uttaranchal">Pharamacology</option>
+                                    <option value="Uttar Pradesh">Psychiatry</option>
+                                    <option value="West Bengal">Pulmonology</option>
+                                    <option value="Sikkim">Radiology</option>
+                                    <option value="Tamil Nadu">Toxicology</option>
+                                    <option value="Telangana">Traumatology</option>
+                                    <option value="Tripura">Transplantation</option>
+                                    <option value="Uttaranchal">Urology</option>
+                                    <option value="Uttar Pradesh">Vascular Surgery</option>
+                                    <option value="West Bengal">Venereology</option>
+                                </select>
+                            </div>
+                            <label for="district"><h5>District</h5></label>
+                            <select  class="form-control" id="district2"  name="A_district" required>
+                                <option value="">Select District</option>
+                            </select>
+                            <br>
+							<button type="submit" name="signup" class="form-input signup-btn" >Signup</button>
+						</form>
+					</div>
+				</div>
+			</div>
+        </div>
+        
+        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T" crossorigin="anonymous"></script>
+        
+        <!-- jQuery library -->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+            
+        <!-- plugin for jquery validation -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.1/jquery.validate.min.js"> </script>
+        
+        <!-- Popper JS -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+        
+        <!-- Latest compiled JavaScript -->
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+        <!-- link for jquery validation -->
+        <script src = "{{('/static/jquery/web.js')}}"> </script>
+	</body>
+</html>
