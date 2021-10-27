@@ -25,8 +25,10 @@ a{
     padding-left:80px;
     position:fixed;
     width:90%;
-    margin-top:-4%;
     z-index:10;
+}
+.active{
+    color:#6AC6C4;
 }
 .logo{
     font-family:'Georgia', 'Times New Roman', Times, serif;
@@ -34,7 +36,9 @@ a{
 }
 .nav-items span{
     margin-right:30px;
-    font-weight:600;
+}
+.nav-items span:hover{
+    color:rgb(158, 158, 158);
 }
 .fa-chevron-down{
     font-size:10px;
@@ -59,8 +63,8 @@ a{
     display:flex;
     justify-content: space-between;
     align-items: center;
-    margin:30px 220px;
-    margin-top:60px;
+    margin:0px 220px 30px 220px;
+    padding-top:100px;
 }
 .left{
     padding:15px;

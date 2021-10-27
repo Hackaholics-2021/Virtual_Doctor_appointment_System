@@ -18,5 +18,9 @@ def Login():
     if request.method=="GET":
         return render_template('Patient_login.html')
 
+@app.route('/Consultation',methods=["POST","GET"])
+def Consultation():
+    return render_template("consultation.html")
+
 if __name__ == '__main__':
     app.run(debug=True)
