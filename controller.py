@@ -13,10 +13,6 @@ def Register():
     if request.method=="GET":
         return render_template('Patient_register.html')
 
-@app.route('/login',methods=["GET"])
-def Login():
-    if request.method=="GET":
-        return render_template('Patient_login.html')
 
 @app.route('/doc_reg',methods=["GET"])
 def Doc_Register():

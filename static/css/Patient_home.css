@@ -1,3 +1,8 @@
+/* font-family: 'Montserrat', sans-serif;
+font-family: 'Open Sans', sans-serif;
+ font-family: 'Titillium Web', sans-serif;
+ font-family:'Georgia', 'Times New Roman', Times, serif;
+ font-family: 'Open Sans', sans-serif;*/
 body{
     margin:0;
     padding:0;
@@ -18,7 +23,12 @@ a{
     color:white;
     padding-right:80px;
     padding-left:80px;
-    position:sticky;
+    position:fixed;
+    width:90%;
+    z-index:10;
+}
+.active{
+    color:#6AC6C4;
 }
 .logo{
     font-family:'Georgia', 'Times New Roman', Times, serif;
@@ -26,7 +36,9 @@ a{
 }
 .nav-items span{
     margin-right:30px;
-    font-weight:600;
+}
+.nav-items span:hover{
+    color:rgb(158, 158, 158);
 }
 .fa-chevron-down{
     font-size:10px;
@@ -51,8 +63,8 @@ a{
     display:flex;
     justify-content: space-between;
     align-items: center;
-    margin:30px 220px;
-    margin-top:60px;
+    margin:0px 220px 30px 220px;
+    padding-top:100px;
 }
 .left{
     padding:15px;
@@ -87,7 +99,7 @@ a{
 }
 .topbar{
     height:30px;
-    background-color: #76857F;
+    background-color: #4f5855;
     color:white;
     padding-left:8px;
     border-top-left-radius:4px;
@@ -127,16 +139,23 @@ a{
 .user-types{
     font-size:15px;
     margin:5px;
-    
-}
-.send{
-    display: inline;
+    display:flex;
+    justify-content:space-between;
+    align-items: center;
 }
 .text-area{
-    background-color: #c75a5a;
+    background-color: #e9e9e9;
+    width:90%;
+}
+.placeholder{
+    border: none;
     padding:5px;
-    margin-right: 40px;
-    display: inline;
+    background-color:#e9e9e9;
+    font-family: 'Titillium Web', sans-serif;
+}
+.text-area input:focus{
+    border:none;
+    outline:none;
 }
 .bot-line{
     font-size:12px;
@@ -152,8 +171,118 @@ a{
     width:100%;
     margin:5px;
 }
+.send{
+    border:none;
+    outline:none;
+    background-color: white;
+}
 
-
+.consult-doctors{
+    background-color: #f0f5f7;
+    padding:50px;
+    font-weight:600;
+    font-size:30px;
+}
+.line{
+    height:2px;
+    width:70px;
+    background-color:black;
+    margin:20px 0px;
+}
+.topics{
+    display:flex;
+    justify-content: space-evenly;
+    align-items: center;
+    font-size:15px;
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 400;
+}
+.circle{
+    background-color: white;
+    height:50px;
+    width:50px;
+    border-radius: 50px 50px;
+    padding:23px;
+}
+.category div{
+    margin-bottom:15px;
+}
+.category-title{
+    font-size:18px;
+}
+.consult-now{
+    color:#6ac6c4;
+    font-weight:800;
+}
+.consult-doctor-title{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.consult-now:hover{
+    color:#397473;
+}
+.customers{
+    background-color: #102034;
+    display:flex;
+    justify-content: space-evenly;
+    align-items: center;
+    padding:50px;
+    font-size: 20px;
+    color:white;
+}
+.customer-title{
+    font-family:'Montserrat', sans-serif;;
+    font-size:30px;
+    font-weight: 800;
+}
+.medical-records{
+    display:flex;
+    justify-content: space-between;
+    padding:100px 300px;
+    font-size:30px;
+}
+.medical-records-title{
+    font-family: 'Open Sans', sans-serif;
+    font-weight:400;
+}
+.medical-records-subtitle{
+    font-size:25px;
+    font-weight:800;
+    font-family: 'Open Sans', sans-serif;
+}
+.medical-records-para img{
+     margin-right:30px;
+}
+.medical-records-para{
+    font-size:20px;
+}
+.footer{
+    background-color: #343937;
+    color:white;
+    display:flex;
+    justify-content: space-evenly;
+    padding:100px;
+    align-items: center;
+}
+.footer div{
+    display:flex;
+    justify-content: center;
+    align-items:center;
+    flex-direction: column;
+}
+.footer-title{
+    font-size:30px;
+    font-weight:bold;
+}
+.footer span{
+    margin-bottom:10px;
+}
+.footer img{
+    width:40px;
+    height:40px;
+    margin-right:40px;
+}
 
   /* for scollbar in webpage */
   ::-webkit-scrollbar {
@@ -173,6 +302,6 @@ a{
   
   /* Handle on hover */
   ::-webkit-scrollbar-thumb:hover {
-    background: #412d2d; 
+    background: #343937;
   }
 

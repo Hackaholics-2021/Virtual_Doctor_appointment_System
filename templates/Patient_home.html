@@ -7,7 +7,9 @@
     <!-- Google fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300&family=Open+Sans&family=Titillium+Web:wght@300&family=Urbanist:wght@200&display=swap&family=Roboto+Slab&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;800&family=Open+Sans:wght@300;400;800&family=Titillium+Web:wght@300&family=Urbanist:wght@200&display=swap&family=Roboto+Slab&display=swap" rel="stylesheet">
+    <!-- jquery -->
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>
     <!-- Font awesome -->
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
     <!-- CSS -->
@@ -20,76 +22,185 @@
             <span>WE4U</span>
         </div>
         <div class="nav-items">
-            <span>Consult</span>
-            <span>Book appointment</span>
-            <span class="nav-dropdown">
-                <span><i class="fas fa-chevron-down"></i>Gaunisha Gaanavi</span>
-            </span>
+            <span><a href="#" class="active">Home</a></span>
+            <span><a href="{{ url_for('Consultation') }}">Consult</a></span>
+            <span><a href="#">Book appointment</a></span>
+            <span><a href="#">History</a></span>
+            <span><a href="#">Find a Doctor</a></span>
         </div>
-        <button class="logout-btn">Logout</button>
+        <a href="#" class="logout-btn">Logout</a>
     </div>
-    <div class="body-container">
-        <div class="left">
-            <div class="heading">
-                Say Hi to <span> Robbie!</span>
+    <div class="full-body">
+        <div class="body-container">
+            <div class="left">
+                <div class="heading">
+                    Say Hi to <span> Robbie!</span>
+                </div>
+                <div class="rob-points">
+                    <span>
+                        <img class="checked-icon1" src="../static/images/checked.png" width="30px" height="30px"></img>
+                        Tell him your problems
+                    </span>
+                    <span>
+                        <img class="checked-icon2" src="../static/images/checked.png" width="30px" height="30px"></img>
+                        Ask him all your doubts
+                    </span>
+                    <span>
+                        <img class="checked-icon3" src="../static/images/checked.png" width="30px" height="30px" ></img>
+                        <span style="margin-left:30px;">Get on the spot prescriptions</span>
+                    </span>
+                </div>
+                <div class="rob-below"><b>Robbie </b>is here to help you out!</div>
             </div>
-            <div class="rob-points">
-                <span>
-                    <img class="checked-icon1" src="../static/images/checked.png" width="30px" height="30px"></img>
-                    Tell him your problems
-                </span>
-                <span>
-                    <img class="checked-icon2" src="../static/images/checked.png" width="30px" height="30px"></img>
-                    Ask him all your doubts
-                </span>
-                <span>
-                    <img class="checked-icon3" src="../static/images/checked.png" width="30px" height="30px" ></img>
-                    <span style="margin-left:30px;">Get on the spot prescriptions</span>
-                </span>
+            <div class="right">
+                <div class="topbar">Robbie</div>
+                <div class="chatbox">
+                    <div class="bot-line">
+                        <span>Robbie <img src="../static/images/line.png" alt="" width="87%" height="5px">
+                        </span>
+                    </div>
+                    <div class="botcontent">
+                        <p class="text-content">Hi there! Looks like you need my help. I might haven't completed an MBBS.</p>
+                        <p class="text-content">But I can help you for sure! Tell me what brings you here..</p>
+                    </div>
+                    <div class="user-line"> 
+                        <span>You<img src="../static/images/line.png" alt="" width="93%" height="5px">
+                        </span>
+                    </div>
+                    <div class="usercontent">
+                        <p class="text-content">I have fever.I have fever.I have fever.I have fever.</p>
+                    </div>
+                    <div class="bot-line">
+                        <span>Robbie <img src="../static/images/line.png" alt="" width="87%" height="5px">
+                        </span>
+                    </div>
+                    <div class="botcontent">
+                        <p class="text-content">Hi there! Looks like you need my help. I might haven't completed an MBBS.</p>
+                        <p class="text-content">But I can help you for sure! Tell me what brings you here..</p>
+                    </div>
+                    <div class="user-line"> 
+                        <span>You<img src="../static/images/line.png" alt="" width="93%" height="5px">
+                        </span>
+                    </div>
+                    <div class="usercontent">
+                        <div class="text-content">I have fever.I have fever.I have fever.I have fever.</div>
+                    </div>
+                </div>
+                <div class="user-types">
+                    <div class="text-area">
+                        <input type="text" placeholder="Type here.." class="placeholder">
+                    </div>
+                    <button class="send"><img src="../static/images/send.png" alt="" height="30px" width="30px"></button>
+                </div>
             </div>
-            <div class="rob-below"><b>Robbie </b>is here to help you out!</div>
         </div>
-        <div class="right">
-            <div class="topbar">Robbie</div>
-            <div class="chatbox">
-                <div class="bot-line">
-                    <span>Robbie <img src="../static/images/line.png" alt="" width="87%" height="5px">
-                    </span>
+        <div class="consult-doctors">
+            <div class="consult-doctor-title">
+                <span>Consult Top Doctors<br><hr class="line"></span></span>
+                <a href="#" class="logout-btn">Visit More</a>
+            </div>
+            <div class="topics">
+                <div class="category 1">
+                    <div class="circle">
+                        <img class="category-image" src="../static/images/gynecology.png" alt="" width="50px" height="50px">
+                    </div>
+                    <div class="category-title">Gynaecology</div>
+                    <div class="consult-now"><a href="#">Consult now </a><img src="../static/images/right-arrow.png" alt="" width="8px" hieght="8px"></div>
                 </div>
-                <div class="botcontent">
-                    <p class="text-content">Hi there! Looks like you need my help. I might haven't completed an MBBS.</p>
-                    <p class="text-content">But I can help you for sure! Tell me what brings you here..</p>
+                <div class="category 2">
+                    <div class="circle">
+                        <img class="category-image" src="../static/images/orthopedics.png" alt="" width="50px" height="50px">
+                    </div>
+                    <div class="category-title">Orthopedics</div>
+                    <div class="consult-now"><a href="#">Consult now </a><img src="../static/images/right-arrow.png" alt="" width="8px" hieght="8px"></div>
                 </div>
-                <div class="user-line"> 
-                    <span>You<img src="../static/images/line.png" alt="" width="93%" height="5px">
-                    </span>
+                <div class="category 3">
+                    <div class="circle">
+                        <img class="category-image" src="../static/images/dermatology.png" alt="" width="50px" height="50px">
+                    </div>
+                    <div class="category-title">Dermatology</div>
+                    <div class="consult-now"><a href="#">Consult now </a><img src="../static/images/right-arrow.png" alt="" width="8px" hieght="8px"></div>
                 </div>
-                <div class="usercontent">
-                    <p class="text-content">I have fever.I have fever.I have fever.I have fever.</p>
+                <div class="category 4">
+                    <div class="circle">
+                        <img class="category-image" src="../static/images/mental-health.png" alt="" width="50px" height="50px">
+                    </div>
+                    <div class="category-title">Pschyiatry</div>
+                    <div class="consult-now"><a href="#">Consult now </a><img src="../static/images/right-arrow.png" alt="" width="8px" hieght="8px"></div>
                 </div>
-                <div class="bot-line">
-                    <span>Robbie <img src="../static/images/line.png" alt="" width="87%" height="5px">
-                    </span>
+                <div class="category 5">
+                    <div class="circle">
+                        <img class="category-image" src="../static/images/newborn.png" alt="" width="50px" height="50px">
+                    </div>
+                    <div class="category-title">Pediatrics</div>
+                    <div class="consult-now"><a href="#">Consult now </a><img src="../static/images/right-arrow.png" alt="" width="8px" hieght="8px"></div>
                 </div>
-                <div class="botcontent">
-                    <p class="text-content">Hi there! Looks like you need my help. I might haven't completed an MBBS.</p>
-                    <p class="text-content">But I can help you for sure! Tell me what brings you here..</p>
-                </div>
-                <div class="user-line"> 
-                    <span>You<img src="../static/images/line.png" alt="" width="93%" height="5px">
-                    </span>
-                </div>
-                <div class="usercontent">
-                    <div class="text-content">I have fever.I have fever.I have fever.I have fever.</div>
+                <div class="category 6">
+                    <div class="circle">
+                        <img class="category-image" src="../static/images/cardiology.png" alt="" width="50px" height="50px">
+                    </div>
+                    <div class="category-title">Cardiology</div>
+                    <div class="consult-now"><a href="#">Consult now </a><img src="../static/images/right-arrow.png" alt="" width="8px" hieght="8px"></div>
                 </div>
             </div>
-            <div class="user-types">
-                <div class="text-area">
-                    <span class="placeholder">Type here..</span>
+        </div>
+        <br>
+        <div class="customers">
+            <div class="customer-content 1" style="text-align: center;">
+                <span class="customer-title" data-target="20000"></span><br>
+                <span>Happy Customers</span>
+            </div>
+            <div class="customer-content 2" style="text-align: center;">
+                <span class="customer-title" data-target="5000">0</span><br>
+                <span>Verified Doctors</span>
+            </div>
+            <div class="customer-content 3" style="text-align: center;">
+                <span class="customer-title" data-target="25">0</span><br>
+                <span>Specialities</span>
+            </div>
+        </div>
+        <div class="medical-records">
+            <span><img src="../static/images/medical-report.png" alt="" height="250px" width="250px"></span>
+            <div class="medical-records-content">
+                <div class="medical-records-title">
+                    All Your medical records
                 </div>
-                <div class="send"><img src="../static/images/send.png" alt=""></div>
+                <div class="medical-records-subtitle">In one single app</div><br>
+                <div class="medical-records-para">
+                    <span><img src="../static/images/checked.png" alt="" width="30px" height="30px">Safe place for your information</span><br>
+                    <span><img src="../static/images/checked.png" alt="" width="30px" height="30px">Records are only accessable to you</span>
+                </div>
+            </div>
+        </div>
+        <div class="footer">
+            <div class="for-patients">
+                <span class="footer-title">For Patients</span>
+                <span><a href="#">Consult a doctor</a></span>
+                <span><a href="#">Book an appointment</a></span>
+                <span><a href="#">View History</a></span>
+                <span><a href="#">Search doctors</a></span>
+                <span><a href="#">Home</a></span>
+            </div>
+            <div class="for-doctors">
+                <span class="footer-title">For Doctors</span>
+                <span><a href="#">View appointments</a></span>
+                <span><a href="#">View consultations</a></span>
+                <span><a href="#">History</a></span>
+                <span><a href="#">Payments</a></span>
+                <span><a href="#">Your Patients</a></span>
+            </div>
+            <div class="contacts">
+                <span class="footer-title">Social Contacts</span>
+                <span class="icons">
+                    <img src="../static/images/twitter.png" alt="">
+                    <img src="../static/images/facebook-circular-logo .png" alt="">
+                    <img src="../static/images/instagram.png" alt="">
+                    <img src="../static/images/whatsapp.png" alt="">
+                </span>
+                <span>All rights reserved <img src="../static/images/copyright.png" alt="" style="width:16px; height:16px;margin-right:0px;"> Hackaholics</span>
             </div>
         </div>
     </div>
 </body>
+<script src="../static/jquery/Patient_home.js"></script>
 </html>
