@@ -24,22 +24,12 @@
     <header>
         <div class="navigation">
             <div class="logo">WE4U</div>
-            <div class="links">
-                <span class="drop">
-                    <ul class="nav navbar-nav">
-                        <li class="dropdown">
-                        <a class="dropdown-toggle" data-toggle="dropdown" href="#" style="color:white; background-color: #343937;">Alan
-                        <span><i class="fas fa-chevron-down"></i></span></a>
-                        <ul class="dropdown-menu" >
-                            <li><a href="#">Upcoming</a></li>
-                            <li><a href="{{ url_for('Patients') }}">Patients</a></li>
-                            <li><a href="#">Payment</a></li>
-                            <li><a href="#">History</a></li>
-                            <li><a href="#">Profile</a></li>
-                        </ul>
-                        </li>
-                    </ul>
-                </span>
+            <div class="links">                   
+                <span><a href="#">Upcoming</a></span>
+                <span><a href="{{ url_for('Patients') }}">Patients</a></span>
+                <span><a href="#">Payment</a></span>
+                <span><a href="#">History</a></span>
+                <span><a href="{{ url_for('Profile') }}" >Profile</a></span>               
                 <button class="button" href="{{ url_for('Logout') }}">Logout</button>
             </div>
         </div>

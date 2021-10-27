@@ -6,9 +6,49 @@ body{
     height:100%;
 }
 
+/* Input */
+input{
+    border:none;
+    border-bottom: 2px solid #6AC6C4;
+    font-size: 25px;
+    background-color: #F0F5F7;
+}
+input:focus{
+    outline: none;
+    border: 2px solid #6AC6C4;
+    border-radius: 10px;
+}
+
+select{
+    border:none;
+    border-bottom: 2px solid #6AC6C4;
+    font-size: 25px;
+    background-color: #F0F5F7;
+}
+select:focus{
+    outline: none;
+    border: 2px solid #6AC6C4;
+    border-radius: 10px;
+}
+
+/* Links */
+a{
+    text-decoration: none;
+    color: inherit;
+}
+
+.active{
+    color: #9ad4d3;
+}
+
+/* Rating */
+.checked{
+    color: orange;
+}
+
 /* Scrollbar Styling */
 ::-webkit-scrollbar {
-    width: 15px;
+    width: 6px;
 }
  
 ::-webkit-scrollbar-track {
@@ -20,9 +60,11 @@ body{
 ::-webkit-scrollbar-thumb {
     -webkit-border-radius: 10px;
     border-radius: 10px; 
-    background-color:#6AC6C4;
+    background-color:#7f807f;
 }
-
+::-webkit-scrollbar-thumb:hover{
+    background-color: #6AC6C4;
+}
 
 /* Buttons */
 .button{
@@ -66,9 +108,12 @@ body{
 .drop{
     padding-right: 60px;
 }
-li a{
-    color: white;
-    font-size: 18px;
+.links a{
+    padding-right: 30px;
+}
+.links a:hover{
+    color: rgb(172, 172, 172);
+    text-decoration: none;
 }
 .links{
     display: flex;
@@ -103,14 +148,14 @@ li a{
 }
 .stat h1{
     font-family: 'Gabriela', serif;
-    padding: 20px;
+    padding: 15px;
 }
 .line{
     text-align: center;
 }
 .rem{
     background-color: white;
-    margin-bottom:50px;
+    margin-bottom:25px;
 }
 @media screen and (max-width: 800px) {
     .left,.middle,.right{
@@ -160,4 +205,16 @@ li a{
 }
 .diagnostics button{
     background-color: #F0F5F7;
+}
+
+
+/* Profile */
+.profile{
+    background-color: #F0F5F7;
+    margin:30px;
+    padding:20px ;
+}
+
+.profile .col-sm-4{
+    text-align: center;
 }

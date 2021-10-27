@@ -24,6 +24,12 @@ def Patients():
     if request.method=="GET":
         return render_template('Patients.html',link1="https://crello.com/user/projects/61399d9bdbf5fb5638f51543/")
 
+@app.route('/Profile',methods=["POST","GET"])
+def Profile():
+    if request.method=="GET":
+        return render_template('Profile.html',rating=3)
+
+
 @app.route('/Logout')
 def Logout():
     session.pop('User_name',None)
