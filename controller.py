@@ -23,6 +23,11 @@ def Doc_Register():
 def Doc_Login():
     if request.method=="GET":
         return render_template('Doctor_login.html')
+        
+@app.route('/consultation',methods=["GET"])
+def Consultation():
+    if request.method=="GET":
+        return render_template('consultation.html')
 
 if __name__ == '__main__':
     app.run(debug=True)
