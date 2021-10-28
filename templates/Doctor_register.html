@@ -69,15 +69,15 @@
 							<input type="text" name="About" placeholder="Describe yourself in few words" class="form-input">
                             <br><br>
                             <label for="quantity" class="exp">Experience:</label>
-                            <input type="number" id="quantity" name="quantity" min="1" max="40">
+                            <input class="form-input" type="number" id="quantity" name="quantity" min="1" max="40">
                             <br><br>
                             <label for = "gender" class = "gender"> Gender: </label>
                             &emsp;&emsp;&emsp;<input type="Radio" name="Gender" Value="Male" class="lbl">Male
-                            &emsp;<input type="Radio" name="Gender" Value="Female" class="lbl">Female
+                            &emsp;<input  type="Radio" name="Gender" Value="Female" class="lbl">Female
                             
                             <div class="state">
                                 <label for="state">State:&emsp14;&emsp14;&emsp13;&emsp13;&emsp13;&emsp13;&emsp13;&emsp13;&emsp13;&emsp13;&emsp13;&emsp13;&emsp13;</label>
-                                <select class="form-control" id="state"name="C_state"  required style="margin-right:160px;width:200px"> 
+                                <select class="form-input" id="state" name="C_state"  required style="margin-right:160px;width:200px"> 
                                     <option value="SelectState"> Select States</option>
                                     <option value="Andra Pradesh">Andra Pradesh</option>
                                     <option value="Arunachal Pradesh">Arunachal Pradesh</option>
@@ -120,7 +120,7 @@
                             </div>
                             <div class="specialization">
                                 <label for="state">Specialization:</label>
-                                <select class="form-control" id="state"name="C_state"  required style="margin-right:150px;width:200px"> 
+                                <select class="form-input" name="C_state"  required style="margin-right:150px;width:200px"> 
                                     <option value="SelectState"> Select Specialization</option>
                                     <option value="Andra Pradesh">Allergy And Immunology</option>
                                     <option value="Arunachal Pradesh">Anesthesiology</option>
@@ -160,8 +160,8 @@
                                     <option value="West Bengal">Venereology</option>
                                 </select>
                             </div>
-                            <label for="district"><h5>District</h5></label>
-                            <select  class="form-control" id="district2"  name="A_district" required>
+                            <label for="district">District</label>
+                            <select  class="form-input" id="district"  name="A_district" required>
                                 <option value="">Select District</option>
                             </select>
                             <br>
@@ -190,6 +190,6 @@
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 
         <!-- link for jquery validation -->
-        <script src = "{{('/static/jquery/web.js')}}"> </script>
+        <script src = "{{('/static/jquery/location.js')}}"> </script>
 	</body>
 </html>

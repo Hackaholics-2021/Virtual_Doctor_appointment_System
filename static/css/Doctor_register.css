@@ -24,8 +24,7 @@ a{
 .below-pic{
 	margin-top:0px;
     text-align:center;
-    font-family:'Roboto Slab', serif;
-    
+    font-family:'Roboto Slab', serif;    
 }
 .right{
 	background-color:white;
@@ -57,19 +56,15 @@ a{
 }
 .state{
 	display:flex;
-		justify-content:center;
-		margin-top:40px;
-		
-		align-items: center;
+	justify-content:center;
+	margin-top:40px;		
+	align-items: center;
 }
 .district{
-	
-
-		display:flex;
-		justify-content:center;
-		margin-top:40px;
-		
-		align-items: center;
+	display:flex;
+	justify-content:center;
+	margin-top:40px;		
+	align-items: center;
 }
 
 .specialization{
