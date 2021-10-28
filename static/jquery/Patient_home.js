@@ -25,3 +25,22 @@ $(window).scroll(function() {
         });
     }
 });
+
+// faq dropdown in desktop
+var dropdown_question = document.getElementsByClassName("question");
+for(var j=0;j<dropdown_question.length;j++){
+    dropdown_question[j].addEventListener("click", function(){
+        var dropdownContent = this.nextElementSibling;
+
+        if(dropdownContent.style.display=="flex"){
+            dropdownContent.style.display="none";
+            var image = this.children[0];
+            image.setAttribute("src","../static/images/right-arrow.png");
+        }
+        else{
+            dropdownContent.style.display="flex";
+            var image = this.children[0];
+            image.setAttribute("src","../static/images/arrow-down.png");
+        }
+    });
+}

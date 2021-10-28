@@ -7,3 +7,72 @@
     color:white;
     background-color: #343937;
 }
+.health-concerns{
+    display:flex;
+    margin:50px 100px;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+.health-concerns-title,.faq-title{
+    font-size: 30px;
+    letter-spacing: 4px;
+    font-family: 'Roboto Slab', serif;
+    font-weight:600;
+    margin-bottom:20px;
+}
+.row-1{
+    display:flex;
+    justify-content: space-evenly;
+    margin-bottom:20px;
+    margin:20px;
+}
+.card{
+    width: 250px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.1), 0 8px 20px 0 rgba(0, 0, 0, 0.1);
+    text-align: center;
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    padding:30px;
+    margin:20px;
+    font-size:18px;
+}
+.card-header{
+    font-weight:600;
+    font-size:18px;
+    margin-top:-20px;
+    font-family: 'Roboto Slab', serif;
+    letter-spacing: 2px;
+}
+.image-circle{
+    background-color: rgb(29, 48, 66);
+    height:40px;
+    width:40px;
+    padding:20px;
+    border-radius: 50px 50px;
+    position:relative;
+    top:-50px;
+}
+.faq{
+    margin:0px 100px;
+}
+.faq-section{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding:20px 80px;
+}
+.question{
+    font-family: 'Open Sans', sans-serif;
+    font-weight:400;
+    display:flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.answer{
+    display:none;
+    width:350px;
+    font-size:15px;
+}
