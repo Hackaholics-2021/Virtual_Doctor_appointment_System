@@ -233,6 +233,23 @@ a{
     padding:20px ;
 }
 
+.pic{
+    border: 2px solid #F0F5F7;
+    width:300px;
+    height: 300px;
+    border-radius: 200px;
+}
+.pic img{
+    width:180px;
+    height:180px;   
+}
+
 .profile .col-sm-4{
     text-align: center;
+}
+
+.profile .update{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;    
 }

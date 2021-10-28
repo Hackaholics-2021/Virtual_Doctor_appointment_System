@@ -39,11 +39,9 @@
         <div class="row">
             <div class="col-sm-3 doc">
                 <br><br>
-                <div class="pic">
+                <div class="pic" >
                     <img class="profilepic" src="../static/images/man.png" alt="your image" />
                 </div>
-                
-
                 <h1 class="quote">Dr Alan<br>
                 {% if rating==1 %}
                     <span class="fa fa-star checked"></span>
@@ -87,9 +85,9 @@
                     <h1>Profile</h1>
                 </div>
                 <div class="profile">
-                    <div class="row">
+                    <div class="row update">
                         <div class="col-sm-4">
-                            <input type="text" value="Dr. Alan" name="name">
+                            <input type="text" value="Dr. Alan" name="name" placeholder="Dr. Your Name">
                         </div>
                         <div class="col-sm-4">
                             <select  id="state" name="state"  required> 
@@ -139,7 +137,17 @@
                             </select>
                         </div>
                     </div>
-                    
+                    <br>
+                    <div class="row">
+                        <div class="col-sm-4">
+                            <input type="text" name="study" value="MBBS" placeholder="Ex: MBBS">
+                        </div>
+                        <div class="col-sm-8">
+                            <input  style="width: 100%;" type="text" name="hospital" value="KMCH Hospital, Coimbatore, Tamil Nadu" placeholder="Ex: ABC Hospital, Coimbatore, Tamil Nadu">
+                        </div>
+                    </div>
+                    <br>
+
                 </div>       
             </div>
         </div>
