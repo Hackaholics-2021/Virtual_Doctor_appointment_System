@@ -29,5 +29,10 @@ def Consultation():
     if request.method=="GET":
         return render_template('consultation.html')
 
+@app.route('/consultation_patient_info',methods=["GET"])
+def Consultation_patient_info():
+    if request.method=="GET":
+        return render_template('consultation_patient_info.html')
+
 if __name__ == '__main__':
     app.run(debug=True)
