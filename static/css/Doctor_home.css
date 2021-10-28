@@ -5,6 +5,23 @@ body{
     font-size: 18px;
     height:100%;
 }
+a{
+    color: inherit;
+    text-decoration: none;
+}
+
+/* Rating */
+.checked {
+    color: orange;
+  }
+
+/* input box */
+input {
+    border:none;
+    border-bottom: 1px solid #343937;
+    padding: 5px 10px;
+    outline: none;
+ }
 
 /* Input */
 input{
@@ -90,6 +107,7 @@ a{
 /* Titles */
 .title p{
     font-size: x-large;
+    font-weight: bolder;
 }
 
 
