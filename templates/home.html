@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta name="navigation" content="width=device-width,initial-scale=1.0">
+        <title>WE4U</title>
+        <!-- Google fonts -->
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Gabriela&family=Montserrat:wght@300&family=Open+Sans&family=Titillium+Web:wght@300&family=Urbanist:wght@200&display=swap&family=Roboto+Slab&display=swap" rel="stylesheet">
+        <link rel="stylesheet" type="text/css" href="../static/css/home.css">
+    </head>
+    <body>
+        <div class="container">
+            <header>
+                <div class="navigation">
+                    <div class="logo">WE4U</div>
+                    <div class="links">                   
+                        <span><a style="color:white;text-decoration: none;margin-top: 25px;" href="#">LOGIN</a></span>              
+                        <button class="button" href="{{ url_for('Logout') }}">SIGNUP</button>
+                    </div>
+                </div>
+            </header>
+            <div class="main">
+                <div class="main-text">
+                    <div class="main-large"><h1 style="font-size: 62px;">WE CARE FOR U</h1>
+                    <h5 style="font-size:25px;margin-left: 15px;"> Expert consultation from the <br>Safety and Comfort of your Home.<br></h5>
+                    <button class="button2" href="{{ url_for('Logout') }}">GET STARTED</button></div>
+                    
+                </div>
+           
+                <div class="main-image"></div>
+                <br><br>
+           
+                <div class="main-content">
+                    <div class="content">
+                        <h1>Skip the waiting room<br>Consult with a doctor<br></h1>
+                     
+                        <div class="content-tick">
+                            <h5>&nbsp;&nbsp;&nbsp;&nbsp;<img class="tick"src="../static/images/tick.png">Fees starting at ₹99</h5>
+                            <h5>&nbsp;&nbsp;&nbsp;&nbsp;<img class="tick"src="../static/images/tick.png">Verified doctors respond in 5 minutes</h5>
+                            <h5>&nbsp;&nbsp;&nbsp;&nbsp;<img class="tick"src="../static/images/tick.png">100% Private and confidential</h5>
+                        </div>
+                    </div>
+                </div>
+                <div class="why-choose-us">
+                    <span class="why-choose-us-title">Roobie Concerns</span>
+                    <span class="why-choose-us-desc">Roobie mainly focuses on .</span>
+                    <div class="why-choose-us-cards">
+                        <div class="row-1">
+                            <div class="card">
+                                <span class="image-circle"><img src="../static/images/acne.png" alt=""></span>
+                                <span class="card-header">Acne,Pimple</span><br>
+                                <span>Cure your acnes.Get relief from your pimples</span>
+                            </div>
+                            <div class="card">
+                                <span class="image-circle"><img src="../static/images/cough.png" alt=""></span>
+                                <span class="card-header">Cold or Cough</span><br>
+                                <span>Feeling irritated with cough. Take ur consultation</span>
+                            </div>
+                            <div class="card">
+                                <span class="image-circle"><img src="../static/images/vomit.png" alt=""></span>
+                                <span class="card-header">Vomitting</span><br>
+                                <span>Feeling nauseaus. Connect to your doctor</span>
+                            </div>
+                        </div>
+                        <div class="row-1">
+                            <div class="card">
+                                <span class="image-circle"><img src="../static/images/fever.png" alt=""></span>
+                                <span class="card-header">Fever</span><br>
+                                <span>Feeling Sick and uneasy.Get well soon</span>
+                            </div>
+                            <div class="card">
+                                <span class="image-circle"><img src="../static/images/headache.png" alt=""></span>
+                                <span class="card-header">HeadAche</span><br>
+                                <span>Feeling uncomfortable. Connect to yur doctor soon</span>
+                            </div>
+                            <div class="card">
+                                <span class="image-circle"><img src="../static/images/physician.png" alt=""></span>
+                                <span class="card-header">General Physician</span><br>
+                                <span>Have your general checkup done.Consult a general Physician</span><br>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <br>
+            <div class="footer">
+                <div class="for-patients">
+                    <span class="footer-title">For Patients</span>
+                    <span><a href="#">Consult a doctor</a></span>
+                    <span><a href="#">Book an appointment</a></span>
+                    <span><a href="#">View History</a></span>
+                    <span><a href="#">Search doctors</a></span>
+                    <span><a href="#">Home</a></span>
+                </div>
+                <div class="for-doctors">
+                    <span class="footer-title">For Doctors</span>
+                    <span><a href="#">View appointments</a></span>
+                    <span><a href="#">View consultations</a></span>
+                    <span><a href="#">History</a></span>
+                    <span><a href="#">Payments</a></span>
+                    <span><a href="#">Your Patients</a></span>
+                </div>
+                <div class="contacts">
+                    <span class="footer-title">Social Contacts</span>
+                    <span class="icons">
+                        <br>
+                        <img src="../static/images/twitter.png" alt="">
+                        <img src="../static/images/facebook-circular-logo.png" alt="">
+                        <img src="../static/images/instagram.png" alt="">
+                        <img src="../static/images/whatsapp.png" alt="">
+                    </span>
+                    <span>All rights reserved <img src="../static/images/copyright.png" alt="" style="width:16px; height:16px;margin-right:0px;"> Hackaholics</span>
+                </div>
+            </div>
+  
+        </div>
+    </body>
+</html>
+
+
