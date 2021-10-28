@@ -29,11 +29,16 @@ def Profile():
     if request.method=="GET":
         return render_template('Profile.html',rating=3)
 
-
 @app.route('/Logout')
 def Logout():
     session.pop('User_name',None)
     return redirect(url_for('Doctor_home.html'))
+
+@app.route('/doctor_register',methods=['POST','GET'])
+def Doctor_register():
+    if request.method=="GET":
+        return render_template('Doctor_register.html')
+
 
 if __name__ =='__main__':  
     app.run(debug = True) 
