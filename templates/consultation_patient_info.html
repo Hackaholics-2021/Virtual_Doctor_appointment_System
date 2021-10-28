@@ -33,21 +33,57 @@
         <a href="#" class="logout-btn">Logout</a>
     </div>
     <div class="patient-info-container">
+        <div class="patient-form">
+            <div class="patient-info-title">Consult your nearest Doctor</div>
+        </div>
         <div class="patient-info-box">
             <div class="left-patient-info-form">
                 <form action="#" method="POST">
-                    <label for="name">Patient Name</label>
-                    <input type="text" class="form-input" name="name">
-                    <label for="mobile">Mobile No</label>
-                    <input type="text" class="form-input" name="mobile" value="">
-                    <label for="specialization">Specialization</label>
-                    <select name="specialization" id="specialization">
-                        <option value=""></option>
-                    </select>
+                    <span>
+                        <label for="name">Patient Name</label>
+                        <input type="text" class="form-input" name="name">
+                    </span>
+                    <span>
+                        <label for="mobile">Mobile No</label>
+                        <input type="text" class="form-input" name="mobile" value="">
+                    </span>
+                    <span>
+                        <label for="specialization">Specialization</label>
+                        <select name="specialization" id="specialization" class="form-input">
+                            <option value="Select Specialization"> Select Specialization</option>
+                            <option value="Allergy And Immunology">Allergy And Immunology</option>
+                            <option value="Anesthesiology">Anesthesiology</option>
+                            <option value="Cardiology">Cardiology</option>
+                            <option value="Dermatology">Dermatology</option>
+                            <option value="Emergency">Emergency</option>
+                            <option value="Fitness">Fitness</option>
+                            <option value="Gasteroenterology">Gasteroenterology</option>
+                            <option value="Infectious Disease">Infectious Disease</option>
+                            <option value="NeuroSurgeon">NeuroSurgeon</option>
+                            <option value="Nutrition">Nutrition</option>
+                            <option value="Orthopedics">Orthopedics</option>
+                            <option value="Pediatrics">Pediatrics</option>
+                            <option value="Pharamacology">Pharamacology</option>
+                            <option value="Psychiatry">Psychiatry</option>
+                            <option value="Pulmonology">Pulmonology</option>
+                            <option value="Urology">Urology</option>
+                            <option value="General Physician">General Physician</option>
+                        </select>
+                    </span>
+                    <button class="logout-btn">Continue</button>
                 </form>
             </div>
             <div class="right-patient-info-form">
-
+                <div class="images">
+                    <img src="../static/images/coin.png" alt="" width="35px" height="35px">
+                    <img src="../static/images/clock.png" alt="" width="35px" height="35px">
+                    <img src="../static/images/secure-shield.png" alt="" width="35px" height="35px">
+                </div>
+                <div class="image-text">
+                    <span style="color:#ffb804">More affordable</span><br>
+                    <span style="color:#44bb29">Quicker and reliable</span><br>
+                    <span style="color:#b82626">Private and Safe</span>
+                </div>
             </div>
         </div>
     </div>

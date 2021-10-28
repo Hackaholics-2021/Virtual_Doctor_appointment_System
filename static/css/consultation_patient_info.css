@@ -1,0 +1,66 @@
+.patient-info-container{
+    background-color: #f0f5f7;
+    padding:155px 250px;
+    height:100%;
+}
+.patient-form{
+    background-color: white;
+    padding:20px;
+    display:flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: column;
+}
+.patient-info-box{
+    display:flex;
+    justify-content: space-evenly;
+    align-items: center;
+    font-size: 18px;
+    padding:30px 0px;
+    background-color: white;
+}
+.patient-info-title{
+    align-self: center;
+    font-size:30px; 
+    font-weight:600;
+}
+.left-patient-info-form{
+    border-right: 1px solid rgba(0, 0, 0, 0.308);
+    padding:20px 80px;
+}
+.right-patient-info-form{
+    padding:0px 100px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.images img, .image-text span{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 10px 15px;
+    font-weight:600;
+}
+.images img{
+    margin:40px 0px;
+}
+
+.form-input{
+    margin-left:30px;
+    border:none;
+    padding:5px 10px;
+    outline:none;
+    border-bottom: 1px solid #8c8d8d77;
+    background-color: #faf8f8;
+    font-family:'Titillium Web', sans-serif;
+}
+form span{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom:40px;
+}
+input{
+    width:158px;
+}

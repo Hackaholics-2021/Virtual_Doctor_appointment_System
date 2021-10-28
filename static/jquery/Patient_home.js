@@ -1,11 +1,11 @@
 var counters = document.querySelectorAll(".customer-title");
-var speed=400;
+var speed=1500;
 $(window).scroll(function() {
     var hT = $('.customers').offset().top,
         hH = $('.customers').outerHeight(),
         wH = $(window).height(),
         wS = $(this).scrollTop();
-    if (wS > (hT+hH-wH)){
+    if (wS > (hT+hH-wH-100)){
         counters.forEach(counter => {
             const updateCount = () =>{
                 const target=+counter.getAttribute("data-target");
