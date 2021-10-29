@@ -27,7 +27,7 @@ def Patients():
 @app.route('/Profile',methods=["POST","GET"])
 def Profile():
     if request.method=="GET":
-        return render_template('Profile.html',rating=3)
+        return render_template('Profile.html',rating=3,spl="Cardiology",sta="Tamil Nadu",dist="Coimbatore",Tamil="1")
 
 @app.route('/Logout')
 def Logout():

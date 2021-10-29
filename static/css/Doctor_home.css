@@ -24,25 +24,14 @@ input {
  }
 
 /* Input */
-input{
-    border:none;
-    border-bottom: 2px solid #6AC6C4;
-    font-size: 25px;
-    background-color: #F0F5F7;
-}
-input:focus{
+input,textarea,select{
+    border:0;
     outline: none;
-    border: 2px solid #6AC6C4;
-    border-radius: 10px;
-}
-
-select{
-    border:none;
     border-bottom: 2px solid #6AC6C4;
     font-size: 25px;
     background-color: #F0F5F7;
 }
-select:focus{
+input:focus,textarea:hover,select:hover{
     outline: none;
     border: 2px solid #6AC6C4;
     border-radius: 10px;
@@ -231,17 +220,18 @@ a{
     background-color: #F0F5F7;
     margin:30px;
     padding:20px ;
+
 }
 
-.pic{
-    border: 2px solid #F0F5F7;
-    width:300px;
-    height: 300px;
-    border-radius: 200px;
-}
 .pic img{
-    width:180px;
-    height:180px;   
+    width:250px;
+    height:250px;
+    padding: 10px;
+    border:2px solid #F0F5F7;
+    border-radius: 150px;
+}
+.pic{
+    margin-bottom: 180px;
 }
 
 .profile .col-sm-4{
@@ -252,4 +242,8 @@ a{
     display: flex;
     justify-content: space-between;
     align-items: center;    
+}
+
+.check td{
+    padding-right:30px ;
 }
