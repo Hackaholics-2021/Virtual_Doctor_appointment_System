@@ -1,0 +1,268 @@
+body{
+    margin:0;
+    padding:0;
+    box-sizing: border-box;
+    font-family: 'Titillium Web', sans-serif;
+    font-size:18px;
+    background-color:#4f5855;
+}
+a{
+    color:inherit;
+    text-decoration:none;
+}
+.nav{
+    background-color: #343937;
+    height:60px;
+    display:flex;
+    justify-content: space-between;
+    align-items:center;
+    color:white;
+    padding-right:80px;
+    padding-left:80px;
+    position:fixed;
+    width:90%;
+    margin-top:0px;
+    z-index:10;
+}
+
+.font{
+    font-family:'Georgia', 'Times New Roman', Times, serif;
+    font-size:15px;
+    color: #b9b8b8;
+}
+
+.active{
+    color:#6AC6C4;
+}
+.logo{
+    font-family:'Georgia', 'Times New Roman', Times, serif;
+    font-size:30px;
+}
+.nav-items span{
+    margin-right:30px;
+}
+.nav-items span:hover{
+    color:rgb(158, 158, 158);
+}
+.fa-chevron-down{
+    font-size:10px;
+    margin-right:10px;
+}
+.logout-btn{
+    border:none;
+    text-decoration: none;
+    outline:none;
+    padding:8px 20px;
+    background-color:#6AC6C4;
+    color:white;
+    font-family: 'Titillium Web', sans-serif;
+    font-size:18px;
+    font-weight:600;
+    border-radius: 50px;
+}
+.logout-btn:hover{
+    background-color: #35B680;
+}
+.body-container{
+    display:flex;
+    justify-content: space-between;
+    align-items: center;
+    margin:0px 220px 30px 220px;
+    padding-top:100px;
+}
+.left{
+    padding:15px;
+    line-height:50px;
+    font-family: 'Open Sans', sans-serif;
+}
+.heading{
+    font-size:50px;
+    font-weight:500;
+    margin-bottom:30px;
+}
+.heading span{
+    font-weight:800;
+}
+.rob-points{
+    padding-right:90px;
+    padding-left:30px;
+}
+.rob-points span{
+    display:flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.right{
+    border:1px solid #b9b8b8;
+    width:100%;
+    height:600px;
+    padding:1px;
+    overflow-y:hidden;
+    overflow-x: hidden;
+    border-radius: 4px;
+    margin-top:0px;
+}
+.topbar{
+    height:30px;
+    background-color: #4f5855;
+    color:white;
+    padding-left:8px;
+    border-top-left-radius:4px;
+    border-top-right-radius: 4px;
+    
+}
+.image{
+    height:100px;
+    width:100px;
+    margin-left:50px;
+    margin-top:80px;
+}
+
+.sidenav {
+    height:100%;
+    position: fixed;
+    z-index: 100;
+    top: 0;
+    left: 0;
+    background-color:#343937;
+    overflow-x: hidden;
+    padding-top: 20px;
+  }
+  
+  /* Scrollbar Styling */
+::-webkit-scrollbar {
+    width: 6px;
+}
+ 
+::-webkit-scrollbar-track {
+    background: #F0F5F7;   
+    -webkit-border-radius: 10px;
+    border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+    -webkit-border-radius: 10px;
+    border-radius: 10px; 
+    background-color:#7f807f;
+}
+::-webkit-scrollbar-thumb:hover{
+    background-color: #6AC6C4;
+}
+  .sidenav a {
+    padding: 6px 6px 6px 32px;
+    text-decoration: none;
+    font-size: 20px;
+    color: #818181;
+    display: block;
+  }
+  
+  .sidenav a:hover {
+    color: #f1f1f1;
+  }
+  
+
+  /* @media screen and (max-height: 450px) {
+    .sidenav {padding-top: 15px;}
+    .sidenav a {font-size: 18px;}
+  } */
+
+  .icons1{
+      height:30px;
+      width:30px;
+      margin-left:25px;
+  }
+
+  .right{
+	background-color:white;
+	display:flex;
+	justify-content:center;
+	color:black;
+	padding:30px;
+    width:100%;
+    margin-left:300px;
+    
+}
+.signup-header{
+	font-size:23px;
+}
+
+.signup-box{
+	margin-top:70px;
+	display:flex;
+	justify-content:center;
+	align-items:center;
+}
+.signup{
+	font-size:23px;
+	font-weight:600;
+	font-family: 'Roboto Slab', serif;
+}
+.signup-form{
+	display:flex;
+	justify-content:space-between;
+	margin-top:20px;
+}
+.state{
+
+    display:flex;
+    justify-content:space-between;
+    margin-top:30px;
+    
+    align-items: center;
+}
+.mobileno{
+    margin-right:10px;
+}
+
+
+.form-input,.form-control{
+	border:none;
+	text-decoration:none;
+	outline:none;
+	border-bottom:2px solid  #6AC6C4;
+	padding:10px;
+	margin-left:20px;
+}
+.fonts{
+    color:#6AC6C4;
+}
+.email{
+	margin-right:40px;
+}
+.password{
+	margin-right:6px;
+}
+.signup-btn{
+	border:none;
+	font-family: 'Roboto Slab', serif;
+	border-radius:50px;
+	background-color:#42535B;
+	color:white;
+	font-size:13px;
+	padding:8px 15px;
+    margin-left:100px;
+    
+}
+.p-viewer {
+	z-index: 9999;
+	/* position: absolute; */
+	left:1010px;
+	margin-top: -35px;
+}
+
+.fa-eye {
+	color: #000;
+}
+
+table {
+    border-collapse: collapse;
+    width: 100%;
+  }
+  
+  th, td {
+    padding:2px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+  }
+  
+  tr:hover {background-color: #6AC6C4;}

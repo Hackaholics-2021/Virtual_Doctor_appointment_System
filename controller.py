@@ -34,5 +34,20 @@ def Consultation_patient_info():
     if request.method=="GET":
         return render_template('consultation_patient_info.html')
 
+@app.route('/patient_profile',methods=["GET"])
+def patient_profile():
+    if request.method=="GET":
+        return render_template('Patient_profile.html')
+
+@app.route('/todays_appointment',methods=["GET"])
+def todays_appointment():
+    if request.method=="GET":
+        return render_template('todays_appointment.html')
+
+@app.route('/rescheduled_appointment',methods=["GET"])
+def rescheduled_appointment():
+    if request.method=="GET":
+        return render_template('rescheduled_appointment.html')
+
 if __name__ == '__main__':
     app.run(debug=True)

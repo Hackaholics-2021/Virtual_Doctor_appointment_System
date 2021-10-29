@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>todays Appointment</title>
+    
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <!-- Google fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Gabriela&family=Montserrat:wght@300&family=Open+Sans&family=Titillium+Web:wght@300&family=Urbanist:wght@200&display=swap&family=Roboto+Slab&display=swap" rel="stylesheet">
+    <!-- Fontawesome -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+    <!-- css -->
+    <link rel="stylesheet" href="../static/css/todays_apppointment.css">
+
+</head>
+<body>
+    <header>
+        <div class="navigation">
+            <div class="logo">WE4U</div>
+            <div class="links">                   
+                <span><a href="#">Home</a></span>
+                <span><a href="#">Consult</a></span>
+                <span><a href="#">Book Appointment</a></span>
+                <span><a href="#">History</a></span>
+                <span><a href="#" class="active">Profile</a></span>               
+                <span><a href="#" class="active">Find a Doctor</a></span> 
+            </div>
+        </div>
+    </header>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-sm-3 doc">
+              <div class="sidenav">
+                <img src="../static/images/profile.png" class="image">
+                <a href="patient_profile#">Appointment History</a><br>
+                <a href="#">Todays Appointment</a><br>
+                <a href="#">Rescheduled Appointment</a><br>
+                <a href="#">Prescription details</a><br>
+                <a href="#">Lab Records</a><br>
+                <a href="#">Update profile</a><br>
+                <a href="#">Logout</a><br>
+                <span class="icons">
+                    <img src="../static/images/twitter.png" alt="" class="icons1">
+                    <img src="../static/images/facebook-circular-logo .png" alt="" class="icons1">
+                    <img src="../static/images/instagram.png" alt="" class="icons1">
+                    <img src="../static/images/whatsapp.png" alt="" class="icons1">
+                </span>
+              </div>
+            </div>
+            <div class="col-sm-9" style="margin-top:100px">
+              <h4 style="margin-left:350px;color:rgb(92, 163, 175);font-size: 25px;">Todays Appointment</h4>
+              <table class="font"style="width:100%">
+                <tr>
+                  <th>Sno</th>
+                  <th>Doctors Name</th>
+                  <th>Specialization</th>
+                  <th>Fees</th>
+                  <th>Mode</th>
+                  
+                  <th>Date</th>
+                  <th>Cancel Appointment</th>
+                </tr>
+                <br>
+                <br>
+                <tr>
+                  <td>1</td>
+                  <td>Griffin</td>
+                  <td>Cardiology</td>
+                  <td>500</td>
+                  <td>Video</td>
+                  <td>7.10.2021</td>
+                  <td><button type="submit" name="signup" class="cancel-btn" >Cancel</button></td>
+                </tr>
+              </table>
+              
+            </div>
+            
+</body>
+</html>
