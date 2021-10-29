@@ -1,6 +1,6 @@
 .patient-info-container{
     background-color: #f0f5f7;
-    padding:155px 250px;
+    padding:125px 250px;
     height:100%;
 }
 .patient-form{
@@ -16,7 +16,7 @@
     justify-content: space-evenly;
     align-items: center;
     font-size: 18px;
-    padding:30px 0px;
+    padding:0px 0px 40px 0px;
     background-color: white;
 }
 .patient-info-title{
@@ -63,4 +63,25 @@ form span{
 }
 input{
     width:158px;
+}
+select{
+    width:180px;
+}
+.back{
+    border:none;
+    text-decoration: none;
+    outline:none;
+    padding:8px 20px;
+    background-color:#6AC6C4;
+    color:white;
+    font-family: 'Titillium Web', sans-serif;
+    font-size:18px;
+    font-weight:600;
+    border-radius: 50px;
+    position:relative;
+    left:400px;
+    top:-40px;
+}
+.back:hover{
+    background-color: #35B680;
 }

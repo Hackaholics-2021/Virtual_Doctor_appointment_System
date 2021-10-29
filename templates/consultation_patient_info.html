@@ -24,7 +24,7 @@
         </div>
         <div class="nav-items">
             <span><a href="{{ url_for('Patient_home') }}">Home</a></span>
-            <span><a href="#" class="active">Consult</a></span>
+            <span><a href="{{ url_for('Consultation') }}" class="active">Consult</a></span>
             <span><a href="#">Book appointment</a></span>
             <span><a href="#">History</a></span>
             <span><a href="#">Profile</a></span>
@@ -33,8 +33,10 @@
         <a href="#" class="logout-btn">Logout</a>
     </div>
     <div class="patient-info-container">
+        
         <div class="patient-form">
             <div class="patient-info-title">Consult your nearest Doctor</div>
+            <a href="{{ url_for('Consultation') }}" class="back">Back</a>
         </div>
         <div class="patient-info-box">
             <div class="left-patient-info-form">
@@ -44,8 +46,25 @@
                         <input type="text" class="form-input" name="name">
                     </span>
                     <span>
-                        <label for="mobile">Mobile No</label>
-                        <input type="text" class="form-input" name="mobile" value="">
+                        <label for="gender">Gender</label>
+                        <select name="gender" id="gender" class="form-input">
+                            <option value="SelectGender"> --Select Gender--</option>
+                            <option value="Male">Male</option>
+                            <option value="Female">Female</option>
+                        </select>
+                    </span>
+                    <span>
+                        <label for="language">Language</label>
+                        <select name="language" id="language" class="form-input">
+                            <option value="Select language"> --Select Language--</option>
+                            <option value="Male">English</option>
+                            <option value="Female">Hindi</option>
+                            <option value="Female">Kanada</option>
+                            <option value="Female">Tamil</option>
+                            <option value="Female">Telugu</option>
+                            <option value="Female">Malayalam</option>
+                            <option value="Female">Bengali</option>
+                        </select>
                     </span>
                     <span>
                         <label for="specialization">Specialization</label>
