@@ -11,7 +11,7 @@ a{
 
 .body-container{
 	margin:90px 120px;
-	background-color:#a9b4c2;
+	background-color:#c2a0c2;
 	display:flex;
 	justify-content:space-between;
 }
@@ -122,7 +122,7 @@ a{
 	border:none;
 	font-family: 'Roboto Slab', serif;
 	border-radius:50px;
-	background-color:#42535B;
+	background-color:#624379;
 	color:white;
 	font-size:13px;
 	margin-left: 100px;
