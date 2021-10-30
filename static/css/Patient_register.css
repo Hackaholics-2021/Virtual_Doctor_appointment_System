@@ -60,7 +60,7 @@ a{
 .signup{
 	font-size:23px;
 	font-weight:600;
-	font-family: 'Roboto Slab', serif;
+	font-family: 'Gabriela', serif;
 }
 .signup-form span{
 	display:flex;
@@ -82,7 +82,7 @@ a{
 	border:none;
 	font-family: 'Roboto Slab', serif;
 	border-radius:50px;
-	background-color:#42535B;
+	background-color: #624379;
 	color:white;
 	font-size:13px;
 	padding:8px 15px;
