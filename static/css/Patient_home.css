@@ -9,6 +9,7 @@ body{
     box-sizing: border-box;
     font-family: 'Titillium Web', sans-serif;
     font-size:18px;
+    overflow-x: hidden;
 }
 a{
     color:inherit;

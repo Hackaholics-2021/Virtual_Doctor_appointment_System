@@ -1,7 +1,11 @@
+body{
+    overflow-x: hidden;
+}
 .patient-info-container{
     background-color: #f0f5f7;
-    padding:125px 250px;
+    padding:110px 250px;
     height:100%;
+    
 }
 .patient-form{
     background-color: white;

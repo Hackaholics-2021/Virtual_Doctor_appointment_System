@@ -1,0 +1,55 @@
+.full_body{
+    background-color: #F0F5F7;
+    padding:110px 100px;
+}
+.container{
+    font-size:18px;
+    padding:50px;
+    background-color: white;
+    padding:30px;
+}
+.header{
+    font-weight:600;
+    font-size:30px;
+    text-align: center;
+    padding-bottom:30px;
+}
+.credentials{
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    font-size:18px;
+}
+.left-credential-side{
+    border-right:1px solid rgb(167, 167, 167);
+    padding:20px 60px 20px 0px;
+}
+.left-credential-side div{
+    margin-bottom:30px;
+}
+.credentials .value{
+    font-size:15px;
+}
+.link-for-meet{
+    color:#2762F1;
+    text-decoration: underline;
+}
+.note{
+    width:300px;
+}
+.right-credential-side{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.images img, .image-text span{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 10px 15px;
+    font-weight:600;
+}
+.images img{
+    margin:40px 0px;
+}

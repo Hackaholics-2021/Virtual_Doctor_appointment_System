@@ -1,0 +1,45 @@
+.full_body{
+    background-color: #F0F5F7;
+    padding: 70px 100px;
+}
+.header{
+    font-size:30px;
+    text-align: center;
+    margin-bottom: 20px;
+}
+.filter{
+    background-color: #102034;
+    color:white;
+    font-size:18px;
+    padding:10px 20px;
+    display:flex;
+    justify-content: space-evenly;
+    align-items: center;
+}
+select{
+    background-color:#102034;
+    color:white;
+    padding:8px 10px;
+    font-family: 'Titillium Web', sans-serif;
+    border:1.5px solid white;
+    margin-left:20px;
+    width:200px;
+}
+.card{
+    display:flex;
+    justify-content: space-evenly;
+    align-items: center;
+    margin-bottom: 15px;
+    background-color: white;
+    padding:15px;
+}
+.card div{
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+.about{
+    width:200px;
+    font-size: 12px;
+}

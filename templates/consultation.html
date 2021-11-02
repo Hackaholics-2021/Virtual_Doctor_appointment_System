@@ -24,8 +24,8 @@
         </div>
         <div class="nav-items">
             <span><a href="{{ url_for('Patient_home') }}">Home</a></span>
-            <span><a href="#" class="active">Consult</a></span>
-            <span><a href="#">Book appointment</a></span>
+            <span><a href="{{ url_for('Consultation') }}" class="active">Consult</a></span>
+            <span><a href="{{ url_for('Appointment_patient_info') }}">Book appointment</a></span>
             <span><a href="#">History</a></span>
             <span><a href="#">Profile</a></span>
             <span><a href="#">Find a Doctor</a></span>
@@ -75,7 +75,7 @@
                 <div class="circle">
                     <img class="category-image" src="../static/images/mental-health.png" alt="" width="50px" height="50px">
                 </div>
-                <div class="category-title">Pschyiatry</div>
+                <div class="category-title">Pschiatry</div>
                 <div class="consult-now"><a href="#">Consult now </a><img src="../static/images/right-arrow-blue.png" alt="" width="8px" hieght="8px"></div>
             </div>
             <div class="category 5">

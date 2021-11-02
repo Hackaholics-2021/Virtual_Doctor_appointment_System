@@ -48,6 +48,26 @@ def todays_appointment():
 def rescheduled_appointment():
     if request.method=="GET":
         return render_template('rescheduled_appointment.html')
+        
+@app.route('/consult_filter',methods=["GET"])
+def Consult_filter():
+    if request.method=="GET":
+        return render_template('consult_filter.html')
+
+@app.route('/consult_meeting_info',methods=["GET"])
+def Consult_meeting_info():
+    if request.method=="GET":
+        return render_template('consult_meeting_info.html')
+
+@app.route('/book_appointment',methods=["GET"])
+def Book_appointment():
+    if request.method=="GET":
+        return render_template('book_appointment.html')
+
+@app.route('/appointment_patient_info',methods=["GET"])
+def Appointment_patient_info():
+    if request.method=="GET":
+        return render_template('appointment_patient_info.html')
 
 if __name__ == '__main__':
     app.run(debug=True)

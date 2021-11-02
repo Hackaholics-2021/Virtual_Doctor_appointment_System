@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Google fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;800&family=Open+Sans:wght@300;400;800&family=Titillium+Web:wght@300&family=Urbanist:wght@200&display=swap&family=Roboto+Slab&display=swap" rel="stylesheet">
+    <!-- jquery -->
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>
+    <!-- Font awesome -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+    <!-- CSS -->
+    <link rel="stylesheet" href="../static/css/Patient_home.css">
+    <link rel="stylesheet" href="../static/css/consultation_patient_filter.css">
+    <title>Consultation Patient Filter</title>
+</head>
+<body>
+    <div class="nav">
+        <div class="logo">
+            <span>WE4U</span>
+        </div>
+        <div class="nav-items">
+            <span><a href="{{ url_for('Patient_home') }}">Home</a></span>
+            <span><a href="{{ url_for('Consultation') }}" class="active">Consult</a></span>
+            <span><a href="{{ url_for('Appointment_patient_info') }}">Book appointment</a></span>
+            <span><a href="#">History</a></span>
+            <span><a href="#">Profile</a></span>
+            <span><a href="#">Find a Doctor</a></span>
+        </div>
+        <a href="#" class="logout-btn">Logout</a>
+    </div>
+    <div class="full_body">
+        <div class="header">
+            Here are the doctors who are online currently
+        </div>
+        <form action="#" method="POST">
+            <div class="filter">
+                <span>
+                    <label for="sortby">Sort By:</label>
+                    <select name="sortby" id="sortby" class="form-input">
+                        <a href="#"><option value="--Select--"> --Select--</option></a>
+                        <a href="#"><option value="Price Low to High">Price Low to High</option></a>
+                        <a href="#"><option value="Price High to Low">Price High to Low</option></a>
+                        <a href="#"><option value="Experience High to Low">Experience High to Low</option></a>
+                        <a href="#"><option value="Rating High to Low">Female</option></a>
+                    </select>
+                </span>
+                <span>
+                    <label for="gender">Gender:</label>
+                    <select name="gender" id="gender" class="form-input">
+                        <a href="#"><option value="--Select--"> --Select--</option></a>
+                        <a href="#"><option value="Male">Male</option></a>
+                        <a href="#"><option value="Female">Female</option></a>
+                    </select>
+                </span>
+                <span>
+                    <label for="mode">Mode:</label>
+                    <select name="mode" id="mode" class="form-input">
+                        <a href="#"><option value="--Select--"> --Select--</option></a>
+                        <a href="#"><option value="Video">Video</option></a>
+                        <a href="#"><option value="Voice">Voice</option></a>
+                    </select>
+                </span>
+            </div>
+        </form>
+        <br>
+        <div class="list-of-doctors">
+            {% for i in range(4) %} 
+            <div class="card">
+                <div class="profile">
+                    <img src="../static/images/profile.png" alt="" width="100px" height="100px"> 
+                </div>
+                <div class="name-about">
+                    <span class="name">
+                        Dr. Deveraj &nbsp;&nbsp;&nbsp;&nbsp;<img src="../static/images/new-moon.png" alt="" width="10px" height="10px"> &nbsp;online
+                    </span>
+                    <span class="about">He is an enthusiastic person. Loves to help everybody. Completed MBBs at Madras Medical College, Chennai and his masters in USA</span>
+                </div>
+                <div class="education-speciality-rating">
+                    <span>MBBS,FRCS</span>
+                    <span>Cardiologist</span>
+                    <span>Rating: 
+                        {% for j in range(4) %} 
+                            <img src="../static/images/star.png" alt="" width="15px" height="15px">
+                        {% endfor %} 
+                    </span>
+                </div>
+                <div class="experience-location-fees">
+                    <span>Experience: 3yrs</span>
+                    <span>Cudalore, TamilNadu</span>
+                    <span>Fee: 500 Rs.</span>
+                </div>
+                <a href="#" class='logout-btn'>Consult</a>
+            </div>
+            {% endfor %} 
+        </div>
+    </div>
+</body>
+</html>
