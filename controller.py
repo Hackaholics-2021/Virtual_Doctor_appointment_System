@@ -14,6 +14,13 @@ app.config['MAIL_USE_SSL'] = True
 
 mail = Mail(app)
 
+
+
+@app.route('/login',methods=["POST","GET"])
+def Login():
+    if request.method=="GET":
+        return render_template("Login.html")
+
 @app.route('/',methods=["POST","GET"])
 def Home():
     if request.method=="GET":
@@ -40,5 +47,5 @@ def Doctor_register():
         return render_template('Doctor_register.html')
 
 
-if __name__ =='__main__':  
-    app.run(debug = True) 
+if(__name__=="__main__"):
+    app.run(debug=True)

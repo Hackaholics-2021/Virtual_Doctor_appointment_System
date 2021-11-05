@@ -1,0 +1,112 @@
+body{
+	margin:0;
+	padding:0;
+	background-color:#e0d3d3;
+	font-family: 'Urbanist', sans-serif;
+	align-items:center;
+}
+a{
+	color:inherit;
+	text-decoration:none;
+}
+
+.body-container{
+	margin:90px 120px;
+	background-color:#ddbea9;
+	display:flex;
+	justify-content:space-between;
+}
+.left{
+	padding:3% 5%;
+	width:30%;
+    margin:30px;
+    
+}
+.below-pic{
+	margin-top:40px;
+    text-align:center;
+    font-family:'Roboto Slab', serif;
+    
+}
+.right{
+	background-color:white;
+	display:flex;
+	justify-content:center;
+	color:black;
+	padding:30px;
+	width:50%;
+}
+.signup-header{
+	font-size:23px;
+}
+
+.signup-box{
+	margin-top:70px;
+	display:flex;
+	justify-content:center;
+	align-items:center;
+}
+.signup{
+	font-size:23px;
+	font-weight:600;
+	font-family: 'Roboto Slab', serif;
+}
+.signup-form{
+	display:flex;
+	justify-content:space-between;
+	margin-top:20px;
+}
+.state{
+
+    display:flex;
+    justify-content:space-between;
+    margin-top:30px;
+    align-items: center;
+}
+
+.form-input,.form-control{
+	border:none;
+	text-decoration:none;
+	outline:none;
+	border-bottom:1px solid black;
+	padding:10px;
+	margin-left:20px;
+}
+
+h7{
+    margin-left:60px;
+}
+h8{
+    margin-left:100px;
+}
+.email{
+	margin-right:32px;
+}
+.password{
+	margin-right:3px;
+}
+.signup-btn{
+	border:none;
+	font-family: 'Roboto Slab', serif;
+	border-radius:50px;
+	background-color:#818181;
+	color:white;
+	font-size:13px;
+	padding:8px 15px;
+    margin-left:100px;
+    
+}
+.p-viewer {
+	z-index:2500;
+	/* position: absolute; */
+	left:1010px;
+	margin-top: -35px;
+}
+
+.fa-eye {
+	color: #000;
+}
+
+form{
+    font-family: 'Urbanist', sans-serif;
+}

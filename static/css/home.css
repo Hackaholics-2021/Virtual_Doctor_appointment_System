@@ -1,0 +1,203 @@
+body{
+    background-color: #343937;
+}
+.home-header{
+    position: fixed;
+    left: 0px;
+    right: 0px;
+    height: 100px;
+    width: 100%;
+    background-color: #343937;
+    z-index: 100;
+}
+.navigation{
+    display: flex;
+    justify-content:space-between;
+    align-items: center;
+    height: 70px;
+    background-color: #343937;
+    color: white;
+    padding:0 25px 0 25px;
+}
+.drop{
+    padding-right: 60px;
+}
+span a{   
+    font-size: 18px;
+    padding-right: 30px;
+}
+span a:hover{
+    color: rgb(158, 158, 158);
+    text-decoration: wavy;
+}
+span .active{
+    color: #6AC6C4;
+    
+}
+.links{
+    display: flex;
+    justify-content:space-between;
+    align-items: center;
+    color: white;
+}
+.logo{
+    font-family:'Georgia', 'Times New Roman', Times, serif;
+    font-size:40px;
+}
+.button{
+    background-color:#62c7c5;
+    border-radius: 50px;
+    padding:8px 20px;
+    color: white;
+    text-decoration: none;
+    border: none;
+    margin-top: 5px;
+    font-family:  'Titillium Web', sans-serif;
+    
+}
+.button:hover{
+    background-color: #35B680;
+    /* box-shadow: 0 12px 16px 0 rgba(138, 137, 137, 0.24), 0 17px 50px 0 rgba(134, 134, 134, 0.19); */
+}
+.button2{
+    background-color:#6AC6C4;
+    border-radius: 50px;
+    padding:18px 20px;
+    color: white;
+    text-decoration: none;
+    border: none;
+    margin-top: 25px;
+    font-family:  'Titillium Web', sans-serif;
+    
+}
+.button2:hover{
+    background-color: #35B680;
+    /* box-shadow: 0 12px 16px 0 rgba(138, 137, 137, 0.24), 0 17px 50px 0 rgba(134, 134, 134, 0.19); */
+}
+
+.main{
+    position:absolute;
+    top:78px;
+    width: 100%;
+    height:120px;
+    font-family:Helvetica;
+    background-color: #343937;
+}
+.main-image{
+    background-image: url("../images/form.png");
+    margin-top: 50px;
+    width:30%;
+    height: 450px;
+    background-repeat: round;
+    text-align: center;
+    float: right;
+    margin-right:80px;
+   
+}
+.main-large{
+    font-family: 'Titillium Web', sans-serif;
+    float: left;
+    margin-top: 50px;
+    margin-left: 275px;
+    color:white;
+ 
+}
+.main-content{
+    background-color: white;
+    height: 500%;
+    margin-top: 500px;
+}
+.content{
+    font-family: 'Titillium Web', sans-serif;
+    font-size: 20px;
+    color: black;
+    text-align: center;
+}
+.content-tick{
+    font-size: 25px;
+    font-family: 'Titillium Web', sans-serif;
+    text-align: left;
+    margin-left: 600px;
+}
+.tick{
+    margin-right: 10px;
+}
+.why-choose-us{
+    display:flex;
+    margin:100px;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    background-color: white;
+}
+.why-choose-us-title,.welcome-title{
+    font-size: 30px;
+    letter-spacing: 4px;
+    font-family: 'Roboto Slab', serif;
+    font-weight:600;
+    margin-bottom:20px;
+    background-color: white;
+}
+.row-1{
+    display:flex;
+    justify-content: space-evenly;
+    margin-bottom:20px;
+    margin:20px;
+    background-color: white;
+}
+.card{
+    width: 250px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.1), 0 8px 20px 0 rgba(0, 0, 0, 0.1);
+    text-align: center;
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    padding:30px;
+    margin:20px;
+    background-color: white;
+}
+.card-header{
+    font-weight:600;
+    font-size:18px;
+    margin-top:-20px;
+    font-family: 'Roboto Slab', serif;
+    letter-spacing: 2px;
+    background-color: white;
+}
+.image-circle{
+    background-color:#343937;
+    height:40px;
+    width:40px;
+    padding:20px;
+    border-radius: 50px 50px;
+    position:relative;
+    top:-50px;
+}
+.footer{
+    background-color: #343937;
+    margin-top: 1920px;
+    color:white;
+    display:flex;
+    justify-content: space-evenly;
+    padding:100px;
+    align-items: center;
+}
+.footer div{
+    display:flex;
+    justify-content: center;
+    align-items:center;
+    flex-direction: column;
+}
+.footer-title{
+    font-size:30px;
+    font-weight:bold;
+}
+.footer span{
+    margin-bottom:10px;
+}
+.footer img{
+    width:40px;
+    height:40px;
+    margin-right:40px;
+}
