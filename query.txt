@@ -38,7 +38,8 @@ use virtualdoc;
 create table booking_appointment(AppointmentId varchar(50) primary key,
 PId varchar(50),DId varchar(50),
 PName varchar(50),DName varchar(50),PEmail varchar(50),DEmail varchar(50),
-Status varchar(20),Mode varchar(20),BookingDate date,Fees int,Description varchar(100),
+Status varchar(20),BookingDate date,Fees int,Description varchar(100),
+Time varchar(20),Language varchar(50),Speciality varchar(50),State varchar(30),
  foreign key (PId) references patient(Id), foreign key (DId) references doctor(Id),
   foreign key (PName) references patient(Name), foreign key (DName) references doctor(Name),
   foreign key (PEmail) references patient(Email), foreign key (DEmail) references doctor(Email)
@@ -52,8 +53,8 @@ Table dor booking Consultation
 use virtualdoc;
 create table booking_consultation(ConsultationId varchar(50) primary key,
 PId varchar(50),DId varchar(50),
-PName varchar(50),DName varchar(50),PEmail varchar(50),DEmail varchar(50),
-Status varchar(20),Mode varchar(20),BookingDate date,Fees int,Description varchar(100),
+PName varchar(50),DName varchar(50),Language varchar(50)
+Status varchar(20),ConsultationDate date,Fees int,Speciality varchar(50),Time carchar(30),
  foreign key (PId) references patient(Id), foreign key (DId) references doctor(Id),
   foreign key (PName) references patient(Name), foreign key (DName) references doctor(Name),
   foreign key (PEmail) references patient(Email), foreign key (DEmail) references doctor(Email)
