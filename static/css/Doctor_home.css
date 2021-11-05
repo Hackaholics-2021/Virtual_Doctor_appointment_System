@@ -10,10 +10,6 @@ a{
     text-decoration: none;
 }
 
-/* Rating */
-.checked {
-    color: orange;
-  }
 
 /* input box */
 input {
@@ -31,7 +27,7 @@ input,textarea,select{
     font-size: 25px;
     background-color: #F0F5F7;
 }
-input:focus,textarea:hover,select:hover{
+input:focus,textarea:focus,select:focus{
     outline: none;
     border: 2px solid #6AC6C4;
     border-radius: 10px;
