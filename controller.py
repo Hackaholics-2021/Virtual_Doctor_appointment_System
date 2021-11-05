@@ -76,6 +76,9 @@ def Consultation_patient_info():
     if request.method=="GET":
         return render_template('consultation_patient_info.html')
 
+    if request.method=="POST":
+        
+
 @app.route('/patient_profile',methods=["GET"])
 def patient_profile():
     if request.method=="GET":

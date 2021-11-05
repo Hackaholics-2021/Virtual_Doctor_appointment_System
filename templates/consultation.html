@@ -30,7 +30,7 @@
             <span><a href="#">Profile</a></span>
             <span><a href="#">Find a Doctor</a></span>
         </div>
-        <a href="#" class="logout-btn">Logout</a>
+        <a href="{{ url_for('Home') }}" class="logout-btn">Logout</a>
     </div>
     <div class="full-body">
         <div class="header">
@@ -47,7 +47,7 @@
     <div class="consult-doctors">
         <div class="consult-doctor-title">
             <span>Consult Top Doctors<br><hr class="line"></span></span>
-            <a href="#" class="logout-btn">Visit More</a>
+            <a href="{{ url_for('Consultation') }}" class="logout-btn">Visit More</a>
         </div>
         <div class="topics">
             <div class="category 1">
@@ -55,42 +55,42 @@
                     <img class="category-image" src="../static/images/gynecology.png" alt="" width="50px" height="50px">
                 </div>
                 <div class="category-title">Gynaecology</div>
-                <div class="consult-now"><a href="#">Consult now </a><img src="../static/images/right-arrow-blue.png" alt="" width="8px" hieght="8px"></div>
+                <div class="consult-now"><a href="{{ url_for('Consultation_patient_info') }}">Consult now </a><img src="../static/images/right-arrow-blue.png" alt="" width="8px" hieght="8px"></div>
             </div>
             <div class="category 2">
                 <div class="circle">
                     <img class="category-image" src="../static/images/orthopedics.png" alt="" width="50px" height="50px">
                 </div>
                 <div class="category-title">Orthopedics</div>
-                <div class="consult-now"><a href="#">Consult now </a><img src="../static/images/right-arrow-blue.png" alt="" width="8px" hieght="8px"></div>
+                <div class="consult-now"><a href="{{ url_for('Consultation_patient_info') }}">Consult now </a><img src="../static/images/right-arrow-blue.png" alt="" width="8px" hieght="8px"></div>
             </div>
             <div class="category 3">
                 <div class="circle">
                     <img class="category-image" src="../static/images/dermatology.png" alt="" width="50px" height="50px">
                 </div>
                 <div class="category-title">Dermatology</div>
-                <div class="consult-now"><a href="#">Consult now </a><img src="../static/images/right-arrow-blue.png" alt="" width="8px" hieght="8px"></div>
+                <div class="consult-now"><a href="{{ url_for('Consultation_patient_info') }}">Consult now </a><img src="../static/images/right-arrow-blue.png" alt="" width="8px" hieght="8px"></div>
             </div>
             <div class="category 4">
                 <div class="circle">
                     <img class="category-image" src="../static/images/mental-health.png" alt="" width="50px" height="50px">
                 </div>
                 <div class="category-title">Pschiatry</div>
-                <div class="consult-now"><a href="#">Consult now </a><img src="../static/images/right-arrow-blue.png" alt="" width="8px" hieght="8px"></div>
+                <div class="consult-now"><a href="{{ url_for('Consultation_patient_info') }}">Consult now </a><img src="../static/images/right-arrow-blue.png" alt="" width="8px" hieght="8px"></div>
             </div>
             <div class="category 5">
                 <div class="circle">
                     <img class="category-image" src="../static/images/newborn.png" alt="" width="50px" height="50px">
                 </div>
                 <div class="category-title">Pediatrics</div>
-                <div class="consult-now"><a href="#">Consult now </a><img src="../static/images/right-arrow-blue.png" alt="" width="8px" hieght="8px"></div>
+                <div class="consult-now"><a href="{{ url_for('Consultation_patient_info') }}">Consult now </a><img src="../static/images/right-arrow-blue.png" alt="" width="8px" hieght="8px"></div>
             </div>
             <div class="category 6">
                 <div class="circle">
                     <img class="category-image" src="../static/images/cardiology.png" alt="" width="50px" height="50px">
                 </div>
                 <div class="category-title">Cardiology</div>
-                <div class="consult-now"><a href="#">Consult now </a><img src="../static/images/right-arrow-blue.png" alt="" width="8px" hieght="8px"></div>
+                <div class="consult-now"><a href="{{ url_for('Consultation_patient_info') }}">Consult now </a><img src="../static/images/right-arrow-blue.png" alt="" width="8px" hieght="8px"></div>
             </div>
         </div>
     </div>

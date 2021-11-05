@@ -40,7 +40,7 @@
         </div>
         <div class="patient-info-box">
             <div class="left-patient-info-form">
-                <form action="#" method="POST">
+                <form action="{{ url_for('Consultation_patient_info') }}" method="POST">
                     <span>
                         <label for="name">Patient Name</label>
                         <input type="text" class="form-input" name="name">
