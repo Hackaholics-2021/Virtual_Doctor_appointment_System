@@ -14,7 +14,7 @@
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
     <!-- CSS -->
     <link rel="stylesheet" href="../static/css/Patient_home.css">
-    <link rel="stylesheet" href="../static/css/confirm_appointment.css">
+    <link rel="stylesheet" href="../static/css/thankyou.css">
     <title>Book Appointment Patient information</title>
 </head>
 <body>
@@ -33,42 +33,20 @@
         <a href="#" class="logout-btn">Logout</a>
     </div>
     <div class="full_body">
-        <div class="container">
-            <div class="field">
-                <span>Patient Name:</span>
-                <span class="value">Gaunisha Gaanavi G</span>
-            </div>
-            <div class="field">
-                <span>State:</span>
-                <span  class="value">Tamil Nadu</span>
-            </div>
-            <div class="field">
-                <span>Speciality of sickness:</span>
-                <span  class="value">Cardiology</span>
-            </div>
-            <div class="field">
-                <span>Doctor Name:</span>
-                <span  class="value">Dr. Devaraj</span>
-            </div>
-            <div class="field">
-                <span>Meeting link:</span>
-                <span  class="value">https://meet.google.com/rhq-nyec-gae</span>
-            </div>
-            <div class="field">
-                <span>Meeting Time:</span>
-                <span  class="value">3:00 pm</span>
-            </div>
-            <div class="field">
-                <span>Date:</span>
-                <span  class="value">04-11-2021</span>
-            </div>
-            <div class="field">
-                <span>Language:</span>
-                <span  class="value">Tamil</span>
-            </div><br>
-            <div class="field">
-                <a href="{{ url_for('Thankyou') }}" class="confirm-btn">Confirm booking</a>
-            </div>
+        <div class="success-title">
+            Woo hoo!
+        </div>
+        <div class="images">
+            <img src="../static/images/confetti.png" alt="" width="260px" height="250px">
+            <img class="success-img" src="../static/images/success.png" alt="" width="150px" height="150px">
+        </div>
+        <br>
+        <div class="statement">
+            Your appointment has been booked!
+        </div>
+        <div class="success-title">Thank you!</div>
+        <div class="thankyou-notes">
+            We thank you so much for choosing our service! We shall send you the email containing the respective details of the session to you. 
         </div>
     </div>
 </body>

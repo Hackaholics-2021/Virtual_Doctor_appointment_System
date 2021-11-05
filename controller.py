@@ -69,5 +69,15 @@ def Appointment_patient_info():
     if request.method=="GET":
         return render_template('appointment_patient_info.html')
 
+@app.route('/confirm_appointment',methods=["GET"])
+def Confirm_appointment():
+    if request.method=="GET":
+        return render_template('confirm_appointment.html')
+
+@app.route('/thankyou',methods=["GET"])
+def Thankyou():
+    if request.method=="GET":
+        return render_template('thankyou.html')
+
 if __name__ == '__main__':
     app.run(debug=True)
