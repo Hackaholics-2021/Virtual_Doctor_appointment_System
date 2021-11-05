@@ -4,17 +4,17 @@
         <title>Register</title>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="stylesheet" href="../static/css/Patient_register.css">
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300&family=Open+Sans&family=Titillium+Web:wght@200&family=Urbanist:wght@200&display=swap&family=Roboto+Slab&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="../static/css/Patient_register.css">
         <style>
             body {
               background-color: #84a59d;
             }
-            </style>
+        </style>
     </head>
 	<body>
 		<div class="body-container">
@@ -31,21 +31,31 @@
 					<div class="signup-box">
 						<span class="signup">SIGNUP</span>
 					</div>
+                    {% with messages=get_flashed_messages() %} 
+                        {% if messages %} 
+                            {% for message in messages %} 
+                            <div class="alert alert-danger alert-dismissible">
+                              <button type="button" class="close" data-dismiss="alert">&times;</button>
+                              <strong> {{ message }} </strong> 
+                            </div>
+                            {% endfor %} 
+                        {% endif %} 
+                      {% endwith %} 
 					<div class="signup-form">
-						<form>
-							<label for = "username" class="username">UserName:</label>
-							<input type="text" name="username" placeholder="Enter user name" class="form-input">
-							<br>
-							<label for = "email" class="email">Email:</label>
-							<input type="text" name="email" placeholder="Enter email" class="form-input">
-							<br>
-							<label for = "password" class="password">Password:</label>
-                            <span><input type="password" name="password" id="myInput" class="form-input" placeholder="Enter Password">
-                                <span class="p-viewer">
-                                    <img src="../static/images/view.png" id="myInputicon" onclick="myFunction()" height="20px" width="20px">
-                                </span>
+						<form action="{{ url_for('Patient_register') }}" method="POST">
+							<span>
+                                <label for = "username" class="username">UserName:</label>
+                                <input type="text" name="username" placeholder="Enter user name" class="form-input">
                             </span>
-                            <br>
+							<span>
+                                <label for = "email" class="email">Email:</label>
+                                <input type="text" name="email" placeholder="Enter email" class="form-input">
+                            </span>
+							<span>
+                                <label for = "password" class="password">Password:</label>
+                                <input type="password" name="password" id="myInput" class="form-input" placeholder="Enter Password" style="width:170px">
+                                <img src="../static/images/view.png" id="myInputicon" onclick="myFunction()" height="20px" width="20px">
+                            </span>
                             
                             <!-- <i class="far fa-eye" id="myInput" style="margin-left:100px"onclick="myFunction()">&emsp;Show Password</i> -->
                             <script>
@@ -61,17 +71,23 @@
                             }
                             }
                             </script>
-                            <label for = "mobileno" class="mobileno">Mobileno:</label>
-							<input type="text" name="mobileno" placeholder="Enter mobileno" class="form-input">
-							<br><br>
-                            <label for = "gender" class = "lbl"> Gender: </label>
-                            &emsp;&emsp;&emsp;<input type="Radio" name="Gender" Value="Male" class="lbl">Male
-                            &emsp;<input type="Radio" name="Gender" Value="Female" class="lbl">Female
-                            <br>
+                            <span>
+                                <label for = "mobileno" class="mobileno">Mobileno:</label>
+                                <input type="text" name="mobileno" placeholder="Enter mobile no" class="form-input">
+                            </span>
+                            <span>
+                                <label for = "age" class="age">Age:</label>
+                                <input type="text" name="age" placeholder="Enter age" class="form-input">
+                            </span>
+                            <span>
+                                <label for = "gender" class = "lbl"> Gender: </label>
+                                &emsp;&emsp;&emsp;<input type="Radio" name="Gender" Value="Male" class="lbl">Male
+                                &emsp;<input type="Radio" name="Gender" Value="Female" class="lbl">Female
+                            </span>
                             
-                            <div class="state">
+                            <span>
                                 <label for="state">State:</label>
-                                <select class="form-control" id="state"name="C_state"  required style="margin-right:100px;width:150px"> 
+                                <select class="form-input" id="state"name="State"  required> 
                                     <option value="SelectState"> Select States</option>
                                     <option value="Andra Pradesh">Andra Pradesh</option>
                                     <option value="Arunachal Pradesh">Arunachal Pradesh</option>
@@ -111,8 +127,13 @@
                                     <option value="Lakshadeep">Lakshadeep</option>
                                     <option value="Pondicherry">Pondicherry</option>
                                 </select>
-                            </div>
-                            <br>
+                            </span>
+                            <span>
+                                <label for="district">District</label>
+                                <select  class="form-input" id="district"  name="District" required>
+                                    <option value="">Select District</option>
+                                </select>
+                            </span>
 							<button type="submit" name="signup" class="form-input signup-btn" >Signup</button>
 						</form>
 					</div>
@@ -120,4 +141,23 @@
 			</div>
 		</div>
 	</body>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T" crossorigin="anonymous"></script>
+    
+    <!-- jQuery library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        
+    <!-- plugin for jquery validation -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.1/jquery.validate.min.js"> </script>
+    
+    <!-- Popper JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    
+    <!-- Latest compiled JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+    <!-- link for jquery validation -->
+    <script src = "{{('/static/jquery/web.js')}}"> </script>
 </html>

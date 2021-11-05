@@ -37,7 +37,7 @@ var Lakshadweep = ["Lakshadweep"];
 var Puducherry = ["Karaikal","Mahe","Puducherry","Yanam"];
 
 
-$("#state2").change(function(){
+$("#state").change(function(){
   var StateSelected = $(this).val();
   var optionsList;
   var htmlString = "";
@@ -157,6 +157,6 @@ $("#state2").change(function(){
   for(var i = 0; i < optionsList.length; i++){
     htmlString = htmlString+"<option value='"+ optionsList[i] +"'>"+ optionsList[i] +"</option>";
   }
-  $("#district2").html(htmlString);
+  $("#district").html(htmlString);
 
 });

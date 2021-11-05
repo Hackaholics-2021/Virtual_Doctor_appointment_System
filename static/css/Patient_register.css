@@ -62,17 +62,11 @@ a{
 	font-weight:600;
 	font-family: 'Roboto Slab', serif;
 }
-.signup-form{
+.signup-form span{
 	display:flex;
 	justify-content:space-between;
-	margin-top:20px;
-}
-.state{
-
-    display:flex;
-    justify-content:space-between;
-    margin-top:30px;
-    align-items: center;
+	align-items: center;
+	margin-bottom: 10px;
 }
 
 .form-input,.form-control{
@@ -84,12 +78,6 @@ a{
 	margin-left:20px;
 }
 
-.email{
-	margin-right:32px;
-}
-.password{
-	margin-right:3px;
-}
 .signup-btn{
 	border:none;
 	font-family: 'Roboto Slab', serif;
@@ -100,6 +88,9 @@ a{
 	padding:8px 15px;
     margin-left:100px;
     
+}
+select{
+	width:200px;
 }
 .p-viewer {
 	z-index: 9999;
