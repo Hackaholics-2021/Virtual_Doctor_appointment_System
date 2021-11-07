@@ -30,12 +30,22 @@
 						<span class="signup">SIGN IN</span>
 					</div>
 					<div class="signup-form">
-						<form >
-							<label for = "email" class="email">Email:</label>
-							<input type="text" name="email" placeholder="Enter email" class="form-input">
+                        {% with messages=get_flashed_messages() %} 
+                        {% if messages %} 
+                            {% for message in messages %} 
+                            <div class="alert alert-danger alert-dismissible">
+                                <button type="button" class="close" data-dismiss="alert">&times;</button>
+                                <strong> {{ message }} </strong> 
+                            </div>
+                            {% endfor %} 
+                        {% endif %} 
+                        {% endwith %} 
+						<form action="{{ url_for('Login') }}" method="post">
+							<label for = "email" class="email">Email</label>
+							<input type="text" name="Email" placeholder="Enter email" class="form-input">
 							<br><br>
-							<label for = "password" class="password">Password:</label>
-                            <span><input type="password" name="password" id="myInput" class="form-input" placeholder="Enter Password">
+							<label for = "password" class="password">Password</label>
+                            <span><input type="password" name="Password" id="myInput" class="form-input" placeholder="Enter Password">
                                 <span class="p-viewer">
                                     <img src="../static/images/view.png" id="myInputicon" onclick="myFunction()" height="20px" width="20px">
                                 </span>
@@ -63,7 +73,7 @@
                             <button type="submit" name="signup" class="form-input signup-btn" >Sign In</button>
                             <br>
                             <br>
-                            <h7>New member?<a  href ="#">Register Here</a></h7> 
+                            <h7>New member?<a  href ="{{ url_for('SignUp') }}">Register Here</a></h7> 
 						</form>
 					</div>
 				</div>

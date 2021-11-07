@@ -17,19 +17,20 @@
     <!-- Fontawesome -->
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
     <!-- css -->
-    <link rel="stylesheet" href="../static/css/Doctor_home.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/Doctor_home.css') }}">
 
 </head>
 <body>
     <header>
         <div class="navigation">
             <div class="logo">WE4U</div>
-            <div class="links">                   
+            <div class="links">      
+                <span><a href="{{ url_for('Doctor_Home',id=id,name=name) }}" class="active">Home</a></span>             
                 <span><a href="#">Upcoming</a></span>
-                <span><a href="{{ url_for('Patients') }}">Patients</a></span>
+                <span><a href="{{ url_for('Patients',id=id,name=name) }}">Patients</a></span>
                 <span><a href="#">Payment</a></span>
                 <span><a href="#">History</a></span>
-                <span><a href="{{ url_for('Profile') }}" >Profile</a></span>               
+                <span><a href="{{ url_for('Profile',id=id,name=name) }}" >Profile</a></span>               
                 <button class="button" href="{{ url_for('Logout') }}">Logout</button>
             </div>
         </div>
@@ -37,12 +38,12 @@
     <div class="container-fluid">
         <div class="row">
             <div class="col-sm-4 doc">
-                <img src="../static/images/doc.png">
+                <img src="{{ url_for('static', filename='images/doc.png') }}">
                 <h1 class="quote">I am Commited to <br>People's Health<hr></h1>
             </div>
             <div class="col-sm-8 stat">
                 <div class="rem">
-                    <h1>Hi Dr. Alan ...</h1>
+                    <h1>Hi {{name}}</h1>
                     <span class="line">
                         <h2>You have <span style="color: rgb(206, 96, 96);">10 patients</span> remaining today!</h2>
                     </span>

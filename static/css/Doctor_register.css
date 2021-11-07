@@ -16,15 +16,15 @@ a{
 	justify-content:space-between;
 }
 .left{
-	padding:3% 5%;
-	width:30%;
+	padding: 5% 0px 0px 5%;
+	width:40%;
     margin:30px;
-    
 }
 .below-pic{
 	margin-top:0px;
     text-align:center;
-    font-family:'Roboto Slab', serif;    
+    /* font-family:'Roboto Slab', serif;     */
+	font-family: 'Gabriela', serif;
 }
 .right{
 	background-color:white;
@@ -47,7 +47,8 @@ a{
 .signup{
 	font-size:23px;
 	font-weight:600;
-	font-family: 'Roboto Slab', serif;
+	/* font-family: 'Roboto Slab', serif; */
+	font-family: 'Gabriela', serif;
 }
 .signup-form{
 	display:flex;
@@ -83,8 +84,17 @@ a{
 	border-bottom:1px solid black;
 	padding:10px;
 	margin-left:20px;
+	background-color: white;
 	width:300px;
 }
+.nature-img{
+	text-align: center;
+}
+
+.check td{
+	padding: 0 15px;
+}
+
 .name{
     margin-right:40px;
 }
@@ -115,8 +125,8 @@ a{
 	background-color:#42535B;
 	color:white;
 	font-size:13px;
-	padding:8px 15px;
-    margin-left:200px;
+	margin-left: 100px;
+    text-align: center;
     
 }
 .p-viewer {

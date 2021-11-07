@@ -7,7 +7,7 @@ Table for Doctor:
 
 create table doctor(Id varchar(50) primary key,
 Name varchar(50),Degree varchar(20),
-State varchar(20),District varchar(30),
+State varchar(20),District varchar(30),Gender varchar(10),
 Firm varchar(100),Age int,Experience int,Specialization varchar(30),
 AboutMe varchar(100),Email varchar(30),Password varchar(20),
 LinkedIn varchar(100),Facebook varchar(100),
@@ -18,7 +18,7 @@ Tamil int,Malayalam int,Kannada int,Telugu int,Hindi int,English int);
 Table for Patient:
 
 create table patient(Id varchar(50) primary key, Name varchar(50), 
-State varchar(20),District varchar(30), Age int,
+State varchar(20),District varchar(30), Age int,Gender varchar(10),
 Email varchar(30),Password varchar(20), MobileNo bigint );
 
 create table diagnostics(Id varchar(50) primary key,

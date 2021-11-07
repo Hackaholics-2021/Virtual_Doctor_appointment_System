@@ -21,19 +21,20 @@
     <!-- Fontawesome -->
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
     <!-- css -->
-    <link rel="stylesheet" href="../static/css/Doctor_home.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/Doctor_home.css') }}">
 
 </head>
 <body>
     <header>
         <div class="navigation">
             <div class="logo">WE4U</div>
-            <div class="links">                   
+            <div class="links">      
+                <span><a href="{{ url_for('Doctor_Home',id=id,name=name) }}">Home</a></span>               
                 <span><a href="#">Upcoming</a></span>
-                <span><a href="{{ url_for('Patients') }}" class="active">Patients</a></span>
+                <span><a href="{{ url_for('Patients',id=id,name=name) }}" class="active">Patients</a></span>
                 <span><a href="#">Payment</a></span>
                 <span><a href="#">History</a></span>
-                <span><a href="{{ url_for('Profile') }}">Profile</a></span>               
+                <span><a href="{{ url_for('Profile',id=id,name=name) }}">Profile</a></span>               
                 <button class="button" href="{{ url_for('Logout') }}">Logout</button>
             </div>
         </div>
@@ -42,54 +43,45 @@
         <h1 class="heading">Patients</h1>
         <div class="row">
             <div class="col-sm-3 list">
-                <button class="button patient" >Alex</button>
-                <button class="button patient" >Ben</button>
-                <button class="button patient" >Kevin</button>
-                <button class="button patient" >Max</button>
-                <button class="button patient" >Grey</button>
-                <button class="button patient" >Alex</button>
-                <button class="button patient" >Ben</button>
-                <button class="button patient" >Kevin</button>
-                <button class="button patient" >Max</button>
-                <button class="button patient" >Grey</button>
-                <button class="button patient" >Alex</button>
-                <button class="button patient" >Ben</button>
-                <button class="button patient" >Kevin</button>
-                <button class="button patient" >Max</button>
-                <button class="button patient" >Grey</button>
+                {% if out %} 
+                {% for message in out %}
+                <form action="{{ url_for('Get_Patient_Details',PId=message.PId,DId=id,name=name) }}" method="post">
+                <button class="button patient" >{{message.PName}}</button>
+                </form>
+                {% endfor %}
+                {% endif %}
             </div>
             <div class="col-sm-9 details">
                 <div class="row">
                     <div class="col-sm-7">
-                        <h1 style="font-weight: bolder;">Ben</h1><hr>
+                        {% if details and diagnostics and appointments %}
+                        {% for de in details %}
+                        <h1 style="font-weight: bolder;">{{de.Name}}</h1><hr>
                         <div class="row">
                             <div class="col-sm-4" style="text-align: center;">
-                                <img src="../static/images/man.png" alt="">
+                                <img src="{{ url_for('static', filename='images/man.png') }}" alt="">
                             </div>
-                            <div class="col-sm-3 title" >
+                            <div class="col-sm-2 title" >
                                 <p>Age</p>
                                 <p>Email</p>
                                 <p>Location</p>
                             </div>
                             <div class="col-sm-3 title">
-                                <p>20</p>
-                                <p>ben@gmail.com</p>
-                                <p>Denver, USA</p>
+                                <p>{{de.Age}}</p>
+                                <p>{{de.Email}}</p>
+                                <p>{{de.District}}, {{de.State}}</p>
                             </div>
                         </div>
+                       {% endfor %}
                        
                         <h1>Latest Appointments</h1><br>
                         <div class="row">
                             <div class="col-sm-12 latest">
                                 <table class="table table-hover table-striped">
                                     <tbody>
-                                      <tr><td>Fever</td><td>19/04/2021</td><td>Video</td><td>&#8377;200</td></tr>
-                                      <tr><td>Fever</td><td>19/04/2021</td><td>Video</td><td>&#8377;200</td></tr>
-                                      <tr><td>Fever</td><td>19/04/2021</td><td>Video</td><td>&#8377;200</td></tr>
-                                      <tr><td>Fever</td><td>19/04/2021</td><td>Video</td><td>&#8377;200</td></tr>
-                                      <tr><td>Fever</td><td>19/04/2021</td><td>Video</td><td>&#8377;200</td></tr>
-                                      <tr><td>Fever</td><td>19/04/2021</td><td>Video</td><td>&#8377;200</td></tr>
-                                      <tr><td>Fever</td><td>19/04/2021</td><td>Video</td><td>&#8377;200</td></tr>
+                                    {% for ap in appointments %}
+                                      <tr><td>{{ap.Description}}</td><td>{{ap.BookingDate}}</td><td>{{ap.Speciality}}</td><td>&#8377;{{ap.Fees}}</td></tr>
+                                    {% endfor %}
                                     </tbody>
                                 </table>
                             </div>
@@ -98,16 +90,20 @@
                     <div class="col-sm-5">
                         <h1>Diagnostics</h1>
                         <div class="diagnostics">
-                            <a href="{{ link1 }}" target="blank"><button type="button" class="btn btn-dark btn-block"><h4>CT Scan</h4></button></a>
-                            <a href="{{ link1 }}"><button type="button" class="btn btn-dark btn-block"><h4>MRI Scan</h4></button></a>
-                            <a href="{{ link1 }}"><button type="button" class="btn btn-dark btn-block"><h4>Thyroid</h4></button></a>
-                            <a href="{{ link1 }}"><button type="button" class="btn btn-dark btn-block"><h4>Lungs</h4></button></a>
-                            <a href="{{ link1 }}"><button type="button" class="btn btn-dark btn-block"><h4>X-ray</h4></button></a>
-                            <a href="{{ link1 }}"><button type="button" class="btn btn-dark btn-block"><h4>Others</h4></button></a>
-                            <a href="{{ link1 }}"><button type="button" class="btn btn-dark btn-block"><h4>Others</h4></button></a>
-                            <a href="{{ link1 }}"><button type="button" class="btn btn-dark btn-block"><h4>Others</h4></button></a>
+                            {% for da in diagnostics %}
+                            <a href="{{ da.CT }}" target="blank"><button type="button" class="btn btn-dark btn-block"><h4>CT Scan</h4></button></a>
+                            <a href="{{ da.MRI }}" target="blank"><button type="button" class="btn btn-dark btn-block"><h4>MRI Scan</h4></button></a>
+                            <a href="{{ da.ECG }}" target="blank"><button type="button" class="btn btn-dark btn-block"><h4>ECG</h4></button></a>
+                            <a href="{{ da.EEG }}" target="blank"><button type="button" class="btn btn-dark btn-block"><h4>EEG</h4></button></a>
+                            <a href="{{ da.Gastroscopy }}" target="blank"><button type="button" class="btn btn-dark btn-block"><h4>Gastroscopy</h4></button></a>
+                            <a href="{{ da.Eye }}" target="blank"><button type="button" class="btn btn-dark btn-block"><h4>Eye</h4></button></a>
+                            <a href="{{ da.PET }}" target="blank"><button type="button" class="btn btn-dark btn-block"><h4>PET</h4></button></a>
+                            <a href="{{ da.Xrays }}" target="blank"><button type="button" class="btn btn-dark btn-block"><h4>X-Rays</h4></button></a>
+                            <a href="{{ da.Ultrasound }}" target="blank"><button type="button" class="btn btn-dark btn-block"><h4>Ultrasound</h4></button></a>
+                            {% endfor %}
                         </div>
                     </div>
+                    {% endif %}
                 </div>                    
             </div>
         </div>

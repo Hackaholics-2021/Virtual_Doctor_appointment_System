@@ -1,5 +1,7 @@
 body{
     background-color: #343937;
+    font-family: 'Titillium Web', sans-serif;
+    overflow-x: hidden;
 }
 .home-header{
     position: fixed;
@@ -25,6 +27,8 @@ body{
 span a{   
     font-size: 18px;
     padding-right: 30px;
+    text-decoration: none;
+    color: white;
 }
 span a:hover{
     color: rgb(158, 158, 158);
@@ -79,7 +83,9 @@ span .active{
     position:absolute;
     top:78px;
     width: 100%;
-    height:120px;
+    height:160px;
+    margin-bottom: 100px;
+    padding: 100px 0;
     font-family:Helvetica;
     background-color: #343937;
 }
@@ -104,14 +110,15 @@ span .active{
 }
 .main-content{
     background-color: white;
-    height: 500%;
-    margin-top: 500px;
+    height: 450px;
+    margin-top: 570px;
 }
 .content{
     font-family: 'Titillium Web', sans-serif;
     font-size: 20px;
     color: black;
     text-align: center;
+    
 }
 .content-tick{
     font-size: 25px;

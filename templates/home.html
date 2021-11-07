@@ -15,8 +15,8 @@
                 <div class="navigation">
                     <div class="logo">WE4U</div>
                     <div class="links">                   
-                        <span><a style="color:white;text-decoration: none;margin-top: 25px;" href="#">LOGIN</a></span>              
-                        <button class="button" href="{{ url_for('Logout') }}">SIGNUP</button>
+                        <span><a style="color:white;text-decoration: none;margin-top: 25px;" href="{{ url_for('Login') }}"><button class="button" >Login</button></a></span>              
+                        <a href="{{ url_for('SignUp') }}"><button class="button" >SignUp</button></a>
                     </div>
                 </div>
             </header>
@@ -24,7 +24,7 @@
                 <div class="main-text">
                     <div class="main-large"><h1 style="font-size: 62px;">WE CARE FOR U</h1>
                     <h5 style="font-size:25px;margin-left: 15px;"> Expert consultation from the <br>Safety and Comfort of your Home.<br></h5>
-                    <button class="button2" href="{{ url_for('Logout') }}">GET STARTED</button></div>
+                    <button class="button2" href="{{ url_for('Login') }}">GET STARTED</button></div>
                     
                 </div>
            
