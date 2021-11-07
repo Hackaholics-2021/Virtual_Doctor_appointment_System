@@ -13,18 +13,18 @@
     <!-- Font awesome -->
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
     <!-- CSS -->
-    <link rel="stylesheet" href="../static/css/Patient_home.css">
-    <link rel="stylesheet" href="../static/css/consultation_meeting_info.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/Patient_home.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/consultation_meeting_info.css') }}">
     <title>Consultation Meeting Information</title>
 </head>
-<body>
+<body style="background-color: #F0F5F7;">
     <div class="nav">
         <div class="logo">
             <span>WE4U</span>
         </div>
         <div class="nav-items">
-            <span><a href="{{ url_for('Patient_home') }}">Home</a></span>
-            <span><a href="{{ url_for('Consultation') }}" class="active">Consult</a></span>
+            <span><a href="{{ url_for('Patient_home',id=id) }}">Home</a></span>
+            <span><a href="{{ url_for('Consultation',id=id) }}" class="active">Consult</a></span>
             <span><a href="{{ url_for('Appointment_patient_info') }}">Book appointment</a></span>
             <span><a href="#">History</a></span>
             <span><a href="#">Profile</a></span>
@@ -41,15 +41,7 @@
                 <div class="left-credential-side">
                     <div class="meeting-link">
                         <span><b>Meeting Link:</b></span>
-                        <span class="link-for-meet value"><a href="https://meet.google.com/rhq-nyec-gae">https://meet.google.com/rhq-nyec-gae</a></span>
-                    </div>
-                    <div class="mode">
-                        <span><b>Mode:</b></span>
-                        <span class="value">Video</span>
-                    </div>
-                    <div class="language">
-                        <span><b>Language:</b></span>
-                        <span class="value">English</span>
+                        <span class="link-for-meet value" onclick="window.open('https://meet.google.com/rhq-nyec-gae')"><a href="{{ url_for('Thankyou_consultation',id=id,doc_id = doc_id,doc_name = doc_name,Patient_name=Patient_name,Lang=Lang,Special=Special) }}" >Join the meeting</a></span>
                     </div>
                     <div class="note">
                         <span><b>Note:</b></span>
@@ -58,9 +50,9 @@
                 </div>
                 <div class="right-credential-side">
                     <div class="images">
-                        <img src="../static/images/coin.png" alt="" width="35px" height="35px">
-                        <img src="../static/images/clock.png" alt="" width="35px" height="35px">
-                        <img src="../static/images/secure-shield.png" alt="" width="35px" height="35px">
+                        <img src="{{ url_for('static', filename='images/coin.png') }}" alt="" width="35px" height="35px">
+                        <img src="{{ url_for('static', filename='images/clock.png') }}" alt="" width="35px" height="35px">
+                        <img src="{{ url_for('static', filename='images/secure-shield.png') }}" alt="" width="35px" height="35px">
                     </div>
                     <div class="image-text">
                         <span style="color:#ffb804">More affordable</span><br>

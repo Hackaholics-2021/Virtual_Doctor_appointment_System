@@ -13,8 +13,8 @@
     <!-- Font awesome -->
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
     <!-- CSS -->
-    <link rel="stylesheet" href="../static/css/Patient_home.css">
-    <link rel="stylesheet" href="../static/css/thankyou.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/Patient_home.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/thankyou.css') }}">
     <title>Book Appointment Patient information</title>
 </head>
 <body>
@@ -23,8 +23,8 @@
             <span>WE4U</span>
         </div>
         <div class="nav-items">
-            <span><a href="{{ url_for('Patient_home') }}">Home</a></span>
-            <span><a href="{{ url_for('Consultation') }}" >Consult</a></span>
+            <span><a href="{{ url_for('Patient_home',id=id) }}">Home</a></span>
+            <span><a href="{{ url_for('Consultation',id=id) }}" >Consult</a></span>
             <span><a href="{{ url_for('Appointment_patient_info') }}" class="active">Book appointment</a></span>
             <span><a href="#">History</a></span>
             <span><a href="#">Profile</a></span>
@@ -37,8 +37,8 @@
             Woo hoo!
         </div>
         <div class="images">
-            <img src="../static/images/confetti.png" alt="" width="260px" height="250px">
-            <img class="success-img" src="../static/images/success.png" alt="" width="150px" height="150px">
+            <img src="{{ url_for('static', filename='images/confetti.png') }}" alt="" width="260px" height="250px">
+            <img class="success-img" src="{{ url_for('static', filename='images/success.png') }}" alt="" width="150px" height="150px">
         </div>
         <br>
         <div class="statement">

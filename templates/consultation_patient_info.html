@@ -13,8 +13,8 @@
     <!-- Font awesome -->
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
     <!-- CSS -->
-    <link rel="stylesheet" href="../static/css/Patient_home.css">
-    <link rel="stylesheet" href="../static/css/consultation_patient_info.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/Patient_home.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/Consultation_patient_info.css') }}">
     <title>Consultation Patient information</title>
 </head>
 <body>
@@ -23,8 +23,8 @@
             <span>WE4U</span>
         </div>
         <div class="nav-items">
-            <span><a href="{{ url_for('Patient_home') }}">Home</a></span>
-            <span><a href="{{ url_for('Consultation') }}" class="active">Consult</a></span>
+            <span><a href="{{ url_for('Patient_home',id=id) }}">Home</a></span>
+            <span><a href="{{ url_for('Consultation',id=id) }}" class="active">Consult</a></span>
             <span><a href="{{ url_for('Appointment_patient_info') }}">Book appointment</a></span>
             <span><a href="#">History</a></span>
             <span><a href="#">Profile</a></span>
@@ -36,11 +36,11 @@
         
         <div class="patient-form">
             <div class="patient-info-title">Consult your nearest Doctor</div>
-            <a href="{{ url_for('Consultation') }}" class="back">Back</a>
+            <a href="{{ url_for('Consultation',id=id) }}" class="back">Back</a>
         </div>
         <div class="patient-info-box">
             <div class="left-patient-info-form">
-                <form action="{{ url_for('Consultation_patient_info') }}" method="POST">
+                <form action="{{ url_for('Consultation_patient_info',id=id) }}" method="POST">
                     <span>
                         <label for="name">Patient Name</label>
                         <input type="text" class="form-input" name="name">
@@ -57,13 +57,13 @@
                         <label for="language">Language</label>
                         <select name="language" id="language" class="form-input">
                             <option value="Select language"> --Select Language--</option>
-                            <option value="Male">English</option>
-                            <option value="Female">Hindi</option>
-                            <option value="Female">Kanada</option>
-                            <option value="Female">Tamil</option>
-                            <option value="Female">Telugu</option>
-                            <option value="Female">Malayalam</option>
-                            <option value="Female">Bengali</option>
+                            <option value="English">English</option>
+                            <option value="Hindi">Hindi</option>
+                            <option value="Kanada">Kanada</option>
+                            <option value="Tamil">Tamil</option>
+                            <option value="Telugu">Telugu</option>
+                            <option value="Malayalam">Malayalam</option>
+                            <option value="Bengali">Bengali</option>
                         </select>
                     </span>
                     <span>

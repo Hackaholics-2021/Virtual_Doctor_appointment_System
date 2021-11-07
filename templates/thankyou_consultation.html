@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Google fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;800&family=Open+Sans:wght@300;400;800&family=Titillium+Web:wght@300&family=Urbanist:wght@200&display=swap&family=Roboto+Slab&display=swap" rel="stylesheet">
+    <!-- jquery -->
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>
+    <!-- Font awesome -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+    <!-- CSS -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/Patient_home.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/thankyou.css') }}">
+    <title>Book Appointment Patient information</title>
+</head>
+<body>
+    <div class="nav">
+        <div class="logo">
+            <span>WE4U</span>
+        </div>
+        <div class="nav-items">
+            <span><a href="{{ url_for('Patient_home',id=id) }}">Home</a></span>
+            <span><a href="{{ url_for('Consultation',id=id) }}" >Consult</a></span>
+            <span><a href="{{ url_for('Appointment_patient_info') }}" class="active">Book appointment</a></span>
+            <span><a href="#">History</a></span>
+            <span><a href="#">Profile</a></span>
+            <span><a href="#">Find a Doctor</a></span>
+        </div>
+        <a href="#" class="logout-btn">Logout</a>
+    </div>
+    <div class="full_body">
+        <div class="success-title">
+            Woo hoo!
+        </div>
+        <div class="images">
+            <img src="{{ url_for('static', filename='images/confetti.png') }}" alt="" width="260px" height="250px">
+            <img class="success-img" src="{{ url_for('static', filename='images/success.png') }}" alt="" width="150px" height="150px">
+        </div>
+        <br>
+        <div class="success-title">Thank you!</div>
+        <div class="star-rating">
+            <div style="text-align: center;"><h3>Please rate your experience!</h3></div>
+            <div class="star-input">
+                <form style="text-align: center;" action="{{ url_for('Consult_meeting_info',id = id,doc_id = doc_id,doc_name = doc_name,Patient_name=Patient_name,Lang=Lang,Special=Special) }}" method="POST">
+                    <input type="radio" name="rating" id="rating-5" value=5>
+                    <label for="rating-5" class="fas fa-star"></label>
+                    <input type="radio" name="rating" id="rating-4" value=4>
+                    <label for="rating-4" class="fas fa-star"></label>
+                    <input type="radio" name="rating" id="rating-3" value=3>
+                    <label for="rating-3" class="fas fa-star"></label>
+                    <input type="radio" name="rating" id="rating-2" value=2>
+                    <label for="rating-2" class="fas fa-star"></label>
+                    <input type="radio" name="rating" id="rating-1" value=1>
+                    <label for="rating-1" class="fas fa-star"></label>
+
+                    <!-- Rating Submit Form -->
+                
+                    <div class="rating-reaction"></div><br>
+                    <button type="submit" class="logout-btn">Submit</button>
+                </form>
+                <script>
+                    const rating_react = document.getElementsByClassName("rating-reaction")[0];
+                    document.getElementById("rating-5").addEventListener("click",function(){
+                        rating_react.innerHTML = "I Love it";
+                    });
+                    document.getElementById("rating-4").addEventListener("click",function(){
+                        rating_react.innerHTML = "I Like it";
+                    });
+                    document.getElementById("rating-3").addEventListener("click",function(){
+                        rating_react.innerHTML = "It is Good";
+                    });
+                    document.getElementById("rating-2").addEventListener("click",function(){
+                        rating_react.innerHTML = "I don't like it";
+                    });
+                    document.getElementById("rating-1").addEventListener("click",function(){
+                        rating_react.innerHTML = "I hate it";
+                    });
+                </script>
+            </div>
+        </div>
+    </div>
+</body>
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T" crossorigin="anonymous"></script>
+    
+    <!-- jQuery library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        
+    <!-- plugin for jquery validation -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.1/jquery.validate.min.js"> </script>
+    
+    <!-- Popper JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    
+    <!-- Latest compiled JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</html>

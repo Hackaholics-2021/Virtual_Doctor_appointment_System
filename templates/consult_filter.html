@@ -13,8 +13,8 @@
     <!-- Font awesome -->
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
     <!-- CSS -->
-    <link rel="stylesheet" href="../static/css/Patient_home.css">
-    <link rel="stylesheet" href="../static/css/consultation_patient_filter.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/Patient_home.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/consultation_patient_filter.css') }}">
     <title>Consultation Patient Filter</title>
 </head>
 <body>
@@ -23,8 +23,8 @@
             <span>WE4U</span>
         </div>
         <div class="nav-items">
-            <span><a href="{{ url_for('Patient_home') }}">Home</a></span>
-            <span><a href="{{ url_for('Consultation') }}" class="active">Consult</a></span>
+            <span><a href="{{ url_for('Patient_home',id=id) }}">Home</a></span>
+            <span><a href="{{ url_for('Consultation',id=id) }}" class="active">Consult</a></span>
             <span><a href="{{ url_for('Appointment_patient_info') }}">Book appointment</a></span>
             <span><a href="#">History</a></span>
             <span><a href="#">Profile</a></span>
@@ -36,7 +36,7 @@
         <div class="header">
             Here are the doctors who are online currently
         </div>
-        <form action="#" method="POST">
+        <form action="{{ url_for('Consult_filter',id=id,Patient_name = Patient_name,Gender=Gender,Language=Language,Specialization=Specialization) }}" method="POST">
             <div class="filter">
                 <span>
                     <label for="sortby">Sort By:</label>
@@ -45,7 +45,6 @@
                         <a href="#"><option value="Price Low to High">Price Low to High</option></a>
                         <a href="#"><option value="Price High to Low">Price High to Low</option></a>
                         <a href="#"><option value="Experience High to Low">Experience High to Low</option></a>
-                        <a href="#"><option value="Rating High to Low">Female</option></a>
                     </select>
                 </span>
                 <span>
@@ -56,44 +55,74 @@
                         <a href="#"><option value="Female">Female</option></a>
                     </select>
                 </span>
-                <span>
-                    <label for="mode">Mode:</label>
-                    <select name="mode" id="mode" class="form-input">
-                        <a href="#"><option value="--Select--"> --Select--</option></a>
-                        <a href="#"><option value="Video">Video</option></a>
-                        <a href="#"><option value="Voice">Voice</option></a>
-                    </select>
-                </span>
             </div>
         </form>
         <br>
         <div class="list-of-doctors">
-            {% for i in range(4) %} 
+            {% for i in data_doc %} 
             <div class="card">
                 <div class="profile">
-                    <img src="../static/images/profile.png" alt="" width="100px" height="100px"> 
+                    <img src="{{ url_for('static', filename='images/profile.png') }}" alt="" width="100px" height="100px"> 
                 </div>
                 <div class="name-about">
                     <span class="name">
-                        Dr. Deveraj &nbsp;&nbsp;&nbsp;&nbsp;<img src="../static/images/new-moon.png" alt="" width="10px" height="10px"> &nbsp;online
+                        Dr. {{i.Name}} &nbsp;&nbsp;&nbsp;&nbsp;<img src="{{ url_for('static', filename='images/new-moon.png') }}" alt="" width="10px" height="10px"> &nbsp;online
                     </span>
-                    <span class="about">He is an enthusiastic person. Loves to help everybody. Completed MBBs at Madras Medical College, Chennai and his masters in USA</span>
+                    <span class="about">{{i.AboutMe}}</span>
                 </div>
                 <div class="education-speciality-rating">
-                    <span>MBBS,FRCS</span>
-                    <span>Cardiologist</span>
+                    <span>{{i.Degree}}</span>
+                    <span>{{i.Specialization}}</span>
                     <span>Rating: 
-                        {% for j in range(4) %} 
-                            <img src="../static/images/star.png" alt="" width="15px" height="15px">
-                        {% endfor %} 
+                        {% if i.Rating==1 %}
+                            <img src="{{ url_for('static', filename='images/star.png') }}" alt="" width="15px" height="15px">
+                            <img src="{{ url_for('static', filename='images/star-grey.png') }}" alt="" width="15px" height="15px">
+                            <img src="{{ url_for('static', filename='images/star-grey.png') }}" alt="" width="15px" height="15px">
+                            <img src="{{ url_for('static', filename='images/star-grey.png') }}" alt="" width="15px" height="15px">
+                            <img src="{{ url_for('static', filename='images/star-grey.png') }}" alt="" width="15px" height="15px">
+                        
+                        {% elif i.Rating==2 %}
+                            <img src="{{ url_for('static', filename='images/star.png') }}" alt="" width="15px" height="15px">
+                            <img src="{{ url_for('static', filename='images/star.png') }}" alt="" width="15px" height="15px">
+                            <img src="{{ url_for('static', filename='images/star-grey.png') }}" alt="" width="15px" height="15px">
+                            <img src="{{ url_for('static', filename='images/star-grey.png') }}" alt="" width="15px" height="15px">
+                            <img src="{{ url_for('static', filename='images/star-grey.png') }}" alt="" width="15px" height="15px">
+                        
+                        {% elif i.Rating==3 %}
+                            <img src="{{ url_for('static', filename='images/star.png') }}" alt="" width="15px" height="15px">
+                            <img src="{{ url_for('static', filename='images/star.png') }}" alt="" width="15px" height="15px">
+                            <img src="{{ url_for('static', filename='images/star.png') }}" alt="" width="15px" height="15px">
+                            <img src="{{ url_for('static', filename='images/star-grey.png') }}" alt="" width="15px" height="15px">
+                            <img src="{{ url_for('static', filename='images/star-grey.png') }}" alt="" width="15px" height="15px">
+                        
+                        {% elif i.Rating==4 %}
+                            <img src="{{ url_for('static', filename='images/star.png') }}" alt="" width="15px" height="15px">
+                            <img src="{{ url_for('static', filename='images/star.png') }}" alt="" width="15px" height="15px">
+                            <img src="{{ url_for('static', filename='images/star.png') }}" alt="" width="15px" height="15px">
+                            <img src="{{ url_for('static', filename='images/star.png') }}" alt="" width="15px" height="15px">
+                            <img src="{{ url_for('static', filename='images/star-grey.png') }}" alt="" width="15px" height="15px">
+                        
+                        {% elif i.Rating==5 %}
+                            <img src="{{ url_for('static', filename='images/star.png') }}" alt="" width="15px" height="15px">
+                            <img src="{{ url_for('static', filename='images/star.png') }}" alt="" width="15px" height="15px">
+                            <img src="{{ url_for('static', filename='images/star.png') }}" alt="" width="15px" height="15px">
+                            <img src="{{ url_for('static', filename='images/star.png') }}" alt="" width="15px" height="15px">
+                            <img src="{{ url_for('static', filename='images/star.png') }}" alt="" width="15px" height="15px">
+                        {% else %}
+                            <img src="{{ url_for('static', filename='images/star-grey.png') }}" alt="" width="15px" height="15px">
+                            <img src="{{ url_for('static', filename='images/star-grey.png') }}" alt="" width="15px" height="15px">
+                            <img src="{{ url_for('static', filename='images/star-grey.png') }}" alt="" width="15px" height="15px">
+                            <img src="{{ url_for('static', filename='images/star-grey.png') }}" alt="" width="15px" height="15px">
+                            <img src="{{ url_for('static', filename='images/star-grey.png') }}" alt="" width="15px" height="15px">
+                        {% endif %}
                     </span>
                 </div>
                 <div class="experience-location-fees">
-                    <span>Experience: 3yrs</span>
-                    <span>Cudalore, TamilNadu</span>
+                    <span>Experience: {{i.Experience}}yrs</span>
+                    <span>{{i.District}}, {{i.State}}</span>
                     <span>Fee: 500 Rs.</span>
                 </div>
-                <a href="#" class='logout-btn'>Consult</a>
+                <a href="{{ url_for('Consult_meeting_info',id=id,doc_id = i.Id, doc_name = i.Name,Patient_name = Patient_name,Lang = Language,Special = Specialization) }}" class='logout-btn'>Consult</a>
             </div>
             {% endfor %} 
         </div>

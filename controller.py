@@ -1,15 +1,20 @@
+from datetime import date, datetime
 import re
 from flask import *
 import uuid
 from model.model import Hackaholics
 app=Flask(__name__)
-app.secret_key = "abc"
+app.secret_key = "div"
 
-
+# session email addresses
+email_addresses = []
 
 @app.route('/',methods=["POST","GET"])
 def Home():
     if request.method=="GET":
+        if 'D_email' in session and session['D_email'] in email_addresses:
+            email_addresses.remove(session['D_email'])
+            del session['D_email']
         return render_template("home.html")
 
 @app.route('/login',methods=["POST","GET"])
@@ -24,14 +29,17 @@ def Login():
         output=obj.get_email_doctor(email)
         if out:
             if out['Password']==password:
-                return render_template("Patient_home.html")            
+                return render_template("Patient_home.html",id=out['Id'])            
             else:
                 flash("Password is wrong.Please enter correct password")
                 return render_template("Login.html",email=out['Email'])
 
         elif output:
             if output['Password']==password:
-                return render_template("Patient_home.html")            
+                email_addresses.append(email)
+                session['D_email']=email
+                print(email_addresses)
+                return render_template("Patient_home.html",id=output['Id'])            
             else:
                 flash("Password is wrong.Please enter correct password")
                 return render_template("Login.html",email=output['Email'])
@@ -41,16 +49,16 @@ def Login():
         
         
 # Patient_home
-@app.route("/Patient_home",methods=["GET","POST"])
-def Patient_home():
-    return render_template("Patient_home.html")
+@app.route("/Patient_home/<id>",methods=["GET","POST"])
+def Patient_home(id):
+    return render_template("Patient_home.html",id=id)
     
 @app.route('/patient_register',methods=["GET","POST"])
 def Patient_register():
     obj=Hackaholics()
     if request.method=="GET":
         return render_template('Patient_register.html')
-    if request.method=="POST":
+    elif request.method=="POST":
         patient_id = uuid.uuid4().hex
         data={
             'Id':patient_id,
@@ -66,18 +74,24 @@ def Patient_register():
         flash("You've been registered successfully!")
         return render_template("login.html")
         
-@app.route('/consultation',methods=["GET"])
-def Consultation():
+@app.route('/consultation/<id>',methods=["GET"])
+def Consultation(id):
     if request.method=="GET":
-        return render_template('consultation.html')
+        return render_template('consultation.html',id=id)
 
-@app.route('/consult/consultation_patient_info',methods=["GET"])
-def Consultation_patient_info():
+@app.route('/consultation_patient_info/<id>',methods=["GET","POST"])
+def Consultation_patient_info(id):
     if request.method=="GET":
-        return render_template('consultation_patient_info.html')
+        return render_template('consultation_patient_info.html',id=id)
 
     if request.method=="POST":
+        Patient_name = request.form['name']
+        Gender=request.form['gender']
+        Language=request.form['language']
+        Specialization=request.form['specialization']
         
+        return redirect(url_for('Consult_filter',id=id,Patient_name = Patient_name,Gender=Gender,Language=Language,Specialization = Specialization))
+
 
 @app.route('/patient_profile',methods=["GET"])
 def patient_profile():
@@ -94,15 +108,47 @@ def rescheduled_appointment():
     if request.method=="GET":
         return render_template('rescheduled_appointment.html')
         
-@app.route('/consult_filter',methods=["GET"])
-def Consult_filter():
+@app.route('/consult_filter/<id>/<Patient_name>/<Gender>/<Language>/<Specialization>',methods=["GET","POST"])
+def Consult_filter(id,Patient_name,Gender,Language,Specialization):
+    obj = Hackaholics()
     if request.method=="GET":
-        return render_template('consult_filter.html')
+        data_doc=[]
+        print("email",email_addresses)
+        for i in email_addresses:
+            data_doc.append(obj.get_email_doctor(i))
+        return render_template('consult_filter.html',id=id,Patient_name=Patient_name,Gender=Gender,Language=Language,Specialization=Specialization,data_doc=data_doc)
 
-@app.route('/consult_meeting_info',methods=["GET"])
-def Consult_meeting_info():
+@app.route('/consult_meeting_info/<id>/<doc_id>/<doc_name>/<Patient_name>/<Lang>/<Special>',methods=["GET","POST"])
+def Consult_meeting_info(id,doc_id,doc_name,Patient_name,Lang,Special):
     if request.method=="GET":
-        return render_template('consult_meeting_info.html')
+        consultation_id = uuid.uuid4().hex
+        obj=Hackaholics()
+        insert_consult_data = {
+            'ConsultationId':consultation_id,
+            'PId': id,
+            'DId': doc_id,
+            'PName':Patient_name,
+            'DName':doc_name,
+            'Language': Lang,
+            'Status':'Pending',
+            'ConsultationDate':date.today().strftime("%d/%m/%Y"),
+            'Fees':"500",
+            'Speciality':Special,
+            'Time':datetime.now().strftime("%H:%M:%S")
+        }
+        print("insertdata",insert_consult_data)
+        out = obj.insert_consult_info(insert_consult_data)
+        return render_template('consult_meeting_info.html',id=id,doc_id =doc_id,doc_name = doc_name,Patient_name = Patient_name,Lang = Lang, Special =Special)
+    
+    elif request.method=="POST":
+        rating = request.form['rating']
+        print(rating)
+        obj=Hackaholics()
+        consult_id = obj.get_pending_status()
+        out = obj.update_doctor_rating(rating,doc_id)
+        out = obj.update_consult_status(consult_id)
+        return redirect(url_for('Patient_home',id=id))
+    
 
 @app.route('/book_appointment',methods=["GET"])
 def Book_appointment():
@@ -119,10 +165,15 @@ def Confirm_appointment():
     if request.method=="GET":
         return render_template('confirm_appointment.html')
 
-@app.route('/thankyou',methods=["GET"])
-def Thankyou():
+@app.route('/thankyou_appointment/<id>',methods=["GET"])
+def Thankyou_appointment(id):
     if request.method=="GET":
-        return render_template('thankyou.html')
+        return render_template('thankyou_appointment.html',id=id)
+
+@app.route('/thankyou_consultation/<id>/<doc_id>/<doc_name>/<Patient_name>/<Lang>/<Special>',methods=["GET"])
+def Thankyou_consultation(id,doc_id,doc_name,Patient_name,Lang,Special):
+    if request.method=="GET":
+        return render_template('thankyou_consultation.html',id=id,doc_id =doc_id,doc_name = doc_name,Patient_name = Patient_name,Lang = Lang, Special =Special)
 
 
 if(__name__=="__main__"):
