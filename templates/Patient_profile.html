@@ -20,7 +20,6 @@
     <div class="nav">
         <div class="logo">
             <span>WE4U</span>
-            <h7 class="font"><br>&emsp14;&emsp14;&emsp14;Hi BEN</h7>
         </div>
         <div class="nav-items">
             <span><a href="#" class="active">Home</a></span>
@@ -51,30 +50,56 @@
             <img src="../static/images/whatsapp.png" alt="" class="icons1">
         </span>
     </div>
-    <div class="right" style="margin-left:500px">
+    <div class="right" style="margin-left:600px">
             <div class="signup-form">
-                <form style="margin-top:100px">
-                    <b><h3 class="fonts" style="margin-left:100px">Update Profile</h3><br><br></b>
-                    <label for = "username" class="username">UserName:</label>
-                    <input type="text" name="username" placeholder="Enter user name" class="form-input">
-                    <br>
-                    <label for = "email" class="email">Email:</label>
-                    <input type="text" name="email" placeholder="Enter email" class="form-input">
-                    <br>
-                    <label for = "password" class="password">Password:</label>
-                    <span><input type="password" name="password" id="myInput" class="form-input" placeholder="Enter Password">
-                       
+                <form style="margin-top:30px;margin-left:80px;">
+                    <b><h3 class="fonts" style="margin-left:50px">Update Profile</h3><br></b>
+                    <span>
+                        <label for = "username" class="username">UserName</label>
+                        <input type="text" name="username" placeholder="Enter user name" class="form-input"><br>
                     </span>
-                    <br>
+                    <span>
+                        <label for = "email" class="email">Email</label>
+                        <input type="text" name="email" placeholder="Enter email" class="form-input"><br>
+                    </span>
+                    <span>
+                        <label for = "password" class="password">Password</label>
+                        <input type="password" name="password" id="myInput" class="form-input" placeholder="Enter Password" style="width:140px">
+                        <img src="../static/images/view.png" id="myInputicon" onclick="myFunction()" height="20px" width="20px" margin-left="5px">
+                    </span>
+                  
+                    <!-- <i class="far fa-eye" id="myInput" style="margin-left:100px"onclick="myFunction()">&emsp;Show Password</i> -->
+                    <script>
+                    function myFunction() {
+                    var x = document.getElementById("myInput");
                     
+                    if (x.type === "password") {
+                        x.type = "text";
+                        document.getElementById("myInputicon").setAttribute("src","../static/images/hidden.png");
+                    } else {
+                        x.type = "password";
+                        document.getElementById("myInputicon").setAttribute("src","../static/images/view.png");
+                    }
+                    }
+                    </script>
+                    <span>
+                        <label for = "mobileno" class="mobileno">Mobileno</label>
+                        <input type="text" name="mobileno" placeholder="Enter mobile no" class="form-input">
+                    </span>
+                    <span>
+                        <label for = "age" class="age">Age</label>
+                        <input type="text" name="age" placeholder="Enter age" class="form-input">
+                    </span>
                     
-                    <label for = "mobileno" class="mobileno">Mobileno:</label>
-                    <input type="text" name="mobileno" placeholder="Enter mobileno" class="form-input">
-                    <br>
+                    <span>
+                        <label for = "gender" class = "lbl"> Gender </label>
+                        &emsp;&emsp;&emsp;<input type="Radio" name="Gender" Value="Male" class="lbl">Male
+                        &emsp;<input type="Radio" name="Gender" Value="Female" class="lbl">Female
+                    </span>
                     
-                    <div class="state">
-                        <label for="state">State:</label>
-                        <select class="form-control" id="state"name="C_state"  required style="margin-left:65px;margin-right:100px;width:190px"> 
+                    <span>
+                        <label for="state">State   </label>
+                        <select class="form-input" id="state"name="State" style="width: 180px;" required> 
                             <option value="SelectState"> Select States</option>
                             <option value="Andra Pradesh">Andra Pradesh</option>
                             <option value="Arunachal Pradesh">Arunachal Pradesh</option>
@@ -114,7 +139,14 @@
                             <option value="Lakshadeep">Lakshadeep</option>
                             <option value="Pondicherry">Pondicherry</option>
                         </select>
-                    </div>
+                    </span>
+                    
+                    <span>
+                        <label for="district">District</label>
+                        <select  class="form-input" id="district"  name="District"style="width: 180px;" required>
+                            <option value="">Select District</option>
+                        </select>
+                    </span>
                     <br>
                     <button type="submit" name="signup" class="form-input signup-btn" >Update</button>
                 </form>
@@ -138,4 +170,7 @@
 <!-- Latest compiled JavaScript -->
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+<!-- link for jquery validation -->
+<script src = "{{('/static/jquery/web.js')}}"> </script>
 </html>

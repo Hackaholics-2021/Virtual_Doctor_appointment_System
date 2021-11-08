@@ -23,6 +23,7 @@ a{
     width:90%;
     margin-top:0px;
     z-index:10;
+    margin-bottom: 150px;
 }
 
 .font{
@@ -36,7 +37,8 @@ a{
 }
 .logo{
     font-family:'Georgia', 'Times New Roman', Times, serif;
-    font-size:30px;
+    font-size:40px;
+    z-index: 10;
 }
 .nav-items span{
     margin-right:30px;
@@ -87,6 +89,9 @@ a{
     padding-right:90px;
     padding-left:30px;
 }
+.lbl{
+    font-size: 19px;
+}
 .rob-points span{
     display:flex;
     justify-content: space-between;
@@ -94,13 +99,13 @@ a{
 }
 .right{
     border:1px solid #b9b8b8;
-    width:100%;
+    width:40%;
     height:600px;
     padding:1px;
     overflow-y:hidden;
     overflow-x: hidden;
     border-radius: 4px;
-    margin-top:0px;
+    
 }
 .topbar{
     height:30px;
@@ -121,7 +126,7 @@ a{
 .sidenav {
     height:100%;
     position: fixed;
-    z-index: 100;
+    z-index:5;
     top: 0;
     left: 0;
     background-color:#343937;
@@ -178,16 +183,15 @@ a{
 	justify-content:center;
 	color:black;
 	padding:30px;
-    width:100%;
+    width:30%;
     margin-left:300px;
-    
 }
 .signup-header{
 	font-size:23px;
 }
 
 .signup-box{
-	margin-top:70px;
+	margin-top:170px;
 	display:flex;
 	justify-content:center;
 	align-items:center;
@@ -198,9 +202,13 @@ a{
 	font-family: 'Roboto Slab', serif;
 }
 .signup-form{
+    margin-top: 20px;
+}
+.signup-form span{
 	display:flex;
 	justify-content:space-between;
-	margin-top:20px;
+	align-items: center;
+	margin-bottom: 10px;
 }
 .state{
 
@@ -210,10 +218,9 @@ a{
     
     align-items: center;
 }
-.mobileno{
-    margin-right:10px;
+.form-input{
+    margin-left: 150px;
 }
-
 
 .form-input,.form-control{
 	border:none;
