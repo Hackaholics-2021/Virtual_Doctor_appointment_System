@@ -13,8 +13,8 @@
     <!-- Font awesome -->
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
     <!-- CSS -->
-    <link rel="stylesheet" href="../static/css/Patient_home.css">
-    <link rel="stylesheet" href="../static/css/confirm_appointment.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/Patient_home.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/Confirm_appointment.css') }}">
     <title>Book Appointment Patient information</title>
 </head>
 <body>
@@ -23,9 +23,9 @@
             <span>WE4U</span>
         </div>
         <div class="nav-items">
-            <span><a href="{{ url_for('Patient_home') }}">Home</a></span>
-            <span><a href="{{ url_for('Consultation') }}" >Consult</a></span>
-            <span><a href="{{ url_for('Appointment_patient_info') }}" class="active">Book appointment</a></span>
+            <span><a href="{{ url_for('Patient_home',id=id) }}">Home</a></span>
+            <span><a href="{{ url_for('Consultation',id=id) }}" >Consult</a></span>
+            <span><a href="{{ url_for('Appointment_patient_info',id=id) }}" class="active">Book appointment</a></span>
             <span><a href="#">History</a></span>
             <span><a href="#">Profile</a></span>
             <span><a href="#">Find a Doctor</a></span>
@@ -33,43 +33,50 @@
         <a href="#" class="logout-btn">Logout</a>
     </div>
     <div class="full_body">
-        <div class="container">
-            <div class="field">
-                <span>Patient Name:</span>
-                <span class="value">Gaunisha Gaanavi G</span>
+        <form action="{{ url_for('Thankyou_appointment',id=id,appointment_id = appointment_id) }}" method="POST">
+            <div class="container">
+                <div class="field">
+                    <span>Patient Name:</span>
+                    <span class="value">{{data.PName}}</span>
+                </div>
+                <div class="field">
+                    <span>Speciality of sickness:</span>
+                    <span  class="value">{{data.Speciality}}</span>
+                </div>
+                <div class="field">
+                    <span>Doctor Name:</span>
+                    <span  class="value">{{data.DName}}</span>
+                </div>
+                <div class="field">
+                    <span>Meeting link:</span>
+                    <span  class="value">https://meet.google.com/rhq-nyec-gae</span>
+                </div>
+                <div class="field">
+                    <span>Meeting Time:</span>
+                    <select name="time" id="time" class="value" style="color:white;font-family: 'Titillium Web', sans-serif; width:230px;">
+                        <option value="10:00:00" style="color:black">10:00 AM</option>
+                        <option value="12:00:00" style="color:black">12:00 PM</option>
+                        <option value="14:00:00" style="color:black">02:00 PM</option>
+                        <option value="16:00:00" style="color:black">04:00 PM</option>
+                    </select>
+                </div>
+                <div class="field">
+                    <span>Date:</span>
+                    <input type="date" name = "date" class="value" placeholder="dd-mm-yyyy" style = "color:white;font-family: 'Titillium Web', sans-serif;width:198px;" >
+                </div>
+                <div class="field">
+                    <span>District:</span>
+                    <span  class="value">{{data.District}}</span>
+                </div>
+                <div class="field">
+                    <span>State:</span>
+                    <span  class="value">{{data.State}}</span>
+                </div><br>
+                <div class="field">
+                    <button type="submit" class="confirm-btn">Confirm booking</button>
+                </div>
             </div>
-            <div class="field">
-                <span>State:</span>
-                <span  class="value">Tamil Nadu</span>
-            </div>
-            <div class="field">
-                <span>Speciality of sickness:</span>
-                <span  class="value">Cardiology</span>
-            </div>
-            <div class="field">
-                <span>Doctor Name:</span>
-                <span  class="value">Dr. Devaraj</span>
-            </div>
-            <div class="field">
-                <span>Meeting link:</span>
-                <span  class="value">https://meet.google.com/rhq-nyec-gae</span>
-            </div>
-            <div class="field">
-                <span>Meeting Time:</span>
-                <span  class="value">3:00 pm</span>
-            </div>
-            <div class="field">
-                <span>Date:</span>
-                <span  class="value">04-11-2021</span>
-            </div>
-            <div class="field">
-                <span>Language:</span>
-                <span  class="value">Tamil</span>
-            </div><br>
-            <div class="field">
-                <a href="{{ url_for('Thankyou') }}" class="confirm-btn">Confirm booking</a>
-            </div>
-        </div>
+        </form>
     </div>
 </body>
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>

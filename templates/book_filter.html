@@ -13,9 +13,9 @@
     <!-- Font awesome -->
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
     <!-- CSS -->
-    <link rel="stylesheet" href="../static/css/Patient_home.css">
-    <link rel="stylesheet" href="../static/css/consultation_patient_filter.css">
-    <title>Consultation Patient Filter</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/Patient_home.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/consultation_patient_filter.css') }}">
+    <title>Booking Patient Filter</title>
 </head>
 <body>
     <div class="nav">
@@ -25,7 +25,7 @@
         <div class="nav-items">
             <span><a href="{{ url_for('Patient_home',id=id) }}">Home</a></span>
             <span><a href="{{ url_for('Consultation',id=id) }}">Consult</a></span>
-            <span><a href="{{ url_for('Appointment_patient_info') }}" class="active">Book appointment</a></span>
+            <span><a href="{{ url_for('Appointment_patient_info',id=id) }}" class="active">Book appointment</a></span>
             <span><a href="#">History</a></span>
             <span><a href="#">Profile</a></span>
             <span><a href="#">Find a Doctor</a></span>
@@ -40,66 +40,124 @@
             <div class="filter">
                 <span>
                     <label for="sortby">Sort By:</label>
-                    <select name="sortby" id="sortby" class="form-input">
-                        <a href="#"><option value="--Select--"> --Select--</option></a>
-                        <a href="#"><option value="Price Low to High">Price Low to High</option></a>
-                        <a href="#"><option value="Price High to Low">Price High to Low</option></a>
-                        <a href="#"><option value="Experience High to Low">Experience High to Low</option></a>
-                        <a href="#"><option value="Rating High to Low">Female</option></a>
-                    </select>
+                    <span class="dropdown">
+                        <button type="button" class="dropdown-button-1" data-toggle="dropdown">
+                          --Select--
+                        </button>
+                        <div class="dropdown-menu 1" style="left:500px">
+                          <a class="dropdown-item" href="{{ url_for('Book_filter',id=id,Patient_name = Patient_name,Gender=Gender,State = State, District = District,Specialization = Specialization,Description = Description,category='all') }}">--Select--</a>
+                          <a class="dropdown-item" href="{{ url_for('Book_filter',id=id,Patient_name = Patient_name,Gender=Gender,State = State, District = District,Specialization = Specialization,Description = Description,category='r_lth') }}">Rating Low to High</a>
+                          <a class="dropdown-item" href="{{ url_for('Book_filter',id=id,Patient_name = Patient_name,Gender=Gender,State = State, District = District,Specialization = Specialization,Description = Description,category='r_htl') }}">Rating High to Low</a>
+                          <a class="dropdown-item" href="{{ url_for('Book_filter',id=id,Patient_name = Patient_name,Gender=Gender,State = State, District = District,Specialization = Specialization,Description = Description,category='e_htl') }}">Experience High to Low</a>
+                          <a class="dropdown-item" href="{{ url_for('Book_filter',id=id,Patient_name = Patient_name,Gender=Gender,State = State, District = District,Specialization = Specialization,Description = Description,category='e_lth') }}">Experience Low to High</a>
+                        </div>
+                    </span>
                 </span>
                 <span>
                     <label for="gender">Gender:</label>
-                    <select name="gender" id="gender" class="form-input">
-                        <a href="#"><option value="--Select--"> --Select--</option></a>
-                        <a href="#"><option value="Male">Male</option></a>
-                        <a href="#"><option value="Female">Female</option></a>
-                    </select>
-                </span>
-                <span>
-                    <label for="mode">Mode:</label>
-                    <select name="mode" id="mode" class="form-input">
-                        <a href="#"><option value="--Select--"> --Select--</option></a>
-                        <a href="#"><option value="Video">Video</option></a>
-                        <a href="#"><option value="Voice">Voice</option></a>
-                    </select>
+                    <span class="dropdown">
+                        <button type="button" class="dropdown-button-2" data-toggle="dropdown">
+                          --Select--
+                        </button>
+                        <div class="dropdown-menu 2">
+                          <a class="dropdown-item" href="{{ url_for('Book_filter',id=id,Patient_name = Patient_name,Gender=Gender,State = State, District = District,Specialization = Specialization,Description = Description,category='all') }}">--Select--</a>
+                          <a class="dropdown-item" href="{{ url_for('Book_filter',id=id,Patient_name = Patient_name,Gender=Gender,State = State, District = District,Specialization = Specialization,Description = Description,category='male') }}">Male</a>
+                          <a class="dropdown-item" href="{{ url_for('Book_filter',id=id,Patient_name = Patient_name,Gender=Gender,State = State, District = District,Specialization = Specialization,Description = Description,category='female') }}">Female</a>
+                        </div>
+                    </span>
                 </span>
             </div>
         </form>
+        <script>
+            document.getElementsByClassName("dropdown-button-1")[0].addEventListener("click",function(){
+                if(document.getElementsByClassName("dropdown-menu 1")[0].style.display=="flex"){
+                    document.getElementsByClassName("dropdown-menu 1")[0].style.display="none";
+                }
+                else{
+                    document.getElementsByClassName("dropdown-menu 1")[0].style.display="flex";
+                }
+            });
+            document.getElementsByClassName("dropdown-button-2")[0].addEventListener("click",function(){
+                if(document.getElementsByClassName("dropdown-menu 2")[0].style.display=="flex"){
+                    document.getElementsByClassName("dropdown-menu 2")[0].style.display="none";
+                }
+                else{
+                    document.getElementsByClassName("dropdown-menu 2")[0].style.display="flex";
+                }
+            });
+        </script>
         <br>
         <div class="list-of-doctors">
-            {% for i in range(4) %} 
-            <div class="card">
+            {% if data_doc%}
+            {% for k in data_doc %}
+            {% for i in k %} 
+            <div class="cards">
                 <div class="profile">
-                    <img src="../static/images/profile.png" alt="" width="100px" height="100px"> 
+                    <img src="{{ url_for('static', filename='images/profile.png') }}" alt="" width="100px" height="100px"> 
                 </div>
                 <div class="name-about">
                     <span class="name">
-                        Dr. Deveraj &nbsp;&nbsp;&nbsp;&nbsp;<img src="../static/images/new-moon.png" alt="" width="10px" height="10px"> &nbsp;online
+                        Dr. {{i.Name}} &nbsp;&nbsp;&nbsp;&nbsp;<img src="{{ url_for('static', filename='images/new-moon.png') }}" alt="" width="10px" height="10px"> &nbsp;online
                     </span>
-                    <span class="about">He is an enthusiastic person. Loves to help everybody. Completed MBBs at Madras Medical College, Chennai and his masters in USA</span>
+                    <span class="about">{{i.AboutMe}}</span>
                 </div>
                 <div class="education-speciality-rating">
-                    <span>MBBS,FRCS</span>
-                    <span>Cardiologist</span>
+                    <span>{{i.Degree}}</span>
+                    <span>{{i.Specialization}}</span>
                     <span>Rating: 
-                        {% for j in range(4) %} 
-                            <img src="../static/images/star.png" alt="" width="15px" height="15px">
-                        {% endfor %} 
+                        {% if i.Rating==1 %}
+                            <img src="{{ url_for('static', filename='images/star.png') }}" alt="" width="15px" height="15px">
+                            <img src="{{ url_for('static', filename='images/star-grey.png') }}" alt="" width="15px" height="15px">
+                            <img src="{{ url_for('static', filename='images/star-grey.png') }}" alt="" width="15px" height="15px">
+                            <img src="{{ url_for('static', filename='images/star-grey.png') }}" alt="" width="15px" height="15px">
+                            <img src="{{ url_for('static', filename='images/star-grey.png') }}" alt="" width="15px" height="15px">
+                        
+                        {% elif i.Rating==2 %}
+                            <img src="{{ url_for('static', filename='images/star.png') }}" alt="" width="15px" height="15px">
+                            <img src="{{ url_for('static', filename='images/star.png') }}" alt="" width="15px" height="15px">
+                            <img src="{{ url_for('static', filename='images/star-grey.png') }}" alt="" width="15px" height="15px">
+                            <img src="{{ url_for('static', filename='images/star-grey.png') }}" alt="" width="15px" height="15px">
+                            <img src="{{ url_for('static', filename='images/star-grey.png') }}" alt="" width="15px" height="15px">
+                        
+                        {% elif i.Rating==3 %}
+                            <img src="{{ url_for('static', filename='images/star.png') }}" alt="" width="15px" height="15px">
+                            <img src="{{ url_for('static', filename='images/star.png') }}" alt="" width="15px" height="15px">
+                            <img src="{{ url_for('static', filename='images/star.png') }}" alt="" width="15px" height="15px">
+                            <img src="{{ url_for('static', filename='images/star-grey.png') }}" alt="" width="15px" height="15px">
+                            <img src="{{ url_for('static', filename='images/star-grey.png') }}" alt="" width="15px" height="15px">
+                        
+                        {% elif i.Rating==4 %}
+                            <img src="{{ url_for('static', filename='images/star.png') }}" alt="" width="15px" height="15px">
+                            <img src="{{ url_for('static', filename='images/star.png') }}" alt="" width="15px" height="15px">
+                            <img src="{{ url_for('static', filename='images/star.png') }}" alt="" width="15px" height="15px">
+                            <img src="{{ url_for('static', filename='images/star.png') }}" alt="" width="15px" height="15px">
+                            <img src="{{ url_for('static', filename='images/star-grey.png') }}" alt="" width="15px" height="15px">
+                        
+                        {% elif i.Rating==5 %}
+                            <img src="{{ url_for('static', filename='images/star.png') }}" alt="" width="15px" height="15px">
+                            <img src="{{ url_for('static', filename='images/star.png') }}" alt="" width="15px" height="15px">
+                            <img src="{{ url_for('static', filename='images/star.png') }}" alt="" width="15px" height="15px">
+                            <img src="{{ url_for('static', filename='images/star.png') }}" alt="" width="15px" height="15px">
+                            <img src="{{ url_for('static', filename='images/star.png') }}" alt="" width="15px" height="15px">
+                        {% else %}
+                            <img src="{{ url_for('static', filename='images/star-grey.png') }}" alt="" width="15px" height="15px">
+                            <img src="{{ url_for('static', filename='images/star-grey.png') }}" alt="" width="15px" height="15px">
+                            <img src="{{ url_for('static', filename='images/star-grey.png') }}" alt="" width="15px" height="15px">
+                            <img src="{{ url_for('static', filename='images/star-grey.png') }}" alt="" width="15px" height="15px">
+                            <img src="{{ url_for('static', filename='images/star-grey.png') }}" alt="" width="15px" height="15px">
+                        {% endif %}
                     </span>
                 </div>
                 <div class="experience-location-fees">
-                    <span>Experience: 3yrs</span>
-                    <span>Cudalore, TamilNadu</span>
+                    <span>Experience: {{i.Experience}}yrs</span>
+                    <span>{{i.District}}, {{i.State}}</span>
                     <span>Fee: 500 Rs.</span>
                 </div>
-                <div class="booking">
-                    <span>Available Today</span><br>
-                    <a href="#" class='logout-btn'>Book Appointment</a>
-                </div>
-                
+                <a href="{{ url_for('Confirm_appointment',id=id,doc_id = i.Id, doc_name = i.Name,Patient_name = Patient_name,State = State,District = District,Specialization = Specialization,Description = Description) }}" class='logout-btn'>Consult</a>
             </div>
             {% endfor %} 
+            {% endfor %}
+            {% endif %}
         </div>
     </div>
 </body>

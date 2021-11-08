@@ -40,7 +40,7 @@
         </div>
         <div class="patient-info-box">
             <div class="left-patient-info-form">
-                <form action="#" method="POST">
+                <form action="{{ url_for('Appointment_patient_info',id=id) }}" method="POST">
                     <span>
                         <label for="name">Patient Name</label>
                         <input type="text" class="form-input" name="name">
@@ -54,8 +54,8 @@
                         </select>
                     </span>
                     <span>
-                        <label for="location">Location</label>
-                        <select name="location" id="location" class="form-input">
+                        <label for="location">State</label>
+                        <select name="location" id="state" class="form-input">
                                 <option value="SelectState"> --Select States--</option>
                                 <option value="Andra Pradesh">Andra Pradesh</option>
                                 <option value="Arunachal Pradesh">Arunachal Pradesh</option>
@@ -97,6 +97,12 @@
                         </select>
                     </span>
                     <span>
+                        <label for="district">District</label>
+                        <select  class="form-input" id="district"  name="District" required>
+                            <option value="">--Select District--</option>
+                        </select>
+                    </span>
+                    <span>
                         <label for="specialization">Specialization</label>
                         <select name="specialization" id="specialization" class="form-input">
                             <option value="Select Specialization"> Select Specialization</option>
@@ -119,6 +125,10 @@
                             <option value="General Physician">General Physician</option>
                         </select>
                     </span>
+                    <span>
+                        <label for="description">Describe your sickness:</label>
+                        <textarea name="description" id="description" cols="24" rows="2" class="form-input"></textarea>
+                    </span>
                     <button class="logout-btn">Continue</button>
                 </form>
             </div>
@@ -137,9 +147,9 @@
         </div>
     </div>
 </body>
-<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T" crossorigin="anonymous"></script>
     
     <!-- jQuery library -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
@@ -153,4 +163,5 @@
     <!-- Latest compiled JavaScript -->
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="../static/jquery/web.js"></script>
 </html>
