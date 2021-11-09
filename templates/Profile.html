@@ -27,9 +27,8 @@
             <div class="logo">WE4U</div>
             <div class="links">  
                 <span><a href="{{ url_for('Doctor_Home',id=id,name=name) }}">Home</a></span>                   
-                <span><a href="#">Upcoming</a></span>
+                <span><a href="{{ url_for('Upcoming',id=id,name=name) }}">Upcoming</a></span>
                 <span><a href="{{ url_for('Patients',id=id,name=name) }}">Patients</a></span>
-                <span><a href="#">Payment</a></span>
                 <span><a href="#">History</a></span>
                 <span><a href="{{ url_for('Profile',id=id,name=name) }}" class="active">Profile</a></span>               
                 <button class="button" href="{{ url_for('Logout') }}">Logout</button>

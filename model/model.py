@@ -1,5 +1,6 @@
 from sqlalchemy import *
 from sqlalchemy.sql import *
+from datetime import date
 engine=create_engine('mysql://root:admin@127.0.0.1:3306/virtualdoc',echo=True)
 
 class Hackaholics:
@@ -79,7 +80,7 @@ class Hackaholics:
         res2=engine.execute(s2,x=PId).fetchall()
         result2=[dict(r2) for r2 in res2] if res2 else None
 
-        s3=text("select * from booking_appointment where PId= :x and DId= :y")
+        s3=text("select * from booking_appointment where PId= :x and DId= :y and Status='Completed'")
         res3=engine.execute(s3,x=PId,y=DId).fetchall()
         result3=[dict(r3) for r3 in res3] if res3 else None
 
@@ -87,3 +88,85 @@ class Hackaholics:
             return result1,result2,result3
 
 
+    def get_new_upcoming_details(self,id):
+        today=date.today()
+        s=text("select * from booking_appointment where DId= :x and BookingDate >= :y and Status='Pending'")
+        res=engine.execute(s,x=id,y=today)
+        result=[dict(r) for r in res] if res else None
+        if result:
+            return result
+        else:
+            return None
+
+    def get_accepted_upcoming_details(self,id):
+        today=date.today()
+        s=text("select * from booking_appointment where DId= :x and BookingDate > :y and Status='Accepted'")
+        res=engine.execute(s,x=id,y=today)
+        result=[dict(r) for r in res] if res else None
+        if result:
+            return result
+        else:
+            return None
+
+    def cancel_appointment(self,bid):
+        s=text("update booking_appointment set Status='Cancelled' where AppointmentId= :x")
+        res=engine.execute(s,x=bid)
+        return None
+
+    def get_cancel_patient_email(self,bid):
+        mail=text("select PEmail from booking_appointment where AppointmentId= :x")
+        email=engine.execute(mail,x=bid)
+        result=[dict(r) for r in email] if email else None
+        if result:
+            return result[0]
+        else:
+            return None
+
+    def get_appointment(self,bid):
+        s=text("select * from booking_appointment where AppointmentId= :x")
+        res=engine.execute(s,x=bid)
+        result=[dict(r) for r in res] if res else None
+        if result:
+            return result[0]
+        else:
+            return None
+
+    def accept_appointment(self,bid):
+        s=text("update booking_appointment set Status='Accepted' where AppointmentId= :x")
+        res=engine.execute(s,x=bid)
+        return None
+        
+
+    def get_todays_appointment(self,id):
+        today=date.today()
+        s=text("select * from booking_appointment where DId= :x and Status='Accepted'and BookingDate= :y ")
+        res=engine.execute(s,x=id,y=today)
+        no=0
+        result=[]
+        if res:
+            for r in res:
+                no=no+1
+                result.append(r)
+        print(no)
+        #result=[dict(r) for r in res] if res else None
+        if result!=None:
+            return result,no
+        else:
+            return None
+
+    def get_consultations(self,id):
+        today=date.today()
+        s=text("select * from booking_consultation where DId= :x and Status='Pending' and  ConsultationDate= :y")
+        res=engine.execute(s,x=id,y=today)
+        no=0
+        result=[]
+        if res:
+            for r in res:
+                no=no+1
+                result.append(r)
+        print(no)
+        #result=[dict(r) for r in res] if res else None
+        if result!=None:
+            return result,no
+        else:
+            return None
