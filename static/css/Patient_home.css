@@ -37,8 +37,9 @@ a{
 .nav-items span{
     margin-right:30px;
 }
-.nav-items span:hover{
+.nav-items a:hover{
     color:rgb(158, 158, 158);
+    text-decoration: none;
 }
 .fa-chevron-down{
     font-size:10px;
@@ -58,6 +59,8 @@ a{
 }
 .logout-btn:hover{
     background-color: #35B680;
+    color:white;
+    text-decoration: none;
 }
 .body-container{
     display:flex;

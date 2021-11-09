@@ -16,16 +16,44 @@
     justify-content: space-evenly;
     align-items: center;
 }
-select{
+.dropdown-button-1,.dropdown-button-2{
     background-color:#102034;
     color:white;
     padding:8px 10px;
     font-family: 'Titillium Web', sans-serif;
     border:1.5px solid white;
     margin-left:20px;
+    cursor: pointer;
     width:200px;
 }
-.card{
+.dropdown-button-1:focus,.dropdown-button-2:focus{
+    outline:none;
+    border:none;
+    box-shadow: none;
+}
+.dropdown-menu{
+    position:absolute;
+    left:1100px;
+    background-color: white;
+    display: none;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    color:black;
+    padding:10px;
+    border-radius: 4px;
+    width:200px;
+}
+.dropdown-menu a{
+    border-bottom:1px solid rgba(0, 0, 0, 0.164);
+    width:100%;
+    padding:5px 0px;
+    text-align: center;
+}
+.dropdown-menu a:hover{
+    background-color: rgba(226, 226, 226, 0.24);
+}
+.cards{
     display:flex;
     justify-content: space-evenly;
     align-items: center;
@@ -33,7 +61,7 @@ select{
     background-color: white;
     padding:15px;
 }
-.card div{
+.cards div{
     display:flex;
     justify-content: center;
     align-items: center;

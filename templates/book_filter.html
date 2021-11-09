@@ -23,8 +23,8 @@
             <span>WE4U</span>
         </div>
         <div class="nav-items">
-            <span><a href="{{ url_for('Patient_home') }}">Home</a></span>
-            <span><a href="{{ url_for('Consultation') }}">Consult</a></span>
+            <span><a href="{{ url_for('Patient_home',id=id) }}">Home</a></span>
+            <span><a href="{{ url_for('Consultation',id=id) }}">Consult</a></span>
             <span><a href="{{ url_for('Appointment_patient_info') }}" class="active">Book appointment</a></span>
             <span><a href="#">History</a></span>
             <span><a href="#">Profile</a></span>

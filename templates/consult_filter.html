@@ -17,7 +17,7 @@
     <link rel="stylesheet" href="{{ url_for('static', filename='css/consultation_patient_filter.css') }}">
     <title>Consultation Patient Filter</title>
 </head>
-<body>
+<body style = "background-color: #f0f5f7;">
     <div class="nav">
         <div class="logo">
             <span>WE4U</span>
@@ -25,7 +25,7 @@
         <div class="nav-items">
             <span><a href="{{ url_for('Patient_home',id=id) }}">Home</a></span>
             <span><a href="{{ url_for('Consultation',id=id) }}" class="active">Consult</a></span>
-            <span><a href="{{ url_for('Appointment_patient_info') }}">Book appointment</a></span>
+            <span><a href="{{ url_for('Appointment_patient_info',id=id) }}">Book appointment</a></span>
             <span><a href="#">History</a></span>
             <span><a href="#">Profile</a></span>
             <span><a href="#">Find a Doctor</a></span>
@@ -36,31 +36,61 @@
         <div class="header">
             Here are the doctors who are online currently
         </div>
-        <form action="{{ url_for('Consult_filter',id=id,Patient_name = Patient_name,Gender=Gender,Language=Language,Specialization=Specialization) }}" method="POST">
+        <form>
             <div class="filter">
                 <span>
                     <label for="sortby">Sort By:</label>
-                    <select name="sortby" id="sortby" class="form-input">
-                        <a href="#"><option value="--Select--"> --Select--</option></a>
-                        <a href="#"><option value="Price Low to High">Price Low to High</option></a>
-                        <a href="#"><option value="Price High to Low">Price High to Low</option></a>
-                        <a href="#"><option value="Experience High to Low">Experience High to Low</option></a>
-                    </select>
+                    <span class="dropdown">
+                        <button type="button" class="dropdown-button-1" data-toggle="dropdown">
+                          --Select--
+                        </button>
+                        <div class="dropdown-menu 1" style="left:500px">
+                          <a class="dropdown-item" href="{{ url_for('Consult_filter',id=id,Patient_name = Patient_name,Gender=Gender,Language=Language,Specialization=Specialization,category='all') }}">--Select--</a>
+                          <a class="dropdown-item" href="{{ url_for('Consult_filter',id=id,Patient_name = Patient_name,Gender=Gender,Language=Language,Specialization=Specialization,category='r_lth') }}">Rating Low to High</a>
+                          <a class="dropdown-item" href="{{ url_for('Consult_filter',id=id,Patient_name = Patient_name,Gender=Gender,Language=Language,Specialization=Specialization,category='r_htl') }}">Rating High to Low</a>
+                          <a class="dropdown-item" href="{{ url_for('Consult_filter',id=id,Patient_name = Patient_name,Gender=Gender,Language=Language,Specialization=Specialization,category='e_htl') }}">Experience High to Low</a>
+                          <a class="dropdown-item" href="{{ url_for('Consult_filter',id=id,Patient_name = Patient_name,Gender=Gender,Language=Language,Specialization=Specialization,category='e_lth') }}">Experience Low to High</a>
+                        </div>
+                    </span>
                 </span>
                 <span>
                     <label for="gender">Gender:</label>
-                    <select name="gender" id="gender" class="form-input">
-                        <a href="#"><option value="--Select--"> --Select--</option></a>
-                        <a href="#"><option value="Male">Male</option></a>
-                        <a href="#"><option value="Female">Female</option></a>
-                    </select>
+                    <span class="dropdown">
+                        <button type="button" class="dropdown-button-2" data-toggle="dropdown">
+                          --Select--
+                        </button>
+                        <div class="dropdown-menu 2">
+                          <a class="dropdown-item" href="{{ url_for('Consult_filter',id=id,Patient_name = Patient_name,Gender=Gender,Language=Language,Specialization=Specialization,category='all') }}">--Select--</a>
+                          <a class="dropdown-item" href="{{ url_for('Consult_filter',id=id,Patient_name = Patient_name,Gender=Gender,Language=Language,Specialization=Specialization,category='male') }}">Male</a>
+                          <a class="dropdown-item" href="{{ url_for('Consult_filter',id=id,Patient_name = Patient_name,Gender=Gender,Language=Language,Specialization=Specialization,category='female') }}">Female</a>
+                        </div>
+                    </span>
                 </span>
             </div>
         </form>
+        <script>
+            document.getElementsByClassName("dropdown-button-1")[0].addEventListener("click",function(){
+                if(document.getElementsByClassName("dropdown-menu 1")[0].style.display=="flex"){
+                    document.getElementsByClassName("dropdown-menu 1")[0].style.display="none";
+                }
+                else{
+                    document.getElementsByClassName("dropdown-menu 1")[0].style.display="flex";
+                }
+            });
+            document.getElementsByClassName("dropdown-button-2")[0].addEventListener("click",function(){
+                if(document.getElementsByClassName("dropdown-menu 2")[0].style.display=="flex"){
+                    document.getElementsByClassName("dropdown-menu 2")[0].style.display="none";
+                }
+                else{
+                    document.getElementsByClassName("dropdown-menu 2")[0].style.display="flex";
+                }
+            });
+        </script>
         <br>
         <div class="list-of-doctors">
+            {% if data_doc%}
             {% for i in data_doc %} 
-            <div class="card">
+            <div class="cards">
                 <div class="profile">
                     <img src="{{ url_for('static', filename='images/profile.png') }}" alt="" width="100px" height="100px"> 
                 </div>
@@ -122,26 +152,12 @@
                     <span>{{i.District}}, {{i.State}}</span>
                     <span>Fee: 500 Rs.</span>
                 </div>
-                <a href="{{ url_for('Consult_meeting_info',id=id,doc_id = i.Id, doc_name = i.Name,Patient_name = Patient_name,Lang = Language,Special = Specialization) }}" class='logout-btn'>Consult</a>
+                <a href="{{ url_for('Consult_meeting_info',id=id,doc_id = i.Id, doc_name = i.Name,Patient_name = Patient_name,Lang = Language,Special = Specialization,category = all) }}" class='logout-btn'>Consult</a>
             </div>
             {% endfor %} 
+            {% endif %}
         </div>
     </div>
 </body>
-<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T" crossorigin="anonymous"></script>
     
-    <!-- jQuery library -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-        
-    <!-- plugin for jquery validation -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.1/jquery.validate.min.js"> </script>
-    
-    <!-- Popper JS -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
-    
-    <!-- Latest compiled JavaScript -->
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </html>

@@ -36,9 +36,10 @@ def Login():
 
         elif output:
             if output['Password']==password:
-                email_addresses.append(email)
-                session['D_email']=email
-                print(email_addresses)
+                if email not in email_addresses:
+                    email_addresses.append(email)
+                    session['D_email']=email
+                    print(email_addresses)
                 return render_template("Patient_home.html",id=output['Id'])            
             else:
                 flash("Password is wrong.Please enter correct password")
@@ -71,6 +72,7 @@ def Patient_register():
             'MobileNo':request.form['mobileno']
         }
         out=obj.insert_into_patient(data)
+        out = obj.insert_into_diagnostics(data['Id'])
         flash("You've been registered successfully!")
         return render_template("login.html")
         
@@ -90,7 +92,7 @@ def Consultation_patient_info(id):
         Language=request.form['language']
         Specialization=request.form['specialization']
         
-        return redirect(url_for('Consult_filter',id=id,Patient_name = Patient_name,Gender=Gender,Language=Language,Specialization = Specialization))
+        return redirect(url_for('Consult_filter',id=id,Patient_name = Patient_name,Gender=Gender,Language=Language,Specialization = Specialization,category="all"))
 
 
 @app.route('/patient_profile',methods=["GET"])
@@ -108,15 +110,47 @@ def rescheduled_appointment():
     if request.method=="GET":
         return render_template('rescheduled_appointment.html')
         
-@app.route('/consult_filter/<id>/<Patient_name>/<Gender>/<Language>/<Specialization>',methods=["GET","POST"])
-def Consult_filter(id,Patient_name,Gender,Language,Specialization):
+@app.route('/consult_filter/<id>/<Patient_name>/<Gender>/<Language>/<Specialization>/<category>',methods=["GET","POST"])
+def Consult_filter(id,Patient_name,Gender,Language,Specialization,category):
     obj = Hackaholics()
     if request.method=="GET":
         data_doc=[]
         print("email",email_addresses)
-        for i in email_addresses:
-            data_doc.append(obj.get_email_doctor(i))
-        return render_template('consult_filter.html',id=id,Patient_name=Patient_name,Gender=Gender,Language=Language,Specialization=Specialization,data_doc=data_doc)
+        if category == "all":
+            out = obj.get_email_doctor_filter(email_addresses,Language,Specialization)
+            if out:
+                data_doc.append(out)
+        elif category == "r_lth":
+            out = obj.get_email_doctor_rating_lth(email_addresses,Language,Specialization)
+            if out:
+                data_doc.append(out)
+        elif category == "r_htl":
+            out = obj.get_email_doctor_rating_htl(email_addresses,Language,Specialization)
+            if out:
+                data_doc.append(out)
+        elif category == "e_htl":
+            out = obj.get_email_doctor_experience_htl(email_addresses,Language,Specialization)
+            if out:
+                data_doc.append(out)
+        elif category == "e_lth":
+            out = obj.get_email_doctor_experience_lth(email_addresses,Language,Specialization)
+            if out:
+                data_doc.append(out)
+        elif category == "male":
+            out = obj.get_email_doctor_male(email_addresses,Language,Specialization)
+            if out:
+                data_doc.append(out)
+        elif category == "female":
+            out = obj.get_email_doctor_female(email_addresses,Language,Specialization)
+            if out:
+                data_doc.append(out)
+
+        print("data_doc",data_doc)
+        if len(data_doc)>0:
+            return render_template('consult_filter.html',id=id,Patient_name=Patient_name,Gender=Gender,Language=Language,Specialization=Specialization,data_doc=data_doc[0])
+
+        else:
+            return render_template('consult_filter.html',id=id,Patient_name=Patient_name,Gender=Gender,Language=Language,Specialization=Specialization)
 
 @app.route('/consult_meeting_info/<id>/<doc_id>/<doc_name>/<Patient_name>/<Lang>/<Special>',methods=["GET","POST"])
 def Consult_meeting_info(id,doc_id,doc_name,Patient_name,Lang,Special):
@@ -131,7 +165,7 @@ def Consult_meeting_info(id,doc_id,doc_name,Patient_name,Lang,Special):
             'DName':doc_name,
             'Language': Lang,
             'Status':'Pending',
-            'ConsultationDate':date.today().strftime("%d/%m/%Y"),
+            'ConsultationDate':date.today().strftime("%Y-%M-%d"),
             'Fees':"500",
             'Speciality':Special,
             'Time':datetime.now().strftime("%H:%M:%S")
@@ -150,15 +184,15 @@ def Consult_meeting_info(id,doc_id,doc_name,Patient_name,Lang,Special):
         return redirect(url_for('Patient_home',id=id))
     
 
-@app.route('/book_appointment',methods=["GET"])
-def Book_appointment():
+@app.route('/book_filter/<id>',methods=["GET"])
+def Book_filter(id):
     if request.method=="GET":
-        return render_template('book_appointment.html')
+        return render_template('book_filter.html',id=id)
 
-@app.route('/appointment_patient_info',methods=["GET"])
-def Appointment_patient_info():
+@app.route('/appointment_patient_info/<id>',methods=["GET"])
+def Appointment_patient_info(id):
     if request.method=="GET":
-        return render_template('appointment_patient_info.html')
+        return render_template('appointment_patient_info.html',id=id)
 
 @app.route('/confirm_appointment',methods=["GET"])
 def Confirm_appointment():
