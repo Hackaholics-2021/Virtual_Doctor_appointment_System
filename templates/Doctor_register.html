@@ -19,19 +19,19 @@
         <link rel="stylesheet" href="../static/css/Doctor_register.css">
         <style>
             body {
-              background-color: #778da9;
+              background-color: #624379;
             }
             </style>
     </head>
 	<body>
 		<div class="body-container">
 			<div class = "left">
-				<div class="nature-img"><img src = "{{ url_for('static', filename='images/doc_reg.png') }}" height = "300px" width="300px"></div>
+				<div class="nature-img"><img src = "../static/images/doc_reg.png" height = "300px" width="300px"></div>
                 <br>
 				<div class="below-pic"><h3>
 					"YOUR HEALTH MATTERS"<br><br>WE4U
                     <br><br>
-                    <div>Already a member? <a href="#" style="color:rgb(72, 89, 104);">Login</a></div>
+                    <div>Already a member? <a href="#" style="color:#261da7;">Login</a></div>
                     </h3>
 				</div>
 			</div>
@@ -56,7 +56,7 @@
                                     <td>
                                         <span><input type="password" name="Password" id="myInput" class="form-input" placeholder="" style="font-family: 'Courier New', Courier, monospace;" required>
                                             <span class="p-viewer">
-                                                <img src="{{ url_for('static', filename='images/view.png') }}" id="myInputicon" onclick="myFunction()" height="20px" width="20px">
+                                                <img src="../static/images/view.png" id="myInputicon" onclick="myFunction()" height="20px" width="20px">
                                             </span>
                                         </span>
                                     </td>
