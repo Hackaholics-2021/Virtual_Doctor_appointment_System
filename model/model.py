@@ -75,6 +75,15 @@ class Hackaholics:
         else:
             return None
 
+    def get_info_appointment(self,id):
+        s=self.booking_appointment.select().where(self.booking_appointment.c.AppointmentId==id)
+        res=engine.execute(s)
+        results=[dict(r) for r in res] if res else None
+        if results:
+            return results[0]
+        else:
+            return None
+
     def insert_consult_info(self,data):
         res=engine.execute(self.booking_consultation.insert(),data)
         if res:
@@ -115,16 +124,22 @@ class Hackaholics:
             return None
 
     def get_email_doctor_filter_consult(self,email_addresses,Language,Specialization):
-        s = text("select * from doctor where Email in :x and Specialization = :y")
-        res=engine.execute(s,x = email_addresses,y=Specialization).fetchall()
+        res=[]
+        for i in email_addresses:
+            s = text("select * from doctor where Email = :x and Specialization = :y")
+            res.append(engine.execute(s,x = i,y=Specialization).fetchall())
         print(res,Language,Specialization)
-        results=[dict(r) for r in res] if res else None
-        ans = []
+        results = []
+        ans=[]
+        for i in res:
+            if len(i)>0:
+                results.append([dict(r) for r in i])
         if results:
             print(results)
             for i in range(len(results)):
-                if results[i][Language] == 1:
-                    ans.append(results[i])
+                if results[i][0][Language] == 1:
+                    ans.append(results[i][0])
+        
         if ans:
             return ans
         else:
@@ -215,26 +230,46 @@ class Hackaholics:
             return None
 
     def get_email_doctor_male_consult(self,email_addresses,Language,Specialization):
-        s = text("select * from doctor where Email in :x and Specialization = :y and Gender = :z")
-        res=engine.execute(s,x = email_addresses,y=Specialization,z="Male").fetchall()
+        res=[]
+        for i in email_addresses:
+            s = text("select * from doctor where Email = :x and Specialization = :y and Gender = 'Male'")
+            res.append(engine.execute(s,x = i,y=Specialization).fetchall())
         print(res,Language,Specialization)
-        results=[dict(r) for r in res] if res else None
+        results = []
+        for i in res:
+            if len(i)>0:
+                results.append([dict(r) for r in i])
+        ans = []
         if results:
-            print(results[0])
-            if results[0][Language] == 1:
-                return results[0]
+            print(results)
+            for i in range(len(results)):
+                if results[i][0][Language] == 1:
+                    ans.append(results[i])
+
+        if ans:
+            return ans
         else:
             return None
 
     def get_email_doctor_female_consult(self,email_addresses,Language,Specialization):
-        s = text("select * from doctor where Email in :x and Specialization = :y and Gender = :z")
-        res=engine.execute(s,x = email_addresses,y=Specialization,z="Female").fetchall()
+        res=[]
+        for i in email_addresses:
+            s = text("select * from doctor where Email = :x and Specialization = :y and Gender = 'Female'")
+            res.append(engine.execute(s,x = i,y=Specialization).fetchall())
         print(res,Language,Specialization)
-        results=[dict(r) for r in res] if res else None
+        results = []
+        for i in res:
+            if len(i)>0:
+                results.append([dict(r) for r in i])
+        ans = []
         if results:
-            print(results[0])
-            if results[0][Language] == 1:
-                return results[0]
+            print(results)
+            for i in range(len(results)):
+                if results[i][Language] == 1:
+                    ans.append(results[i])
+
+        if ans:
+            return ans
         else:
             return None
 

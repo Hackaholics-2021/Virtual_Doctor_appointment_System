@@ -1,3 +1,5 @@
+from flask import *   
+from flask_mail import *
 from datetime import date, datetime
 import re
 from flask import *
@@ -5,6 +7,16 @@ import uuid
 from model.model import Hackaholics
 app=Flask(__name__)
 app.secret_key = "div"
+
+
+app.config['MAIL_SERVER']='smtp.gmail.com'  
+app.config['MAIL_PORT']=465  
+app.config['MAIL_USERNAME'] = 'hackaholics4@gmail.com'  
+app.config['MAIL_PASSWORD'] = 'DaggUs4#'  
+app.config['MAIL_USE_TLS'] = False  
+app.config['MAIL_USE_SSL'] = True
+
+mail = Mail(app)
 
 # session email addresses
 email_addresses = []
@@ -278,6 +290,11 @@ def Thankyou_appointment(id,appointment_id):
         Date = request.form['date']
         obj = Hackaholics()
         out = obj.update_booking_info(Time,Date,appointment_id)
+        out_booking = obj.get_info_appointment(appointment_id)
+        booking_date = str(out_booking['BookingDate'])
+        msg_to_patient=Message('WE4U Virtual Doctor Appointment',sender='hackaholics4@gmail.com',recipients=[out_booking['PEmail']])
+        msg_to_patient.html="<h2>Hello "+out_booking['PName']+",</h2><p>Hope you are doing well!</p><p>We hereby inform you that your Appointment request for the doctor named <b> Dr."+out_booking['DName']+"</b> on <b>"+booking_date+"</b> at <b>"+ out_booking['Time']+"</b> has been <b>Booked Successfully!</b><br><h4>We offer you a sincere thanks and gratitude for choosing our service!</h4><p>If you have any questions or concerns, please don't hesitate to contact us hackaholics4@gmail.com. Thanks</p>"
+        mail.send(msg_to_patient)
         return render_template('thankyou_appointment.html',id=id)
 
 @app.route('/thankyou_consultation/<id>/<doc_id>/<doc_name>/<Patient_name>/<Lang>/<Special>',methods=["GET","POST"])
