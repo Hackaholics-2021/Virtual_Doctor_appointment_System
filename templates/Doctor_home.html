@@ -28,7 +28,7 @@
                 <span><a href="{{ url_for('Doctor_Home',id=id,name=name) }}" class="active">Home</a></span>             
                 <span><a href="{{ url_for('Upcoming',id=id,name=name) }}">Upcoming</a></span>
                 <span><a href="{{ url_for('Patients',id=id,name=name) }}">Patients</a></span>
-                <span><a href="#">History</a></span>
+                <span><a href="{{ url_for('History',id=id,name=name) }}">History</a></span>
                 <span><a href="{{ url_for('Profile',id=id,name=name) }}" >Profile</a></span>               
                 <button class="button" href="{{ url_for('Logout') }}">Logout</button>
             </div>

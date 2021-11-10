@@ -64,9 +64,6 @@ class Hackaholics:
         results=[dict(r) for r in res] if res else None
         
         if results:
-            for i in results:
-                print(i['PId'],i['PName'])
-            print(results)
             return results
         else:
             return None
@@ -147,7 +144,6 @@ class Hackaholics:
             for r in res:
                 no=no+1
                 result.append(r)
-        print(no)
         #result=[dict(r) for r in res] if res else None
         if result!=None:
             return result,no
@@ -164,9 +160,26 @@ class Hackaholics:
             for r in res:
                 no=no+1
                 result.append(r)
-        print(no)
         #result=[dict(r) for r in res] if res else None
         if result!=None:
             return result,no
+        else:
+            return None
+
+    def get_history_appointments(self,id):
+        s=text("select * from booking_appointment where DId= :x and Status='Completed' order by BookingDate desc")
+        res=engine.execute(s,x=id)
+        result=[dict(r) for r in res] if res else None
+        if result:
+            return result
+        else:
+            return None
+
+    def get_history_consultations(self,id):
+        s=text("select * from booking_consultation where DId= :x and Status='Completed' order by ConsultationDate desc")
+        res=engine.execute(s,x=id)
+        result=[dict(r) for r in res] if res else None
+        if result:
+            return result
         else:
             return None

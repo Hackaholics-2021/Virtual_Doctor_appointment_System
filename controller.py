@@ -119,35 +119,6 @@ def Doctor_Home(id,name):
         else:
             return render_template("Doctor_home.html",id=id,name=name,no=0,consult=consult,count=count)
 
-#Today's Appointment
-@app.route('/UpdatedDoctorHome/<id>/<name>',methods=["POST","GET"])
-def Todays_Appointment(id,name):
-    h=Hackaholics()
-    if request.method=="GET":
-        today,no=h.get_todays_appointment(id)
-        consult,count=h.get_consultations(id) 
-        if today!=None and no!=0 and consult!=None and count!=0:
-            return render_template("Doctor_home.html",id=id,name=name,today=today,no=no,consult=consult,count=count)
-        elif today==None and n==0 and consult==None and count==0:
-            return render_template("Doctor_home.html",id=id,name=name,no=0,count=0)
-        elif today!=None and no!=0 and consult==None and count==0:
-            return render_template("Doctor_home.html",id=id,name=name,today=today,no=no,count=0)
-        else:
-            return render_template("Doctor_home.html",id=id,name=name,no=0,consult=consult,count=count)
-        
-
-
-#Today's Consultation
-@app.route('/Updated_Consultation_DoctorHome/<id>/<name>',methods=["POST","GET"])
-def Consultation(id,name):
-    h=Hackaholics()
-    if request.method=="GET":
-        consult,count=h.get_consultations(id)
-        if consult!=None and count!=0:
-            return render_template("Doctor_home.html",id=id,name=name,consult=consult,count=count)
-        else:
-            return render_template("Doctor_home.html",id=id,name=name,count=0)
-
 # View Patients
 @app.route('/Patients/<id>/<name>',methods=["POST","GET"])
 def Patients(id,name):
@@ -156,6 +127,7 @@ def Patients(id,name):
         res=h.get_patients(id)
         return render_template('Patients.html',id=id,name=name,out=res)
 
+#View Patients Details
 @app.route('/Patients_Details/<PId>/<DId>/<name>',methods=["POST","GET"])
 def Get_Patient_Details(PId,DId,name):
     h=Hackaholics()
@@ -184,7 +156,6 @@ def Cancel_Appointment(id,name,bid):
         accepted=h.get_accepted_upcoming_details(id) 
         patient=h.get_email_patient(you['PEmail'])
         app=h.get_appointment(bid)
-        print(you['PEmail'])
         
         date=str(app['BookingDate'])
         time=str(app['Time'])
@@ -258,11 +229,20 @@ def Update_Profile(id,name):
         out=h.get_profile_doctor(id)
         return render_template('Profile.html',data=out,id=id,name=name)
 
+#History
+@app.route('/History/<id>/<name>',methods=["POST","GET"])
+def History(id,name):
+    h=Hackaholics()
+    if request.method=="GET":    
+        appointment=h.get_history_appointments(id)    
+        consult=h.get_history_consultations(id) 
+        return render_template('History.html',id=id,name=name,appointment=appointment,consult=consult)
+
 #Logout
-@app.route('/Logout')
+@app.route('/Home')
 def Logout():
     session.pop('User_name',None)
-    return redirect(url_for('home.html'))
+    return redirect(url_for('Home'))
 
 #Doctor Register
 @app.route('/doctor_register',methods=['POST','GET'])
