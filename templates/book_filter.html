@@ -17,7 +17,7 @@
     <link rel="stylesheet" href="{{ url_for('static', filename='css/consultation_patient_filter.css') }}">
     <title>Booking Patient Filter</title>
 </head>
-<body>
+<body style = "background-color: #f0f5f7;">
     <div class="nav">
         <div class="logo">
             <span>WE4U</span>
@@ -89,8 +89,7 @@
         <br>
         <div class="list-of-doctors">
             {% if data_doc%}
-            {% for k in data_doc %}
-            {% for i in k %} 
+            {% for i in data_doc %} 
             <div class="cards">
                 <div class="profile">
                     <img src="{{ url_for('static', filename='images/profile.png') }}" alt="" width="100px" height="100px"> 
@@ -156,7 +155,6 @@
                 <a href="{{ url_for('Confirm_appointment',id=id,doc_id = i.Id, doc_name = i.Name,Patient_name = Patient_name,State = State,District = District,Specialization = Specialization,Description = Description) }}" class='logout-btn'>Consult</a>
             </div>
             {% endfor %} 
-            {% endfor %}
             {% endif %}
         </div>
     </div>
