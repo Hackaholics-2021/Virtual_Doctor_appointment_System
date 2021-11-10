@@ -117,31 +117,31 @@ def Consult_filter(id,Patient_name,Gender,Language,Specialization,category):
         data_doc=[]
         print("email",email_addresses)
         if category == "all":
-            out = obj.get_email_doctor_filter(email_addresses,Language,Specialization)
+            out = obj.get_email_doctor_filter_consult(email_addresses,Language,Specialization)
             if out:
                 data_doc.append(out)
         elif category == "r_lth":
-            out = obj.get_email_doctor_rating_lth(email_addresses,Language,Specialization)
+            out = obj.get_email_doctor_rating_lth_consult(email_addresses,Language,Specialization)
             if out:
                 data_doc.append(out)
         elif category == "r_htl":
-            out = obj.get_email_doctor_rating_htl(email_addresses,Language,Specialization)
+            out = obj.get_email_doctor_rating_htl_consult(email_addresses,Language,Specialization)
             if out:
                 data_doc.append(out)
         elif category == "e_htl":
-            out = obj.get_email_doctor_experience_htl(email_addresses,Language,Specialization)
+            out = obj.get_email_doctor_experience_htl_consult(email_addresses,Language,Specialization)
             if out:
                 data_doc.append(out)
         elif category == "e_lth":
-            out = obj.get_email_doctor_experience_lth(email_addresses,Language,Specialization)
+            out = obj.get_email_doctor_experience_lth_consult(email_addresses,Language,Specialization)
             if out:
                 data_doc.append(out)
         elif category == "male":
-            out = obj.get_email_doctor_male(email_addresses,Language,Specialization)
+            out = obj.get_email_doctor_male_consult(email_addresses,Language,Specialization)
             if out:
                 data_doc.append(out)
         elif category == "female":
-            out = obj.get_email_doctor_female(email_addresses,Language,Specialization)
+            out = obj.get_email_doctor_female_consult(email_addresses,Language,Specialization)
             if out:
                 data_doc.append(out)
 
@@ -184,27 +184,103 @@ def Consult_meeting_info(id,doc_id,doc_name,Patient_name,Lang,Special):
         return redirect(url_for('Patient_home',id=id))
     
 
-@app.route('/book_filter/<id>',methods=["GET"])
-def Book_filter(id):
+@app.route('/book_filter/<id>/<Patient_name>/<Gender>/<State>/<District>/<Specialization>/<Description>/<category>',methods=["GET"])
+def Book_filter(id,Patient_name,Gender,State,District,Specialization,Description,category):
+    obj = Hackaholics()
     if request.method=="GET":
-        return render_template('book_filter.html',id=id)
+        data_doc=[]
+        print("email",email_addresses)
+        if category == "all":
+            out = obj.get_email_doctor_filter_booking(email_addresses,State,District,Specialization)
+            if out:
+                data_doc.append(out)
+        elif category == "r_lth":
+            out = obj.get_email_doctor_rating_lth_booking(email_addresses,State,District,Specialization)
+            if out:
+                data_doc.append(out)
+        elif category == "r_htl":
+            out = obj.get_email_doctor_rating_htl_booking(email_addresses,State,District,Specialization)
+            if out:
+                data_doc.append(out)
+        elif category == "e_htl":
+            out = obj.get_email_doctor_experience_htl_booking(email_addresses,State,District,Specialization)
+            if out:
+                data_doc.append(out)
+        elif category == "e_lth":
+            out = obj.get_email_doctor_experience_lth_booking(email_addresses,State,District,Specialization)
+            if out:
+                data_doc.append(out)
+        elif category == "male":
+            out = obj.get_email_doctor_male_booking(email_addresses,State,District,Specialization)
+            if out:
+                data_doc.append(out)
+        elif category == "female":
+            out = obj.get_email_doctor_female_booking(email_addresses,State,District,Specialization)
+            if out:
+                data_doc.append(out)
 
-@app.route('/appointment_patient_info/<id>',methods=["GET"])
+        print("data_doc",data_doc)
+        if len(data_doc)>0:
+            return render_template('book_filter.html',id=id,Patient_name=Patient_name,Gender=Gender,State = State,District = District,Specialization=Specialization,Description = Description,data_doc=data_doc[0])
+
+        else:
+            return render_template('book_filter.html',id=id,Patient_name=Patient_name,Gender=Gender,State = State,District = District,Specialization=Specialization,Description = Description)
+
+@app.route('/appointment_patient_info/<id>',methods=["GET","POST"])
 def Appointment_patient_info(id):
     if request.method=="GET":
         return render_template('appointment_patient_info.html',id=id)
 
-@app.route('/confirm_appointment',methods=["GET"])
-def Confirm_appointment():
-    if request.method=="GET":
-        return render_template('confirm_appointment.html')
+    if request.method=="POST":
+        Patient_name = request.form['name']
+        Gender=request.form['gender']
+        State=request.form['location']
+        District = request.form['District']
+        Specialization=request.form['specialization']
+        Description = request.form['description']
+        
+        return redirect(url_for('Book_filter',id=id,Patient_name = Patient_name,Gender=Gender,State=State,District = District,Specialization = Specialization,Description = Description,category="all"))
 
-@app.route('/thankyou_appointment/<id>',methods=["GET"])
-def Thankyou_appointment(id):
+@app.route('/confirm_appointment/<id>/<doc_id>/<doc_name>/<Patient_name>/<State>/<District>/<Specialization>/<Description>',methods=["GET","POST"])
+def Confirm_appointment(id,doc_id,doc_name,Patient_name,State,District,Specialization,Description):
+    if request.method=="GET":
+        appointment_id = uuid.uuid4().hex
+        obj=Hackaholics()
+        out_patient = obj.get_info_patient(id)
+        out_doctor = obj.get_info_doctor(doc_id)
+        data = {
+            'AppointmentId':appointment_id,
+            'PId':id,
+            'DId':doc_id,
+            'PName':Patient_name,
+            'DName':doc_name,
+            'PEmail':out_patient['Email'],
+            'DEmail':out_doctor['Email'],
+            'Status':'Pending',
+            'BookingDate':date.today().strftime("%Y-%M-%d"),
+            'Fees':500,
+            'Description':Description,
+            'Time':datetime.now().strftime("%H:%M:%S"),
+            'Speciality':Specialization,
+            'State':State,
+            'District':District
+        }
+        out = obj.insert_into_booking(data)
+        return render_template('confirm_appointment.html',data = data,id=id,appointment_id = appointment_id)
+
+@app.route('/thankyou_appointment/<id>/<appointment_id>',methods=["GET","POST"])
+def Thankyou_appointment(id,appointment_id):
     if request.method=="GET":
         return render_template('thankyou_appointment.html',id=id)
 
-@app.route('/thankyou_consultation/<id>/<doc_id>/<doc_name>/<Patient_name>/<Lang>/<Special>',methods=["GET"])
+    if request.method =="POST":
+        Time = request.form['time']
+        Date = request.form['date']
+        obj = Hackaholics()
+        out = obj.update_booking_info(Time,Date,appointment_id)
+        return render_template('thankyou_appointment.html',id=id)
+
+@app.route('/thankyou_consultation/<id>/<doc_id>/<doc_name>/<Patient_name>/<Lang>/<Special>',methods=["GET","POST"])
 def Thankyou_consultation(id,doc_id,doc_name,Patient_name,Lang,Special):
     if request.method=="GET":
         return render_template('thankyou_consultation.html',id=id,doc_id =doc_id,doc_name = doc_name,Patient_name = Patient_name,Lang = Lang, Special =Special)
