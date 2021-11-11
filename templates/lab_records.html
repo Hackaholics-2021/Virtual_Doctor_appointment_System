@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Google fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;800&family=Open+Sans:wght@300;400;800&family=Titillium+Web:wght@300&family=Urbanist:wght@200&display=swap&family=Roboto+Slab&display=swap" rel="stylesheet">
+    <!-- jquery -->
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>
+    <!-- Font awesome -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+    <!-- CSS -->
+    <link rel="stylesheet" href="../static/css/Patient_profile.css">
+    <title>Lab Records</title>
+</head>
+<body>
+    <div class="nav">
+        <div class="logo">
+            <span>WE4U</span>
+        </div>
+        <div class="nav-items">
+            <span><a href="#" class="active">Home</a></span>
+            <span><a href="{{ url_for('Consultation',id=id) }}">Consult</a></span>
+            <span><a href="{{ url_for('Appointment_patient_info',id=id) }}">Book appointment</a></span>
+            <span><a href="#">History</a></span>
+            <span><a href="#">Profile</a></span>
+            <span><a href="#">Find a Doctor</a></span>
+        </div>
+    </div>
+    
+    <div class="sidenav">
+        <img src="../static/images/profile.png" class="image">
+        <a href="patient_profile#">Appointment History</a><br>
+        <a href="#">Todays Appointment</a><br>
+        <a href="#">Rescheduled Appointment</a><br>
+        <a href="#">Prescription details</a><br>
+        <a href="#">Lab Records</a><br>
+        <a href="#">Update profile</a><br>
+        <a href="#">Logout</a><br>
+        
+
+
+        <span class="icons">
+            <img src="../static/images/twitter.png" alt="" class="icons1">
+            <img src="../static/images/facebook-circular-logo .png" alt="" class="icons1">
+            <img src="../static/images/instagram.png" alt="" class="icons1">
+            <img src="../static/images/whatsapp.png" alt="" class="icons1">
+        </span>
+    </div>
+    <div class="right" style="margin-left:600px">
+            <div class="signup-form">
+                <form style="margin-top:30px;margin-left:80px;">
+                    <b><h3 class="fonts" style="margin-left:50px">Update Profile</h3><br></b>
+                    <span>
+                        <label for = "ctscan" class="ctscan">CT Scan</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        <input type="text" name="ctscan" placeholder="Enter drive link" class="form-input"><br>
+                    </span>
+                    <span>
+                        <label for = "mriscan" class="mriscan">MRI Scan</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        <input type="text" name="mriscan" placeholder="Enter drive link"  class="form-input"><br>
+                    </span>
+                    <span>
+                        <label for = "ECG" class="ECG">ECG</label>
+                        <input type="text" name="ECG" id="myInput" class="form-input" placeholder="Enter drive link" style="width:165px">
+                        
+                    </span>
+                    <span>
+                        <label for = "EEG" class="EEG">EEG</label>
+                        <input type="text" name="EEG" placeholder="Enter drive link" class="form-input">
+                    </span>
+                    <span>
+                        <label for = "gastroscopy" class="gastroscopy">Gastroscopy</label>
+                        <input type="text" name="gastroscopy" placeholder="Enter drive link" class="form-input">
+                    </span>
+                    
+                    <span>
+                        <label for = "eye" class = "eye"> Eye </label>
+                        <input type="text" name="eye" placeholder="Enter drive link" class="form-input">
+                    </span>
+                    
+                    <span>
+                        <label for = "pet" class = "pet"> PET </label>
+                        <input type="text" name="pet" placeholder="Enter drive link" class="form-input">
+                    </span>
+                    
+                    <span>
+                        <label for = "xray" class = "xray"> X-Ray</label>
+                        <input type="text" name="xray" placeholder="Enter drive link" class="form-input">
+                    </span>
+                    <span>
+                        <label for = "ultra" class ="utra"> Ultrasound</label>
+                        <input type="text" name="ultra" placeholder="Enter drive link" class="form-input">
+                    </span>
+                    <br>
+                    <button type="submit" name="signup" class="form-input signup-btn" >Update</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+</body><script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T" crossorigin="anonymous"></script>
+
+<!-- jQuery library -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    
+<!-- plugin for jquery validation -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.1/jquery.validate.min.js"> </script>
+
+<!-- Popper JS -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+
+<!-- Latest compiled JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+<!-- link for jquery validation -->
+<script src = "{{('/static/jquery/web.js')}}"> </script>
+</html>
