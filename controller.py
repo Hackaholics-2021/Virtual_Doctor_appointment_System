@@ -238,6 +238,12 @@ def History(id,name):
         consult=h.get_history_consultations(id) 
         return render_template('History.html',id=id,name=name,appointment=appointment,consult=consult)
 
+#Precription
+@app.route('/Prescription',methods=["POST","GET"])
+def Prescription():
+    if request.method=="GET":
+         return render_template('Prescription.html')
+
 #Logout
 @app.route('/Home')
 def Logout():

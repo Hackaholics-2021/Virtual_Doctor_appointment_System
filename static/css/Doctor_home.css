@@ -318,3 +318,9 @@ a,a:hover{
     background-color: #6e3924;
     /* box-shadow: 0 12px 16px 0 rgba(138, 137, 137, 0.24), 0 17px 50px 0 rgba(134, 134, 134, 0.19); */
 }
+
+
+/* Prescription */
+.add_medication{
+    display: none;
+}
