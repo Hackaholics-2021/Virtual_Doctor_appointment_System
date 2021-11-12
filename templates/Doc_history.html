@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Upcoming Appointments</title>
+    <title>History</title>
     
     <!-- Bootstrap -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
@@ -30,20 +30,20 @@
             <div class="logo">WE4U</div>
             <div class="links">      
                 <span><a href="{{ url_for('Doctor_Home',id=id,name=name) }}">Home</a></span>               
-                <span><a href="{{ url_for('Upcoming',id=id,name=name) }}" class="active">Upcoming</a></span>
+                <span><a href="{{ url_for('Upcoming',id=id,name=name) }}">Upcoming</a></span>
                 <span><a href="{{ url_for('Patients',id=id,name=name) }}" >Patients</a></span>
-                <span><a href="{{ url_for('History',id=id,name=name) }}">History</a></span>
+                <span><a href="{{ url_for('History',id=id,name=name) }}" class="active">History</a></span>
                 <span><a href="{{ url_for('Profile',id=id,name=name) }}">Profile</a></span>               
-                <button class="button" href="{{ url_for('Logout') }}">Logout</button>
+                <button class="button" href="{{ url_for('Home') }}">Logout</button>
             </div>
         </div>
     </header>
     <div class="container-fluid">
-        <h1 class="heading">Upcoming Appointments</h1>
+        <h1 class="heading">History</h1>
         <div class="container" style="text-align: center;display: flex;justify-content: space-between;">
             <!-- <button class="button" href="#new " data-toggle="collapse" data-target="#new" data-parent="#accordion">New Appointments</button> -->
-            <a data-toggle="collapse" data-parent="#accordion" href="#collapse1"><button class="button" >New Appointments</button></a>
-            <a data-toggle="collapse" data-parent="#accordion" href="#collapse2"><button class="button" >Accepted Appointments</button></a>
+            <a data-toggle="collapse" data-parent="#accordion" href="#collapse1"><button class="button" >Appointments</button></a>
+            <a data-toggle="collapse" data-parent="#accordion" href="#collapse2"><button class="button" >Consultations</button></a>
         </div>
 
 
@@ -51,15 +51,15 @@
             <div class="panel panel-default">
               <div id="collapse1" class="panel-collapse collapse in">
                 <div class="panel-body">
-                    <h3 style="text-align: center;color: #1c3d69;">New Appointments</h3><hr>
+                    <h3 style="text-align: center;color: #1c3d69;">Appointments</h3><hr>
                     <table class="table table-striped">
-                        {% if new %}
+                        {% if appointment %}
                         <thead>
                             <tr><th>Patient Name</th><th>Patient Email</th><th>Appointment Date</th><th>Time</th><th>Description</th><th>State</th><th>District</th></tr>
                         </thead>
                         <tbody>
                             
-                            {% for out in new %}
+                            {% for out in appointment %}
                             <tr>
                                 <td>{{out.PName}}</td>
                                 <td>{{out.PEmail}}</td>
@@ -68,12 +68,10 @@
                                 <td>{{out.Description}}</td>
                                 <td>{{out.State}}</td>
                                 <td>{{out.District}}</td>
-                                <td><a href="{{url_for('Accept_Appointment',id=id,name=name,bid=out.AppointmentId)}}"><button class="accept" >Accept</button></a></td>
-                                <td><a  href="{{url_for('Cancel_Appointment',id=id,name=name,bid=out.AppointmentId)}}"><button class="cancel">Cancel</button></a></td>
                             </tr>
                             {% endfor %}
                             {% else %}
-                            <h2 style="text-align: center;">Oops! No New Appointments</h2>
+                            <h2 style="text-align: center;">Oops! No Appointments</h2>
                             {% endif %}
                         </tbody>
                     </table>
@@ -83,27 +81,25 @@
             <div class="panel panel-default">
               <div id="collapse2" class="panel-collapse collapse">
                 <div class="panel-body">
-                    <h3 style="text-align: center;color: #35B680;">Accepted Appointments</h3><hr>
+                    <h3 style="text-align: center;color: #35B680;">Consultations</h3><hr>
                     <table class="table table-striped">
-                        {% if accepted %}
+                        {% if consult %}
                         <thead>
-                            <tr><th>Patient Name</th><th>Patient Email</th><th>Appointment Date</th><th>Time</th><th>Description</th><th>State</th><th>District</th></tr>
+                            <tr><th>Patient Name</th><th>Consultation Date</th><th>Time</th><th>Language</th><th>Speciality</th></tr>
                         </thead>
                         <tbody>
                             
-                            {% for out in accepted %}
+                            {% for out in consult %}
                             <tr>
                                 <td>{{out.PName}}</td>
-                                <td>{{out.PEmail}}</td>
-                                <td>{{out.BookingDate}}</td>
+                                <td>{{out.ConsultationDate}}</td>
                                 <td>{{out.Time}}</td>
-                                <td>{{out.Description}}</td>
-                                <td>{{out.State}}</td>
-                                <td>{{out.District}}</td>
+                                <td>{{out.Language}}</td>
+                                <td>{{out.Speciality}}</td>
                             </tr>
                             {% endfor %}
                             {% else %}
-                            <h2 style="text-align: center;">Oops! No Accepted Appointments</h2>
+                            <h2 style="text-align: center;">Oops! No Consultations</h2>
                             {% endif %}
                         </tbody>
                     </table>

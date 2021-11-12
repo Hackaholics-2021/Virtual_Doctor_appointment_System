@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Google fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;800&family=Open+Sans:wght@300;400;800&family=Titillium+Web:wght@300&family=Urbanist:wght@200&display=swap&family=Roboto+Slab&display=swap" rel="stylesheet">
+    <!-- jquery -->
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>
+    <!-- Font awesome -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+    <!-- CSS -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/Patient_home.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/consultation_meeting_info.css') }}">
+    <title>Appointment Meeting Information</title>
+</head>
+<body style="background-color: #F0F5F7;">
+    <div class="nav">
+        <div class="logo">
+            <span>WE4U</span>
+        </div>
+        <div class="nav-items">
+            <span><a href="{{ url_for('Patient_home',id=id) }}">Home</a></span>
+            <span><a href="{{ url_for('Consultation',id=id) }}" class="active">Consult</a></span>
+            <span><a href="{{ url_for('Appointment_patient_info',id=id) }}">Book appointment</a></span>
+            <span><a href="#">History</a></span>
+            <span><a href="#">Profile</a></span>
+            <span><a href="#">Find a Doctor</a></span>
+        </div>
+        <a href="#" class="logout-btn">Logout</a>
+    </div>
+    <div class="full_body">
+        <div class="container">
+            <div class="header">
+                Here are the meeting credentials
+            </div>
+            <div class="credentials">
+                <div class="left-credential-side">
+                    <div class="meeting-link">
+                        <span><b>Meeting Link:</b></span>
+                        <span class="link-for-meet value" onclick="window.open('https://meet.google.com/rhq-nyec-gae')"><a href="{{ url_for('Doctor_Home',id=id,name = name) }}" >Join the meeting</a></span>
+                    </div>
+                    <div class="note">
+                        <span><b>Note:</b></span>
+                        <span class="value">The meeting link will expire within 2 hours. Please make sure you have good connection with you.</span>
+                    </div>
+                </div>
+                <div class="right-credential-side">
+                    <div class="images">
+                        <img src="{{ url_for('static', filename='images/coin.png') }}" alt="" width="35px" height="35px">
+                        <img src="{{ url_for('static', filename='images/clock.png') }}" alt="" width="35px" height="35px">
+                        <img src="{{ url_for('static', filename='images/secure-shield.png') }}" alt="" width="35px" height="35px">
+                    </div>
+                    <div class="image-text">
+                        <span style="color:#ffb804">More affordable</span><br>
+                        <span style="color:#44bb29">Quicker and reliable</span><br>
+                        <span style="color:#b82626">Private and Safe</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T" crossorigin="anonymous"></script>
+    
+    <!-- jQuery library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        
+    <!-- plugin for jquery validation -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.1/jquery.validate.min.js"> </script>
+    
+    <!-- Popper JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    
+    <!-- Latest compiled JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</html>

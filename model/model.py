@@ -68,7 +68,6 @@ class Hackaholics:
             return None
 
     def get_info_doctor(self,id):
-    def get_profile_doctor(self,id):
         s=self.doctor.select().where(self.doctor.c.Id==id)
         res=engine.execute(s)
         results=[dict(r) for r in res] if res else None
@@ -111,6 +110,14 @@ class Hackaholics:
 
     def update_booking_info(self,time,date,appointment_id):
         stmt = self.booking_appointment.update().where(self.booking_appointment.c.AppointmentId == appointment_id).values(Time = time,BookingDate = date)
+        res = engine.execute(stmt)
+        if res:
+            return res
+        else:
+            return None
+
+    def update_appointment_info_status(self,appointment_id):
+        stmt = self.booking_appointment.update().where(self.booking_appointment.c.AppointmentId == appointment_id).values(Status = 'Completed')
         res = engine.execute(stmt)
         if res:
             return res
@@ -432,6 +439,7 @@ class Hackaholics:
                 result.append(r)
         #result=[dict(r) for r in res] if res else None
         if result!=None:
+            print("result",result,no,today)
             return result,no
         else:
             return None

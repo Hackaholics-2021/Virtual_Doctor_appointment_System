@@ -30,7 +30,7 @@
                 <span><a href="{{ url_for('Patients',id=id,name=name) }}">Patients</a></span>
                 <span><a href="{{ url_for('History',id=id,name=name) }}">History</a></span>
                 <span><a href="{{ url_for('Profile',id=id,name=name) }}" >Profile</a></span>               
-                <button class="button" href="{{ url_for('Logout') }}">Logout</button>
+                <a class="button" href="{{ url_for('Home') }}" style = "color:white">Logout</a>
             </div>
         </div>
     </header>
@@ -84,7 +84,7 @@
         <div class="container">
             <table class="table table-striped">
                 <thead>
-                    <tr><th>Patient Name</th><th>Patient Email</th><th>Time</th><th>Description</th><th>Language</th></tr>
+                    <tr><th>Patient Name</th><th>Patient Email</th><th>Time</th><th>Description</th></tr>
                 </thead>
                 <tbody>
                     
@@ -94,8 +94,7 @@
                         <td>{{out.PEmail}}</td>
                         <td>{{out.Time}}</td>
                         <td>{{out.Description}}</td>
-                        <td>{{out.Language}}</td>
-                        <td><a href="#"><button class="accept" >Start</button></a></td>
+                        <td><a href="{{ url_for('Appointment_meeting_info_doc',id = id,appointment_id = out.AppointmentId,name = name) }}"><button class="accept" >Start</button></a></td>
                     </tr>
                     {% endfor %}
                     

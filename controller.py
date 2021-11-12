@@ -24,13 +24,7 @@ email_addresses = []
 
 
 
-@app.route('/',methods=["POST","GET"])
-def Home():
-    if request.method=="GET":
-        if 'D_email' in session and session['D_email'] in email_addresses:
-            email_addresses.remove(session['D_email'])
-            del session['D_email']
-        return render_template("home.html")
+
 
 import datetime
 app = Flask(__name__) #creating the Flask class object  
@@ -46,18 +40,19 @@ app.config['MAIL_USE_SSL'] = True
 mail = Mail(app)
 
 
-
-
-# Home Page
 @app.route('/',methods=["POST","GET"])
 def Home():
     if request.method=="GET":
-        return render_template('home.html')
+        if 'D_email' in session and session['D_email'] in email_addresses:
+            email_addresses.remove(session['D_email'])
+            del session['D_email']
+        return render_template("home.html")
+
 
 
 # Doctor Register
-@app.route('/Register',methods=["POST","GET"])
-def SignUp():
+@app.route('/Doc_Register',methods=["POST","GET"])
+def Doc_SignUp():
     if request.method=="GET":
         return render_template("Doctor_register.html")
     elif request.method=="POST":
@@ -111,8 +106,8 @@ def Login():
     if request.method=="GET":
         return render_template("Login.html")
     elif request.method=="POST":
-        email=request.form["email"]
-        password=request.form["password"]
+        email=request.form["Email"]
+        password=request.form["Password"]
         out=obj.get_email_patient(email)
         output=obj.get_email_doctor(email)
         if out:
@@ -128,7 +123,7 @@ def Login():
                     email_addresses.append(email)
                     session['D_email']=email
                     print(email_addresses)
-                return render_template("Patient_home.html",id=output['Id'])            
+                return redirect( url_for("Doctor_Home",id=output['Id'],name = output['Name']) )           
             else:
                 flash("Password is wrong.Please enter correct password")
                 return render_template("Login.html",email=output['Email'])
@@ -271,6 +266,12 @@ def Consult_meeting_info(id,doc_id,doc_name,Patient_name,Lang,Special):
         out = obj.update_consult_status(consult_id)
         return redirect(url_for('Patient_home',id=id))
     
+@app.route('/appointment_meeting_info_doc/<id>/<appointment_id>/<name>',methods=["GET","POST"])
+def Appointment_meeting_info_doc(id,appointment_id,name):
+    if request.method=="GET":
+        obj=Hackaholics()
+        out = obj.update_appointment_info_status(appointment_id)
+        return render_template('appointment_meeting_info_doc.html',id=id,name = name,appointment_id = appointment_id)
 
 @app.route('/book_filter/<id>/<Patient_name>/<Gender>/<State>/<District>/<Specialization>/<Description>/<category>',methods=["GET"])
 def Book_filter(id,Patient_name,Gender,State,District,Specialization,Description,category):
@@ -371,7 +372,8 @@ def Thankyou_appointment(id,appointment_id):
         msg_to_patient=Message('WE4U Virtual Doctor Appointment',sender='hackaholics4@gmail.com',recipients=[out_booking['PEmail']])
         msg_to_patient.html="<h2>Hello "+out_booking['PName']+",</h2><p>Hope you are doing well!</p><p>We hereby inform you that your Appointment request for the doctor named <b> Dr."+out_booking['DName']+"</b> on <b>"+booking_date+"</b> at <b>"+ out_booking['Time']+"</b> has been <b>Booked Successfully!</b><br><h4>We offer you a sincere thanks and gratitude for choosing our service!</h4><p>If you have any questions or concerns, please don't hesitate to contact us hackaholics4@gmail.com. Thanks</p>"
         mail.send(msg_to_patient)
-        return render_template('thankyou_appointment.html',id=id)
+        return render_template('Patient_home.html',id = id)
+        
 
 @app.route('/thankyou_consultation/<id>/<doc_id>/<doc_name>/<Patient_name>/<Lang>/<Special>',methods=["GET","POST"])
 def Thankyou_consultation(id,doc_id,doc_name,Patient_name,Lang,Special):
@@ -417,14 +419,14 @@ def Doctor_Home(id,name):
     if request.method=="GET":
         today,no=h.get_todays_appointment(id)
         consult,count=h.get_consultations(id) 
-        if today!=None and no!=0 and consult!=None and count!=0:
-            return render_template("Doctor_home.html",id=id,name=name,today=today,no=no,consult=consult,count=count)
-        elif today==None and no==0 and consult==None and count==0:
-            return render_template("Doctor_home.html",id=id,name=name,no=0,count=0)
-        elif today!=None and no!=0 and consult==None and count==0:
-            return render_template("Doctor_home.html",id=id,name=name,today=today,no=no,count=0)
-        else:
-            return render_template("Doctor_home.html",id=id,name=name,no=0,consult=consult,count=count)
+        # if today!=None and no!=0 and consult!=None and count!=0:
+        return render_template("Doctor_home.html",id=id,name=name,today=today,no=no,consult=consult,count=count)
+        # elif today==None and no==0 and consult==None and count==0:
+        #     return render_template("Doctor_home.html",id=id,name=name,no=0,count=0)
+        # elif today!=None and no!=0 and consult==None and count==0:
+        #     return render_template("Doctor_home.html",id=id,name=name,today=today,no=no,count=0)
+        # else:
+        #     return render_template("Doctor_home.html",id=id,name=name,no=0,consult=consult,count=count)
 
 # View Patients
 @app.route('/Patients/<id>/<name>',methods=["POST","GET"])
@@ -450,7 +452,7 @@ def Upcoming(id,name):
     if request.method=="GET":    
         new=h.get_new_upcoming_details(id)    
         accepted=h.get_accepted_upcoming_details(id) 
-        return render_template('Upcoming.html',id=id,name=name,new=new,accepted=accepted)
+        return render_template('Doc_Upcoming.html',id=id,name=name,new=new,accepted=accepted)
 
 #Cancel Appointment
 @app.route('/UpdatedUpcoming/<id>/<name>/<bid>',methods=["POST","GET"])
@@ -471,7 +473,7 @@ def Cancel_Appointment(id,name,bid):
         msg_to_patient.html="<h2>Hello "+patient['Name']+",</h2><p>Hope you are doing well!</p><p>We regret to inform you that your Appointment request for the doctor named <b>"+app['DName']+"</b> on <b>"+date+"</b> at <b>"+ time+"</b> for "+app['Description']+" have been <i>cancelled</i> by him/her due to personal reasons/timing issues.<br><h4>Feel free to reshcedule your Appointment with the same Doctor</h4><p>If you have any questions or concerns, please don't hesitate to contact us hackaholics4@gmail.com Thanks</p>"
         mail.send(msg_to_patient)
         
-        return render_template('Upcoming.html',id=id,name=name,new=new,accepted=accepted)
+        return render_template('Doc_Upcoming.html',id=id,name=name,new=new,accepted=accepted)
 
 #Accept Appointment
 @app.route('/Updated_Upcoming/<id>/<name>/<bid>',methods=["POST","GET"])
@@ -481,7 +483,7 @@ def Accept_Appointment(id,name,bid):
         out=h.accept_appointment(bid)   
         new=h.get_new_upcoming_details(id)    
         accepted=h.get_accepted_upcoming_details(id) 
-        return render_template('Upcoming.html',id=id,name=name,new=new,accepted=accepted)
+        return render_template('Doc_Upcoming.html',id=id,name=name,new=new,accepted=accepted)
 
 
 #Profile
@@ -489,8 +491,8 @@ def Accept_Appointment(id,name,bid):
 def Profile(id,name):
     h=Hackaholics()
     if request.method=="GET":
-        out=h.get_profile_doctor(id)
-        return render_template('Profile.html',data=out,id=id,name=name)
+        out=h.get_info_doctor(id)
+        return render_template('Doc_Profile.html',data=out,id=id,name=name)
 
 #Update Profile
 @app.route('/UpdateProfile/<id>/<name>',methods=["POST","GET"])
@@ -533,8 +535,8 @@ def Update_Profile(id,name):
             'Gender':request.form["Gender"]
         }
         res=h.update_profile_doctor(id,data)
-        out=h.get_profile_doctor(id)
-        return render_template('Profile.html',data=out,id=id,name=name)
+        out=h.get_info_doctor(id)
+        return render_template('Doc_Profile.html',data=out,id=id,name=name)
 
 #History
 @app.route('/History/<id>/<name>',methods=["POST","GET"])
@@ -543,13 +545,13 @@ def History(id,name):
     if request.method=="GET":    
         appointment=h.get_history_appointments(id)    
         consult=h.get_history_consultations(id) 
-        return render_template('History.html',id=id,name=name,appointment=appointment,consult=consult)
+        return render_template('Doc_history.html',id=id,name=name,appointment=appointment,consult=consult)
 
 #Precription
 @app.route('/Prescription',methods=["POST","GET"])
 def Prescription():
     if request.method=="GET":
-         return render_template('Prescription.html')
+         return render_template('Doc_Prescription.html')
 
 
 
