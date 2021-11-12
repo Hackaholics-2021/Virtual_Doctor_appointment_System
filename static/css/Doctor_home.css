@@ -24,7 +24,7 @@ input,textarea,select{
     border:0;
     outline: none;
     border-bottom: 2px solid #6AC6C4;
-    font-size: 25px;
+    font-size: 20px;
     background-color: #F0F5F7;
 }
 input:focus,textarea:focus,select:focus{

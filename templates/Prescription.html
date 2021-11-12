@@ -34,17 +34,15 @@
         <h1 class="heading">Prescription</h1>
         <div class="container" style="width: 85%;">
             
-            <table class="table table-striped" style="text-align: center;">
-                <thead>
-                    <tr style="font-weight: bold;"><td>Medication</td><td>Frequency</td><td>Meal</td><td>Duration</td></tr>
-                </thead>
-                            
-                    <form action="#" method="get" class="add_medication">    
-                        <tbody>           
-                        <tr>
-                            <td ><input type="text" name="Mediaction" style="width: 250px;"></td>
+            <table class="table" >                
+                <tr style="font-weight: bold;"><td style="padding-left: 55px;">Medication</td><td style="padding-right: 70px;padding-left: 80px;">Frequency</td><td style="padding-right: 120px;">Meal</td><td style="padding-right: 100px;">Duration</td></tr>                
+            </table>              
+                <form action="#" method="get" class="add_medication">    
+                    <table class="table"> 
+                        <tr >
+                            <td ><input type="text" class="Medication" name="Medication" style="width: 200px;" required></td>
                             <td>
-                                <select  class="Frequency" style="width: 250px; text-align: center;">
+                                <select  class="Frequency" style="width: 200px; text-align: center;" required>
                                     <option>1-0-0</option>
                                     <option>0-1-0</option>
                                     <option>0-0-1</option>
@@ -55,19 +53,19 @@
                                 </select>
                             </td>
                             <td>
-                                <select  class="Meal" style="width: 250px;text-align: center;">
+                                <select  class="Meal" style="width: 200px;text-align: center;" required>
                                     <option>Before Meal</option>
                                     <option>After Meal</option>
                                 </select>
                             </td>
-                            <td><input type="text" name="Duration" placeholder="Ex. 10 days" style="width: 250px;"></td>
-                            <td><button class="accept">Add</button></td>
+                            <td><input type="text" class="Duration" name="Duration"  style="width: 200px;" required></td>
+                            <td><a href="url_for('Add_Medication')"><button class="accept" onclick="add_to_table()">Add</button></a></td>
                         </tr>
-                    </tbody>
-                    </form>
+                    </table>   
+                </form>
                 
-            </table>
-            <a href="#" class="accept" onclick="add_med()">Add Medication</a>
+            
+            <button class="accept" onclick="add_med()">Add Medication</button>
         </div>        
     </div>
     <script>
@@ -77,6 +75,21 @@
             }
             else{
                 document.getElementsByClassName("add_medication")[0].style.display="block";
+            }
+        }
+        function add_to_table(){
+            var med = document.getElementsByClassName("Medication")[0].value;
+            var freq= document.getElementsByClassName("Frequency")[0].selectedIndex;
+            var freq_value=document.getElementsByTagName("option")[freq].value;
+            var meal=document.getElementsByClassName("Meal")[0].selectedIndex;
+            var meal_value=document.getElementsByTagName("option")[meal+7].value;
+            var dur=document.getElementsByName("Duration")[0].value;
+            
+            if(med && freq_value && meal_value && dur){
+                var table = document.getElementsByTagName("table")[0];
+                var new_row = document.createElement("tr");
+                new_row.innerHTML = `<tr><td>${med}</td><td>${freq_value}</td> <td>${meal_value}</td><td>${dur}</td></tr>`;
+                table.appendChild(new_row);
             }
         }
     </script>
