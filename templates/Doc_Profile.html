@@ -31,7 +31,7 @@
                 <span><a href="{{ url_for('Patients',id=id,name=name) }}">Patients</a></span>
                 <span><a href="{{ url_for('History',id=id,name=name) }}">History</a></span>
                 <span><a href="{{ url_for('Profile',id=id,name=name) }}" class="active">Profile</a></span>               
-                <button class="button" href="{{ url_for('Home') }}">Logout</button>
+                <a class="button" href="{{ url_for('Home') }}" style = color:white;>Logout</a>
             </div>
         </div>
     </header>

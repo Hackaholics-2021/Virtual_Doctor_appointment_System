@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Upcoming Appointments</title>
+    <title>History</title>
     
     <!-- Bootstrap -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
@@ -21,6 +21,7 @@
     <!-- Fontawesome -->
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
     <!-- css -->
+    <link rel="stylesheet" href="../static/css/Patient_profile.css">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/Doctor_home.css') }}">
 
 </head>
@@ -29,21 +30,39 @@
         <div class="navigation">
             <div class="logo">WE4U</div>
             <div class="links">      
-                <span><a href="{{ url_for('Doctor_Home',id=id,name=name) }}">Home</a></span>               
-                <span><a href="{{ url_for('Upcoming',id=id,name=name) }}" class="active">Upcoming</a></span>
-                <span><a href="{{ url_for('Patients',id=id,name=name) }}" >Patients</a></span>
-                <span><a href="{{ url_for('History',id=id,name=name) }}">History</a></span>
-                <span><a href="{{ url_for('Profile',id=id,name=name) }}">Profile</a></span>               
-                <a class="button" href="{{ url_for('Home') }}" style = color:white;>Logout</a>
+                <span><a href="{{ url_for('Patient_home',id = id) }}">Home</a></span>
+                <span><a href="{{ url_for('Consultation',id=id) }}">Consult</a></span>
+                <span><a href="{{ url_for('Appointment_patient_info',id=id) }}">Book appointment</a></span>
+                <span><a href="{{url_for('History_patient',id = id)}}"  class="active">History</a></span>
+                <span><a href="{{ url_for('Patient_profile',id =id) }}" >Profile</a></span>
             </div>
         </div>
     </header>
-    <div class="container-fluid">
-        <h1 class="heading">Upcoming Appointments</h1>
+    <div class="sidenav">
+        <img src="../static/images/profile.png" class="image">
+        <a href="{{url_for('History_patient',id = id)}}">Appointment History</a><br>
+        <a href="{{url_for('Todays_appointment_patient',id = id)}}">Todays Appointment</a><br>
+        <a href="#">Rescheduled Appointment</a><br>
+        <a href="#">Prescription details</a><br>
+        <a href="{{ url_for('Lab_records_patient',id =id) }}">Lab Records</a><br>
+        <a href="{{ url_for('Patient_profile',id =id) }}">Update profile</a><br>
+        <a href="{{ url_for('Home') }}">Logout</a><br>
+        
+
+
+        <span class="icons">
+            <img src="../static/images/twitter.png" alt="" class="icons1">
+            <img src="../static/images/facebook-circular-logo .png" alt="" class="icons1">
+            <img src="../static/images/instagram.png" alt="" class="icons1">
+            <img src="../static/images/whatsapp.png" alt="" class="icons1">
+        </span>
+    </div>
+    <div class="container-fluid" style = "margin-left:300px;">
+        <h1 class="heading" style = "color:white">History</h1>
         <div class="container" style="text-align: center;display: flex;justify-content: space-between;">
             <!-- <button class="button" href="#new " data-toggle="collapse" data-target="#new" data-parent="#accordion">New Appointments</button> -->
-            <a data-toggle="collapse" data-parent="#accordion" href="#collapse1"><button class="button" >New Appointments</button></a>
-            <a data-toggle="collapse" data-parent="#accordion" href="#collapse2"><button class="button" >Accepted Appointments</button></a>
+            <a data-toggle="collapse" data-parent="#accordion" href="#collapse1"><button class="button" >Appointments</button></a>
+            <a data-toggle="collapse" data-parent="#accordion" href="#collapse2"><button class="button" >Consultations</button></a>
         </div>
 
 
@@ -51,29 +70,27 @@
             <div class="panel panel-default">
               <div id="collapse1" class="panel-collapse collapse in">
                 <div class="panel-body">
-                    <h3 style="text-align: center;color: #1c3d69;">New Appointments</h3><hr>
+                    <h3 style="text-align: center;color: #1c3d69;">Appointments</h3><hr>
                     <table class="table table-striped">
-                        {% if new %}
+                        {% if out_booking %}
                         <thead>
-                            <tr><th>Patient Name</th><th>Patient Email</th><th>Appointment Date</th><th>Time</th><th>Description</th><th>State</th><th>District</th></tr>
+                            <tr><th>Doctor Name</th><th>Doctor Email</th><th>Appointment Date</th><th>Time</th><th>Description</th><th>State</th><th>District</th></tr>
                         </thead>
                         <tbody>
                             
-                            {% for out in new %}
+                            {% for out in out_booking %}
                             <tr>
-                                <td>{{out.PName}}</td>
-                                <td>{{out.PEmail}}</td>
+                                <td>{{out.DName}}</td>
+                                <td>{{out.DEmail}}</td>
                                 <td>{{out.BookingDate}}</td>
                                 <td>{{out.Time}}</td>
                                 <td>{{out.Description}}</td>
                                 <td>{{out.State}}</td>
                                 <td>{{out.District}}</td>
-                                <td><a href="{{url_for('Accept_Appointment',id=id,name=name,bid=out.AppointmentId)}}"><button class="accept" >Accept</button></a></td>
-                                <td><a  href="{{url_for('Cancel_Appointment',id=id,name=name,bid=out.AppointmentId)}}"><button class="cancel">Cancel</button></a></td>
                             </tr>
                             {% endfor %}
                             {% else %}
-                            <h2 style="text-align: center;">Oops! No New Appointments</h2>
+                            <h2 style="text-align: center;">Oops! No Appointments</h2>
                             {% endif %}
                         </tbody>
                     </table>
@@ -83,27 +100,25 @@
             <div class="panel panel-default">
               <div id="collapse2" class="panel-collapse collapse">
                 <div class="panel-body">
-                    <h3 style="text-align: center;color: #35B680;">Accepted Appointments</h3><hr>
+                    <h3 style="text-align: center;color: #35B680;">Consultations</h3><hr>
                     <table class="table table-striped">
-                        {% if accepted %}
+                        {% if out_consult %}
                         <thead>
-                            <tr><th>Patient Name</th><th>Patient Email</th><th>Appointment Date</th><th>Time</th><th>Description</th><th>State</th><th>District</th></tr>
+                            <tr><th>Doctor Name</th><th>Consultation Date</th><th>Time</th><th>Language</th><th>Speciality</th></tr>
                         </thead>
                         <tbody>
                             
-                            {% for out in accepted %}
+                            {% for out in out_consult %}
                             <tr>
-                                <td>{{out.PName}}</td>
-                                <td>{{out.PEmail}}</td>
-                                <td>{{out.BookingDate}}</td>
+                                <td>{{out.DName}}</td>
+                                <td>{{out.ConsultationDate}}</td>
                                 <td>{{out.Time}}</td>
-                                <td>{{out.Description}}</td>
-                                <td>{{out.State}}</td>
-                                <td>{{out.District}}</td>
+                                <td>{{out.Language}}</td>
+                                <td>{{out.Speciality}}</td>
                             </tr>
                             {% endfor %}
                             {% else %}
-                            <h2 style="text-align: center;">Oops! No Accepted Appointments</h2>
+                            <h2 style="text-align: center;">Oops! No Consultations</h2>
                             {% endif %}
                         </tbody>
                     </table>

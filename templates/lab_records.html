@@ -22,24 +22,23 @@
             <span>WE4U</span>
         </div>
         <div class="nav-items">
-            <span><a href="#" class="active">Home</a></span>
+            <span><a href="{{ url_for('Patient_home',id = id) }}">Home</a></span>
             <span><a href="{{ url_for('Consultation',id=id) }}">Consult</a></span>
             <span><a href="{{ url_for('Appointment_patient_info',id=id) }}">Book appointment</a></span>
-            <span><a href="#">History</a></span>
-            <span><a href="#">Profile</a></span>
-            <span><a href="#">Find a Doctor</a></span>
+            <span><a href="{{url_for('History_patient',id = id)}}">History</a></span>
+            <span><a href="{{ url_for('Patient_profile',id =id) }}"  class="active">Profile</a></span>
         </div>
     </div>
     
     <div class="sidenav">
         <img src="../static/images/profile.png" class="image">
-        <a href="patient_profile#">Appointment History</a><br>
-        <a href="#">Todays Appointment</a><br>
+        <a href="{{url_for('History_patient',id = id)}}">Appointment History</a><br>
+        <a href="{{url_for('Todays_appointment_patient',id = id)}}">Todays Appointment</a><br>
         <a href="#">Rescheduled Appointment</a><br>
         <a href="#">Prescription details</a><br>
-        <a href="#">Lab Records</a><br>
-        <a href="#">Update profile</a><br>
-        <a href="#">Logout</a><br>
+        <a href="{{ url_for('Lab_records_patient',id =id) }}">Lab Records</a><br>
+        <a href="{{ url_for('Patient_profile',id =id) }}">Update profile</a><br>
+        <a href="{{ url_for('Home') }}">Logout</a><br>
         
 
 
@@ -53,48 +52,51 @@
     <div class="right" style="margin-left:600px">
             <div class="signup-form">
                 <form style="margin-top:30px;margin-left:70px;">
-                    <b><h3 class="fonts" style="margin-left:70px">Update Diagnostics</h3><br></b>
+                    <b><h3 class="fonts" style="margin-left:70px">Update Diagnostics</h3></b>
                     <span>
                         <label for = "ctscan" class="ctscan">CT Scan</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                        <input type="text" name="ctscan" placeholder="Enter drive link" class="form-input" style="width:220px"><br>
+                        <input type="text" name="ctscan" placeholder="Enter drive link" class="form-input" style="width:220px" value = "{{out.CT}}"><br>
                     </span>
                     <span>
                         <label for = "mriscan" class="mriscan">MRI Scan</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                        <input type="text" name="mriscan" placeholder="Enter drive link"  class="form-input" style="width:220px"><br>
+                        <input type="text" name="mriscan" placeholder="Enter drive link"  class="form-input" style="width:220px" value = "{{out.MRI}}"><br>
+                    </span>
+                    <span>
+                        <label for = "biopsy" class="biopsy">Biopsy</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        <input type="text" name="biopsy" placeholder="Enter drive link"  class="form-input" style="width:220px" value = "{{out.Biopsy}}"><br>
                     </span>
                     <span>
                         <label for = "ECG" class="ECG">ECG</label>
-                        <input type="text" name="ECG" id="myInput" class="form-input" placeholder="Enter drive link" style="width:220px">
+                        <input type="text" name="ECG" id="myInput" class="form-input" placeholder="Enter drive link" style="width:220px" value = "{{out.ECG}}">
                         
                     </span>
                     <span>
                         <label for = "EEG" class="EEG">EEG</label>
-                        <input type="text" name="EEG" placeholder="Enter drive link" class="form-input" style="width:220px">
+                        <input type="text" name="EEG" placeholder="Enter drive link" class="form-input" style="width:220px" value = "{{out.EEG}}">
                     </span>
                     <span>
                         <label for = "gastroscopy" class="gastroscopy">Gastroscopy</label>
-                        <input type="text" name="gastroscopy" placeholder="Enter drive link" class="form-input" style="width:220px">
+                        <input type="text" name="gastroscopy" placeholder="Enter drive link" class="form-input" style="width:220px" value = "{{out.Gastroscopy}}">
                     </span>
                     
                     <span>
                         <label for = "eye" class = "eye"> Eye </label>
-                        <input type="text" name="eye" placeholder="Enter drive link" class="form-input" style="width:220px">
+                        <input type="text" name="eye" placeholder="Enter drive link" class="form-input" style="width:220px" value = "{{out.Eye}}">
                     </span>
                     
                     <span>
                         <label for = "pet" class = "pet"> PET </label>
-                        <input type="text" name="pet" placeholder="Enter drive link" class="form-input" style="width:220px">
+                        <input type="text" name="pet" placeholder="Enter drive link" class="form-input" style="width:220px" value = "{{out.PET}}">
                     </span>
                     
                     <span>
                         <label for = "xray" class = "xray"> X-Ray</label>
-                        <input type="text" name="xray" placeholder="Enter drive link" class="form-input" style="width:220px">
+                        <input type="text" name="xray" placeholder="Enter drive link" class="form-input" style="width:220px" value = "{{out.Xrays}}">
                     </span>
                     <span>
                         <label for = "ultra" class ="utra"> Ultrasound</label>
-                        <input type="text" name="ultra" placeholder="Enter drive link" class="form-input" style="width:220px">
+                        <input type="text" name="ultra" placeholder="Enter drive link" class="form-input" style="width:220px" value = "{{out.Ultrasound}}">
                     </span>
-                    <br>
                     <button type="submit" name="signup" class="form-input signup-btn" >Update</button>
                 </form>
             </div>

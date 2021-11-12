@@ -22,24 +22,23 @@
             <span>WE4U</span>
         </div>
         <div class="nav-items">
-            <span><a href="#" class="active">Home</a></span>
+            <span><a href="{{ url_for('Patient_home',id = id) }}">Home</a></span>
             <span><a href="{{ url_for('Consultation',id=id) }}">Consult</a></span>
             <span><a href="{{ url_for('Appointment_patient_info',id=id) }}">Book appointment</a></span>
-            <span><a href="#">History</a></span>
-            <span><a href="#">Profile</a></span>
-            <span><a href="#">Find a Doctor</a></span>
+            <span><a href="{{url_for('History_patient',id = id)}}">History</a></span>
+            <span><a href="{{ url_for('Patient_profile',id =id) }}"  class="active">Profile</a></span>
         </div>
     </div>
     
     <div class="sidenav">
         <img src="../static/images/profile.png" class="image">
-        <a href="patient_profile#">Appointment History</a><br>
-        <a href="#">Todays Appointment</a><br>
+        <a href="{{url_for('History_patient',id = id)}}">Appointment History</a><br>
+        <a href="{{url_for('Todays_appointment_patient',id = id)}}">Todays Appointment</a><br>
         <a href="#">Rescheduled Appointment</a><br>
         <a href="#">Prescription details</a><br>
-        <a href="#">Lab Records</a><br>
-        <a href="#">Update profile</a><br>
-        <a href="#">Logout</a><br>
+        <a href="{{ url_for('Lab_records_patient',id =id) }}">Lab Records</a><br>
+        <a href="{{ url_for('Patient_profile',id =id) }}">Update profile</a><br>
+        <a href="{{ url_for('Home') }}">Logout</a><br>
         
 
 
@@ -52,19 +51,34 @@
     </div>
     <div class="right" style="margin-left:600px">
             <div class="signup-form">
-                <form style="margin-top:30px;margin-left:80px;">
+                {% with messages=get_flashed_messages() %} 
+                {% if messages %} 
+                    {% for message in messages %} 
+                    <div class="alert alert-danger alert-dismissible">
+                        <strong> {{ message }} </strong> 
+                        <button type="button" class="close" data-dismiss="alert" onclick="dis()"><i class="fas fa-times"></i></button>
+                        
+                    </div>
+                    <script>function dis(){
+                        document.getElementsByClassName('alert')[0].style.display='none';
+                        }
+                    </script>
+                    {% endfor %} 
+                {% endif %} 
+            {% endwith %} 
+                <form style="margin-top:30px;margin-left:80px;" action = "{{ url_for('Patient_profile',id = id) }}" method = "POST">
                     <b><h3 class="fonts" style="margin-left:50px">Update Profile</h3><br></b>
                     <span>
                         <label for = "username" class="username">UserName</label>
-                        <input type="text" name="username" placeholder="Enter user name" class="form-input"><br>
+                        <input type="text" name="username" placeholder="Enter user name" class="form-input" value = "{{out.Name}}"><br>
                     </span>
                     <span>
                         <label for = "email" class="email">Email</label>
-                        <input type="text" name="email" placeholder="Enter email" class="form-input"><br>
+                        <input type="text" name="email" placeholder="Enter email" class="form-input" value = "{{out.Email}}"><br>
                     </span>
                     <span>
                         <label for = "password" class="password">Password</label>
-                        <input type="password" name="password" id="myInput" class="form-input" placeholder="Enter Password" style="width:140px">
+                        <input type="password" name="password" id="myInput" value = "{{out.Password}}" class="form-input" placeholder="Enter Password" style="width:140px">
                         <img src="../static/images/view.png" id="myInputicon" onclick="myFunction()" height="20px" width="20px" margin-left="5px">
                     </span>
                   
@@ -84,67 +98,67 @@
                     </script>
                     <span>
                         <label for = "mobileno" class="mobileno">Mobileno</label>
-                        <input type="text" name="mobileno" placeholder="Enter mobile no" class="form-input">
+                        <input type="text" name="mobileno" placeholder="Enter mobile no" value = "{{out.MobileNo}}" class="form-input">
                     </span>
                     <span>
                         <label for = "age" class="age">Age</label>
-                        <input type="text" name="age" placeholder="Enter age" class="form-input">
+                        <input type="text" name="age" placeholder="Enter age" value = "{{out.Age}}" class="form-input">
                     </span>
                     
                     <span>
                         <label for = "gender" class = "lbl"> Gender </label>
-                        &emsp;&emsp;&emsp;<input type="Radio" name="Gender" Value="Male" class="lbl">Male
-                        &emsp;<input type="Radio" name="Gender" Value="Female" class="lbl">Female
+                        &emsp;&emsp;&emsp;<input type="radio" name="Gender" value="Male" {{ 'checked' if out.Gender == 'Male'}} class="lbl">Male
+                        &emsp;<input type="radio" name="Gender" value="Female" {{ 'checked' if out.Gender == 'Female'}} class="lbl">Female
                     </span>
                     
                     <span>
                         <label for="state">State   </label>
                         <select class="form-input" id="state"name="State" style="width: 180px;" required> 
-                            <option value="SelectState"> Select States</option>
-                            <option value="Andra Pradesh">Andra Pradesh</option>
-                            <option value="Arunachal Pradesh">Arunachal Pradesh</option>
-                            <option value="Assam">Assam</option>
-                            <option value="Bihar">Bihar</option>
-                            <option value="Chhattisgarh">Chhattisgarh</option>
-                            <option value="Goa">Goa</option>
-                            <option value="Gujarat">Gujarat</option>
-                            <option value="Haryana">Haryana</option>
-                            <option value="Himachal Pradesh">Himachal Pradesh</option>
-                            <option value="Jammu and Kashmir">Jammu and Kashmir</option>
-                            <option value="Jharkhand">Jharkhand</option>
-                            <option value="Karnataka">Karnataka</option>
-                            <option value="Kerala">Kerala</option>
-                            <option value="Madya Pradesh">Madya Pradesh</option>
-                            <option value="Maharashtra">Maharashtra</option>
-                            <option value="Manipur">Manipur</option>
-                            <option value="Meghalaya">Meghalaya</option>
-                            <option value="Mizoram">Mizoram</option>
-                            <option value="Nagaland">Nagaland</option>
-                            <option value="Orissa">Orissa</option>
-                            <option value="Punjab">Punjab</option>
-                            <option value="Rajasthan">Rajasthan</option>
-                            <option value="Sikkim">Sikkim</option>
-                            <option value="Tamil Nadu">Tamil Nadu</option>
-                            <option value="Telangana">Telangana</option>
-                            <option value="Tripura">Tripura</option>
-                            <option value="Uttaranchal">Uttaranchal</option>
-                            <option value="Uttar Pradesh">Uttar Pradesh</option>
-                            <option value="West Bengal">West Bengal</option>
-                            <option disabled style="background-color:#aaa; color:#fff">UNION Territories</option>
-                            <option value="Andaman and Nicobar Islands">Andaman and Nicobar Islands</option>
-                            <option value="Chandigarh">Chandigarh</option>
-                            <option value="Dadar and Nagar Haveli">Dadar and Nagar Haveli</option>
-                            <option value="Daman and Diu">Daman and Diu</option>
-                            <option value="Delhi">Delhi</option>
-                            <option value="Lakshadeep">Lakshadeep</option>
-                            <option value="Pondicherry">Pondicherry</option>
+                            <option value="SelectState" {{ 'selected' if out.State == 'SelectState'}}> Select States</option>
+                            <option value="Andra Pradesh" {{ 'selected' if out.State == 'Andra Pradesh'}}>Andra Pradesh</option>
+                            <option value="Arunachal Pradesh" {{ 'selected' if out.State == 'Arunachal Pradesh'}}>Arunachal Pradesh</option>
+                            <option value="Assam" {{ 'selected' if out.State == 'Assam'}}>Assam</option>
+                            <option value="Bihar" {{ 'selected' if out.State == 'Bihar'}}>Bihar</option>
+                            <option value="Chhattisgarh" {{ 'selected' if out.State == 'Chhattisgarh'}}>Chhattisgarh</option>
+                            <option value="Goa" {{ 'selected' if out.State == 'Goa'}}>Goa</option>
+                            <option value="Gujarat" {{ 'selected' if out.State == 'Gujarat'}}>Gujarat</option>
+                            <option value="Haryana" {{ 'selected' if out.State == 'Haryana'}}>Haryana</option>
+                            <option value="Himachal Pradesh" {{ 'selected' if out.State == 'Himachal Pradesh'}}>Himachal Pradesh</option>
+                            <option value="Jammu and Kashmir" {{ 'selected' if out.State == 'Jammu and Kashmir'}}>Jammu and Kashmir</option>
+                            <option value="Jharkhand" {{ 'selected' if out.State == 'Jharkhand'}}>Jharkhand</option>
+                            <option value="Karnataka" {{ 'selected' if out.State == 'Karnataka'}}>Karnataka</option>
+                            <option value="Kerala" {{ 'selected' if out.State == 'Kerala'}}>Kerala</option>
+                            <option value="Madya Pradesh" {{ 'selected' if out.State == 'Madya Pradesh'}}>Madya Pradesh</option>
+                            <option value="Maharashtra" {{ 'selected' if out.State == 'Maharashtra'}}>Maharashtra</option>
+                            <option value="Manipur" {{ 'selected' if out.State == 'Manipur'}}>Manipur</option>
+                            <option value="Meghalaya" {{ 'selected' if out.State == 'Meghalaya'}}>Meghalaya</option>
+                            <option value="Mizoram" {{ 'selected' if out.State == 'Mizoram'}}>Mizoram</option>
+                            <option value="Nagaland" {{ 'selected' if out.State == 'Nagaland'}}>Nagaland</option>
+                            <option value="Orissa" {{ 'selected' if out.State == 'Orissa'}}>Orissa</option>
+                            <option value="Punjab" {{ 'selected' if out.State == 'Punjab'}}>Punjab</option>
+                            <option value="Rajasthan" {{ 'selected' if out.State == 'Rajasthan'}}>Rajasthan</option>
+                            <option value="Sikkim" {{ 'selected' if out.State == 'Sikkim'}}>Sikkim</option>
+                            <option value="Tamil Nadu" {{ 'selected' if out.State == 'Tamil Nadu'}}>Tamil Nadu</option>
+                            <option value="Telangana" {{ 'selected' if out.State == 'Telangana'}}>Telangana</option>
+                            <option value="Tripura" {{ 'selected' if out.State == 'Tripura'}}>Tripura</option>
+                            <option value="Uttaranchal" {{ 'selected' if out.State == 'Uttaranchal'}}>Uttaranchal</option>
+                            <option value="Uttar Pradesh" {{ 'selected' if out.State == 'Uttar Pradesh'}}>Uttar Pradesh</option>
+                            <option value="West Bengal" {{ 'selected' if out.State == 'West Bengal'}}>West Bengal</option>
+                            <option disabled style="background-color:#aaa; color:#fff" {{ 'selected' if out.State == 'UNION Territories'}}>UNION Territories</option>
+                            <option value="Andaman and Nicobar Islands" {{ 'selected' if out.State == 'Andaman and Nicobar Islands'}}>Andaman and Nicobar Islands</option>
+                            <option value="Chandigarh"{{ 'selected' if out.State == 'Chandigarh'}}>Chandigarh</option>
+                            <option value="Dadar and Nagar Haveli" {{ 'selected' if out.State == 'Dadar and Nagar Haveli'}}>Dadar and Nagar Haveli</option>
+                            <option value="Daman and Diu" {{ 'selected' if out.State == 'Daman and Diu'}}>Daman and Diu</option>
+                            <option value="Delhi" {{ 'selected' if out.State == 'Delhi'}}>Delhi</option>
+                            <option value="Lakshadeep" {{ 'selected' if out.State == 'Lakshadeep'}}>Lakshadeep</option>
+                            <option value="Pondicherry" {{ 'selected' if out.State == 'Pondicherry'}}>Pondicherry</option>
                         </select>
                     </span>
                     
                     <span>
                         <label for="district">District</label>
-                        <select  class="form-input" id="district"  name="District"style="width: 180px;" required>
-                            <option value="">Select District</option>
+                        <select  class="form-input" id="district"  name="District"style="width: 180px;" required >
+                            <option value = "{{out.District}}">{{out.District}}</option>
                         </select>
                     </span>
                     <br>

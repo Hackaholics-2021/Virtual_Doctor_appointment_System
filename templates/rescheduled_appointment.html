@@ -25,12 +25,11 @@
         <div class="navigation">
             <div class="logo">WE4U</div>
             <div class="links">                   
-                <span><a href="#">Home</a></span>
-                <span><a href="#">Consult</a></span>
-                <span><a href="{{ url_for('Appointment_patient_info') }}">Book Appointment</a></span>
-                <span><a href="#">History</a></span>
-                <span><a href="#" class="active">Profile</a></span>               
-                <span><a href="#" class="active">Find a Doctor</a></span> 
+                <span><a href="{{ url_for('Patient_home',id = id) }}">Home</a></span>
+                <span><a href="{{ url_for('Consultation',id=id) }}">Consult</a></span>
+                <span><a href="{{ url_for('Appointment_patient_info',id = id) }}">Book Appointment</a></span>
+                <span><a href="{{url_for('History_patient',id = id)}}">History</a></span>
+                <span><a href="{{ url_for('Patient_profile',id =id) }}" class="active">Profile</a></span>           
             </div>
         </div>
     </header>
@@ -40,12 +39,12 @@
               <div class="sidenav">
                 <img src="../static/images/profile.png" class="image">
                 <a href="patient_profile#">Appointment History</a><br>
-                <a href="#">Todays Appointment</a><br>
+                <a href="{{url_for('Todays_appointment_patient',id = id)}}">Todays Appointment</a><br>
                 <a href="#">Rescheduled Appointment</a><br>
                 <a href="#">Prescription details</a><br>
-                <a href="#">Lab Records</a><br>
-                <a href="#">Update profile</a><br>
-                <a href="#">Logout</a><br>
+                <a href="{{ url_for('Lab_records_patient',id =id) }}">Lab Records</a><br>
+                <a href="{{ url_for('Patient_profile',id =id) }}">Update profile</a><br>
+                <a href="{{ url_for('Home') }}">Logout</a><br>
                 <span class="icons">
                     <img src="../static/images/twitter.png" alt="" class="icons1">
                     <img src="../static/images/facebook-circular-logo .png" alt="" class="icons1">

@@ -26,8 +26,7 @@
             <span><a href="{{ url_for('Consultation',id=id) }}">Consult</a></span>
             <span><a href="{{ url_for('Appointment_patient_info',id=id) }}">Book appointment</a></span>
             <span><a href="#">History</a></span>
-            <span><a href="#">Profile</a></span>
-            <span><a href="#">Find a Doctor</a></span>
+            <span><a href="{{ url_for('Patient_profile',id = id) }}">Profile</a></span>
         </div>
         <a href="{{ url_for('Home') }}" class="logout-btn">Logout</a>
     </div>

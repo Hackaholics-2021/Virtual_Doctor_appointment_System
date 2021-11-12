@@ -273,3 +273,25 @@ table {
   }
   
   tr:hover {background-color: #6AC6C4;}
+
+  
+.alert{
+    background-color:rgba(99, 167, 99,0.6);
+    font-size:13px;
+    padding:10px;
+    margin:10px;
+    border:1px solid rgb(47, 95, 47);
+    border-radius:4px;
+    width:70%;
+    display:flex;
+    justify-content: space-between;
+}
+.close{
+    outline:none;
+    border:none;
+    background-color:rgba(99, 167, 99,0.6);
+    margin-right:20px;
+}
+.fas{
+    color:rgb(41, 83, 41);
+}

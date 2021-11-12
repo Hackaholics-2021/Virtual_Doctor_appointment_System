@@ -34,7 +34,7 @@
                 <span><a href="{{ url_for('Patients',id=id,name=name) }}" class="active">Patients</a></span>
                 <span><a href="{{ url_for('History',id=id,name=name) }}">History</a></span>
                 <span><a href="{{ url_for('Profile',id=id,name=name) }}">Profile</a></span>               
-                <button class="button" href="{{ url_for('Logout') }}">Logout</button>
+                <a class="button" href="{{ url_for('Home') }}">Logout</a>
             </div>
         </div>
     </header>
@@ -81,7 +81,7 @@
                                 <table class="table table-hover table-striped">
                                     <tbody>
                                     {% for ap in appointments %}
-                                      <tr><td>{{ap.Description}}</td><td>{{ap.BookingDate}}</td><td>{{ap.Speciality}}</td><td>&#8377;{{ap.Fees}}</td></tr>
+                                      <tr><td>{{ap.Description}}</td><td>{{ap.BookingDate}}</td><td>{{ap.Speciality}}</td><td>{{ap.Status}}</td></tr>
                                     {% endfor %}
                                     </tbody>
                                 </table>

@@ -108,6 +108,14 @@ class Hackaholics:
         else:
             return None
 
+    def update_profile_patient(self,id,data):
+        stmt = self.patient.update().where(self.patient.c.Id == id).values(data)
+        res = engine.execute(stmt)
+        if res:
+            return res
+        else:
+            return None
+
     def update_booking_info(self,time,date,appointment_id):
         stmt = self.booking_appointment.update().where(self.booking_appointment.c.AppointmentId == appointment_id).values(Time = time,BookingDate = date)
         res = engine.execute(stmt)
@@ -129,6 +137,36 @@ class Hackaholics:
         res=engine.execute(s,x="Pending").fetchone()
         if res:
             return res[0]
+        else:
+            return None
+
+    def get_consult_info(self,id):
+        s=self.booking_consultation.select().where(self.booking_consultation.c.PId==id)
+        res=engine.execute(s)
+        results=[dict(r) for r in res] if res else None
+        if results:
+            print(results)
+            return results
+        else:
+            return None
+
+    def get_appointment_info(self,id):
+        s=self.booking_appointment.select().where(self.booking_appointment.c.PId==id)
+        res=engine.execute(s)
+        results=[dict(r) for r in res] if res else None
+        if results:
+            print(results)
+            return results
+        else:
+            return None
+
+    def get_info_diagnostics(self,id):
+        s=self.diagnostics.select().where(self.diagnostics.c.Id==id)
+        res=engine.execute(s)
+        results=[dict(r) for r in res] if res else None
+        if results:
+            print(results)
+            return results[0]
         else:
             return None
 
@@ -370,7 +408,7 @@ class Hackaholics:
         res2=engine.execute(s2,x=PId).fetchall()
         result2=[dict(r2) for r2 in res2] if res2 else None
 
-        s3=text("select * from booking_appointment where PId= :x and DId= :y and Status='Completed'")
+        s3=text("select * from booking_appointment where PId= :x and DId= :y")
         res3=engine.execute(s3,x=PId,y=DId).fetchall()
         result3=[dict(r3) for r3 in res3] if res3 else None
 
@@ -441,6 +479,21 @@ class Hackaholics:
         if result!=None:
             print("result",result,no,today)
             return result,no
+        else:
+            return None
+
+    def get_todays_appointment_patient(self,id):
+        today=date.today()
+        s=text("select * from booking_appointment where PId= :x and Status='Accepted'and BookingDate= :y ")
+        res=engine.execute(s,x=id,y=today)
+        result=[]
+        if res:
+            for r in res:
+                result.append(r)
+        #result=[dict(r) for r in res] if res else None
+        if result!=None:
+            print("result",result,today)
+            return result
         else:
             return None
 
