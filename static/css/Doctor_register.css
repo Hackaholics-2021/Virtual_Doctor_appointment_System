@@ -1,7 +1,6 @@
 body{
 	margin:0;
 	padding:0;
-	background-color:#e0d3d3;
 	font-family: 'Urbanist', sans-serif;
 	align-items:center;
 }
@@ -12,21 +11,20 @@ a{
 
 .body-container{
 	margin:90px 120px;
-	background-color:#ebabc0;
+	background-color:#c2a0c2;
 	display:flex;
 	justify-content:space-between;
 }
 .left{
-	padding:3% 5%;
-	width:30%;
+	padding: 5% 0px 0px 5%;
+	width:40%;
     margin:30px;
-    
 }
 .below-pic{
-	margin-top:40px;
+	margin-top:0px;
     text-align:center;
-    font-family:'Roboto Slab', serif;
-    
+    /* font-family:'Roboto Slab', serif;     */
+	font-family: 'Gabriela', serif;
 }
 .right{
 	background-color:white;
@@ -41,7 +39,7 @@ a{
 }
 
 .signup-box{
-	margin-top:70px;
+	margin-top:10px;
 	display:flex;
 	justify-content:center;
 	align-items:center;
@@ -49,19 +47,34 @@ a{
 .signup{
 	font-size:23px;
 	font-weight:600;
-	font-family: 'Roboto Slab', serif;
+	/* font-family: 'Roboto Slab', serif; */
+	font-family: 'Gabriela', serif;
 }
 .signup-form{
 	display:flex;
 	justify-content:space-between;
-	margin-top:20px;
+	margin-top:0px;
 }
 .state{
+	display:flex;
+	justify-content:center;
+	margin-top:40px;		
+	align-items: center;
+}
+.district{
+	display:flex;
+	justify-content:center;
+	margin-top:40px;		
+	align-items: center;
+}
 
-    display:flex;
-    justify-content:space-between;
-    margin-top:30px;
-    align-items: center;
+.specialization{
+
+		display:flex;
+		justify-content:center;
+		margin-top:40px;
+		
+		align-items: center;
 }
 
 .form-input,.form-control{
@@ -71,33 +84,53 @@ a{
 	border-bottom:1px solid black;
 	padding:10px;
 	margin-left:20px;
+	background-color: white;
+	width:300px;
+}
+.nature-img{
+	text-align: center;
 }
 
-h7{
-    margin-left:60px;
+.check td{
+	padding: 0 15px;
 }
-h8{
-    margin-left:100px;
+
+.name{
+    margin-right:40px;
 }
 .email{
-	margin-right:32px;
+	margin-right:45px;
 }
 .password{
-	margin-right:3px;
+	margin-right:15px;
+}
+.Age{
+    margin-right:55px;
+}
+.About{
+    margin-right:40px;
+}
+
+.exp{
+    margin-right:40px;
+}
+
+.gender{
+	margin-right:15px;
 }
 .signup-btn{
 	border:none;
 	font-family: 'Roboto Slab', serif;
 	border-radius:50px;
-	background-color:#818181;
+	background-color:#624379;
 	color:white;
 	font-size:13px;
-	padding:8px 15px;
-    margin-left:100px;
+	margin-left: 100px;
+    text-align: center;
     
 }
 .p-viewer {
-	z-index:2500;
+	z-index: 9999;
 	/* position: absolute; */
 	left:1010px;
 	margin-top: -35px;
@@ -105,8 +138,4 @@ h8{
 
 .fa-eye {
 	color: #000;
-}
-
-form{
-    font-family: 'Urbanist', sans-serif;
 }

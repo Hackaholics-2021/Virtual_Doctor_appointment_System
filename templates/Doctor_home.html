@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+    
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <!-- Google fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Gabriela&family=Montserrat:wght@300&family=Open+Sans&family=Titillium+Web:wght@300&family=Urbanist:wght@200&display=swap&family=Roboto+Slab&display=swap" rel="stylesheet">
+    <!-- Fontawesome -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+    <!-- css -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/Doctor_home.css') }}">
+
+</head>
+<body>
+    <header>
+        <div class="navigation">
+            <div class="logo">WE4U</div>
+            <div class="links">      
+                <span><a href="{{ url_for('Doctor_Home',id=id,name=name) }}" class="active">Home</a></span>             
+                <span><a href="{{ url_for('Upcoming',id=id,name=name) }}">Upcoming</a></span>
+                <span><a href="{{ url_for('Patients',id=id,name=name) }}">Patients</a></span>
+                <span><a href="{{ url_for('History',id=id,name=name) }}">History</a></span>
+                <span><a href="{{ url_for('Profile',id=id,name=name) }}" >Profile</a></span>               
+                <button class="button" href="{{ url_for('Logout') }}">Logout</button>
+            </div>
+        </div>
+    </header>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-sm-4 doc">
+                <img src="{{ url_for('static', filename='images/doc.png') }}">
+                <h2 class="quote">I am Commited to <br>People's Health<hr></h2>
+            </div>
+            <div class="col-sm-8 stat">
+                <div class="rem">
+                    <h1>Hi {{name}}</h1>
+                    <span class="line">
+                        <h2>You have <span style="color: rgb(206, 96, 96);">{{no}} patients</span> remaining today!</h2>
+                    </span>
+                </div>
+                <br>
+                <div class="patients">
+                    <h1>Today's Appointments</h1>
+                    <div class="row">
+                        <div class="col-sm-4">
+                            <h1 style="text-align: center;font-size: 50px;font-family: 'Titillium Web', sans-serif;">{{no}}</h1>
+                        </div>
+                        <div class="col-sm-8">
+                            <div class="row">
+                                <div class="col-sm-5 left"><h2>Appointment</h2></div>
+                                <div class="col-sm-3 middle"><h2>{{no}}</h2></div>
+                                <div class="col-sm-4 right"><h2><a href="#today">View All</a></h2></div>
+                            </div>
+                        </div>
+                    </div>
+                   
+                    <div class="row" style="text-align: center;padding-bottom: 20px;">
+                        <div class="col-sm-8 left">
+                            <h2 >
+                                <span style="color: rgb(107, 172, 121);">{{count}} patients</span> are waiting to get  
+                                <span style="color: rgb(206, 96, 96);"> Instant Consultation </span>
+                            </h2>
+                        </div>
+                        <div class="col-sm-4 right" ><h2>&emsp;<a href="#consult">View All</a></h2></div>
+                    </div>
+                    
+                </div>                
+            </div>
+        </div>
+    </div>
+
+    {% if today %}
+    <div class="container-fluid" id="today">
+        <h1 class="heading">Today's Appointments</h1>
+        <div class="container">
+            <table class="table table-striped">
+                <thead>
+                    <tr><th>Patient Name</th><th>Patient Email</th><th>Time</th><th>Description</th><th>Language</th></tr>
+                </thead>
+                <tbody>
+                    
+                    {% for out in today %}
+                    <tr>
+                        <td>{{out.PName}}</td>
+                        <td>{{out.PEmail}}</td>
+                        <td>{{out.Time}}</td>
+                        <td>{{out.Description}}</td>
+                        <td>{{out.Language}}</td>
+                        <td><a href="#"><button class="accept" >Start</button></a></td>
+                    </tr>
+                    {% endfor %}
+                    
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <br>
+    <hr>
+    {% endif %}
+
+    {% if consult %}
+    <div class="container-fluid" id="consult">
+        <h1 class="heading">Consultations</h1>
+        <div class="container">
+            <table class="table table-striped">
+                <thead>
+                    <tr><th>Patient Name</th><th>Time</th><th>Language</th><th>Speciality</th></tr>
+                </thead>
+                <tbody>
+                    
+                    {% for out in consult %}
+                    <tr>
+                        <td>{{out.PName}}</td>
+                        <td>{{out.Time}}</td>
+                        <td>{{out.Language}}</td>
+                        <td>{{out.Speciality}}</td>
+                        <td><a href="#"><button class="accept" >Start</button></a></td>
+                    </tr>
+                    {% endfor %}
+                    
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <br>
+    <hr>
+    {% endif %}
+
+
+    <footer>
+    <div class="footer">
+        <div class="for-patients">
+            <span class="footer-title">For Patients</span>
+            <span><a href="#">Consult a doctor</a></span>
+            <span><a href="#">Book an appointment</a></span>
+            <span><a href="#">View History</a></span>
+            <span><a href="#">Search doctors</a></span>
+            <span><a href="#">Home</a></span>
+        </div>
+        <div class="for-doctors">
+            <span class="footer-title">For Doctors</span>
+            <span><a href="#">View appointments</a></span>
+            <span><a href="#">View consultations</a></span>
+            <span><a href="#">History</a></span>
+            <span><a href="#">Payments</a></span>
+            <span><a href="#">Your Patients</a></span>
+        </div>
+        <div class="contacts">
+            <span class="footer-title">Social Contacts</span>
+            <span class="icons">
+                <br>
+                <img src="{{ url_for('static', filename='images/twitter.png') }}" alt="Twitter">
+                <img src="{{ url_for('static', filename='images/facebook-circular-logo.png') }}" alt="Facebook">
+                <img src="{{ url_for('static', filename='images/instagram.png') }}" alt="Instagram">
+                <img src="{{ url_for('static', filename='images/whatsapp.png') }}" alt="Whatsapp">
+            </span>
+            <span>All rights reserved <img src="{{ url_for('static', filename='images/copyright.png') }}" alt="" style="width:16px; height:16px;margin-right:0px;"> Hackaholics</span>
+        </div>
+    </div>
+    </footer>
+</body>
+</html>

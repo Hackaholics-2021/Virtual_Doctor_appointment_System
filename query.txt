@@ -1,0 +1,57 @@
+create database virtualdoc;
+use virtualdoc;
+
+**********************************************************************************************************
+
+Table for Doctor:
+
+create table doctor(Id varchar(50) primary key,
+Name varchar(50),Degree varchar(20),
+State varchar(20),District varchar(30),Gender varchar(10),
+Firm varchar(100),Age int,Experience int,Specialization varchar(30),
+AboutMe varchar(100),Email varchar(30),Password varchar(20),
+LinkedIn varchar(100),Facebook varchar(100),
+Tamil int,Malayalam int,Kannada int,Telugu int,Hindi int,English int);
+
+**********************************************************************************************************
+
+Table for Patient:
+
+create table patient(Id varchar(50) primary key, Name varchar(50), 
+State varchar(20),District varchar(30), Age int,Gender varchar(10),
+Email varchar(30),Password varchar(20), MobileNo bigint );
+
+create table diagnostics(Id varchar(50) primary key,
+CT varchar(100),MRI varchar(100),
+Biospy varchar(100),ECG varchar(100),EEG varchar(100),
+Gastroscopy varchar(100),Eye varchar(100),PET varchar(100),
+Xrays varchar(100),Ultrasound varchar(100), foreign key (Id) references patient(Id)
+);
+
+**********************************************************************************************************
+
+
+
+Table dor booking Appointment
+
+use virtualdoc;
+create table booking_appointment(AppointmentId varchar(50) primary key,
+PId varchar(50),DId varchar(50),
+PName varchar(50),DName varchar(50),PEmail varchar(50),DEmail varchar(50),
+Status varchar(20),BookingDate date,Fees int,Description varchar(100),
+Time varchar(20),Language varchar(50),Speciality varchar(50),State varchar(30),
+ foreign key (PId) references patient(Id), foreign key (DId) references doctor(Id)
+);
+
+
+**********************************************************************************************************
+
+Table dor booking Consultation
+
+use virtualdoc;
+create table booking_consultation(ConsultationId varchar(50) primary key,
+PId varchar(50),DId varchar(50),
+PName varchar(50),DName varchar(50),Language varchar(50),
+Status varchar(20),ConsultationDate date,Fees int,Speciality varchar(50),Time varchar(30),
+ foreign key (PId) references patient(Id), foreign key (DId) references doctor(Id)
+);

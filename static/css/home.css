@@ -1,6 +1,7 @@
 body{
     background-color: #343937;
     font-family:  'Titillium Web', sans-serif;
+    overflow-x:hidden;
 }
 a{
     color:inherit;
@@ -30,6 +31,8 @@ a{
 span a{   
     font-size: 18px;
     padding-right: 30px;
+    text-decoration: none;
+    color: white;
 }
 span a:hover{
     color: rgb(158, 158, 158);
@@ -84,7 +87,9 @@ span .active{
     position:absolute;
     top:78px;
     width: 100%;
-    height:120px;
+    height:160px;
+    margin-bottom: 100px;
+    padding: 100px 0;
     font-family:Helvetica;
     background-color: #343937;
 }
@@ -109,14 +114,15 @@ span .active{
 }
 .main-content{
     background-color: white;
-    height: 500%;
-    margin-top: 500px;
+    height: 450px;
+    margin-top: 570px;
 }
 .content{
     font-family: 'Titillium Web', sans-serif;
     font-size: 20px;
     color: black;
     text-align: center;
+    
 }
 .content-tick{
     font-size: 25px;
@@ -181,11 +187,11 @@ span .active{
 }
 .footer{
     background-color: #343937;
-    margin-top: 1920px;
+    margin-top: 2300px;
     color:white;
     display:flex;
     justify-content: space-evenly;
-    padding:100px;
+    padding:120px;
     align-items: center;
 }
 .footer div{
@@ -205,4 +211,34 @@ span .active{
     width:40px;
     height:40px;
     margin-right:40px;
+}
+
+.container2{
+    width:80%;
+    background-color: whitesmoke;
+    margin-left: 150px;
+    height:400px;
+}
+.col-sm-5{
+    width:30%;
+    float: left;
+    padding:40px;
+}
+.col-sm-5 img{
+    width:300px;
+    height:300px;
+    padding-left: 40px;
+}
+.col-sm-7{
+    font-family:  'Titillium Web', sans-serif;
+    width:50%;
+    float: right;
+    padding:20px;
+    text-align: center;
+    background-color: #c8e3ee9a;
+    margin:15px 15px 0 0;
+    color: #343937;
+    border:2px solid #dbeef5;
+    box-shadow: 0 12px 16px 0 rgba(138, 137, 137, 0.24), 0 17px 50px 0 rgba(134, 134, 134, 0.19);
+    border-radius: 10px;
 }

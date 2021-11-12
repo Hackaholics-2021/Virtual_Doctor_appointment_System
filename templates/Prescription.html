@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prescription</title>
+    
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <!-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js"></script> -->
+    <!-- Google fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Gabriela&family=Montserrat:wght@300&family=Open+Sans&family=Titillium+Web:wght@300&family=Urbanist:wght@200&display=swap&family=Roboto+Slab&display=swap" rel="stylesheet">
+    <!-- Fontawesome -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+    <!-- css -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/Doctor_home.css') }}">
+
+</head>
+<body>
+    <header>
+        <div class="navigation">
+            <div class="logo">WE4U</div>
+        </div>
+    </header>
+    <div class="container-fluid">
+        <h1 class="heading">Prescription</h1>
+        <div class="container" style="width: 85%;">
+            
+            <table class="table" >                
+                <tr style="font-weight: bold;"><td style="padding-left: 55px;">Medication</td><td style="padding-right: 70px;padding-left: 80px;">Frequency</td><td style="padding-right: 120px;">Meal</td><td style="padding-right: 100px;">Duration</td></tr>                
+            </table>              
+                <form action="#" method="get" class="add_medication">    
+                    <table class="table"> 
+                        <tr >
+                            <td ><input type="text" class="Medication" name="Medication" style="width: 200px;" required></td>
+                            <td>
+                                <select  class="Frequency" style="width: 200px; text-align: center;" required>
+                                    <option>1-0-0</option>
+                                    <option>0-1-0</option>
+                                    <option>0-0-1</option>
+                                    <option>1-1-0</option>
+                                    <option>1-0-1</option>
+                                    <option>0-1-1</option>
+                                    <option>1-1-1</option>
+                                </select>
+                            </td>
+                            <td>
+                                <select  class="Meal" style="width: 200px;text-align: center;" required>
+                                    <option>Before Meal</option>
+                                    <option>After Meal</option>
+                                </select>
+                            </td>
+                            <td><input type="text" class="Duration" name="Duration"  style="width: 200px;" required></td>
+                            <td><a href="url_for('Add_Medication')"><button class="accept" onclick="add_to_table()">Add</button></a></td>
+                        </tr>
+                    </table>   
+                </form>
+                
+            
+            <button class="accept" onclick="add_med()">Add Medication</button>
+        </div>        
+    </div>
+    <script>
+        function add_med(){
+            if(document.getElementsByClassName("add_medication")[0].style.display=="block"){
+                document.getElementsByClassName("add_medication")[0].style.display="none";
+            }
+            else{
+                document.getElementsByClassName("add_medication")[0].style.display="block";
+            }
+        }
+        function add_to_table(){
+            var med = document.getElementsByClassName("Medication")[0].value;
+            var freq= document.getElementsByClassName("Frequency")[0].selectedIndex;
+            var freq_value=document.getElementsByTagName("option")[freq].value;
+            var meal=document.getElementsByClassName("Meal")[0].selectedIndex;
+            var meal_value=document.getElementsByTagName("option")[meal+7].value;
+            var dur=document.getElementsByName("Duration")[0].value;
+            
+            if(med && freq_value && meal_value && dur){
+                var table = document.getElementsByTagName("table")[0];
+                var new_row = document.createElement("tr");
+                new_row.innerHTML = `<tr><td>${med}</td><td>${freq_value}</td> <td>${meal_value}</td><td>${dur}</td></tr>`;
+                table.appendChild(new_row);
+            }
+        }
+    </script>
+</body>
+</html>
