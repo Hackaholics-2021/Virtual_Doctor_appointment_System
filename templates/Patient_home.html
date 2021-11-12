@@ -61,8 +61,8 @@
                         </span>
                     </div>
                     <div class="botcontent">
-                        <p class="text-content">Hi there! Looks like you need my help. I might haven't completed an MBBS.</p>
-                        <p class="text-content">But I can help you for sure! Tell me what brings you here..</p>
+                        <p class="text-content">Hi there! Looks like you need my help.</p>
+                        <p class="text-content">I can help you for sure! Tell me what brings you here..</p>
                     </div>
                     <div class="user-line"> 
                         <span>You<img src="{{ url_for('static', filename='images/line.png') }}" alt="" width="93%" height="5px">
@@ -71,28 +71,28 @@
                     <div class="usercontent">
                         <p class="text-content">I have fever.I have fever.I have fever.I have fever.</p>
                     </div>
-                    <div class="bot-line">
-                        <span>Robbie <img src="{{ url_for('static', filename='images/line.png') }}" alt="" width="87%" height="5px">
-                        </span>
-                    </div>
-                    <div class="botcontent">
-                        <p class="text-content">Hi there! Looks like you need my help. I might haven't completed an MBBS.</p>
-                        <p class="text-content">But I can help you for sure! Tell me what brings you here..</p>
-                    </div>
-                    <div class="user-line"> 
-                        <span>You<img src="{{ url_for('static', filename='images/line.png') }}" alt="" width="93%" height="5px">
-                        </span>
-                    </div>
-                    <div class="usercontent">
-                        <div class="text-content">I have fever.I have fever.I have fever.I have fever.</div>
-                    </div>
+                    
                 </div>
-                <div class="user-types">
+                <form action = "#" class="user-types">
                     <div class="text-area">
-                        <input type="text" placeholder="Type here.." class="placeholder">
+                        <input type="text" placeholder="Type here.." name = "user-input" class="placeholder">
                     </div>
-                    <button class="send"><img src="{{ url_for('static', filename='images/line.png') }}" alt="" height="30px" width="30px"></button>
-                </div>
+                    <button type = "submit" class="send"><img src="{{ url_for('static', filename='images/send.png') }}" alt="" height="30px" width="30px"></button>
+                </form>
+                <script>
+                    document.getElementsByClassName("send")[0].addEventListener("click",async function(){
+                        var text = document.getElementsByName("user-input")[0].value;
+                        $.ajax({
+                            type : "POST",
+                            url : '/chat'+text,
+                            dataType: "json",
+                            contentType: 'application/json;charset=UTF-8',
+                            success: function (data) {
+                                console.log(data);
+                                }
+                            });
+                    });
+                </script>
             </div>
         </div>
         <div class="consult-doctors">

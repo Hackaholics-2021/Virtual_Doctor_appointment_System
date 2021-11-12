@@ -5,6 +5,7 @@ import re
 from flask import *
 import uuid
 from model.model import Hackaholics
+import chatbot
 app=Flask(__name__)
 app.secret_key = "div"
 
@@ -20,6 +21,8 @@ mail = Mail(app)
 
 # session email addresses
 email_addresses = []
+
+
 
 @app.route('/',methods=["POST","GET"])
 def Home():
@@ -301,6 +304,15 @@ def Thankyou_appointment(id,appointment_id):
 def Thankyou_consultation(id,doc_id,doc_name,Patient_name,Lang,Special):
     if request.method=="GET":
         return render_template('thankyou_consultation.html',id=id,doc_id =doc_id,doc_name = doc_name,Patient_name = Patient_name,Lang = Lang, Special =Special)
+
+@app.route('/login/chat/<text>',methods=["GET","POST"])
+def Chat(text):
+    if request.method == "POST":
+        # text = request.form['user-input']
+        print(text)
+        response = chatbot.get_response(text)
+        print(response)
+        return render_template('Patient_home.html',response = response)
 
 
 if(__name__=="__main__"):

@@ -1,4 +1,3 @@
-import email
 from sqlalchemy import *
 from sqlalchemy.sql import *
 engine=create_engine('mysql://root:admin@127.0.0.1:3306/virtualdoc',echo=True)
