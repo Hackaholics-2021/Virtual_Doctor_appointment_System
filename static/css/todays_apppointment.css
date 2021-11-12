@@ -4,7 +4,7 @@ body{
     box-sizing: border-box;
     font-family: 'Titillium Web', sans-serif;
     font-size:18px;
-    background-color:#4f5855;
+    background-color:white;
 }
 a{
     color:inherit;
@@ -176,26 +176,37 @@ a{
     font-size:40px;
 }
 
-tr:hover {background-color: #8ffffb}
-
-th, td {
-    padding: 8px;
-    text-align: left;
-    border-bottom: 1px solid #ddd;
-  }
-
-  .cancel-btn{
-    border:none;
-    text-decoration: none;
-    outline:none;
-    padding:8px 20px;
-    background-color:#6AC6C4;
+.font{
+    background-color: rgb(23, 41, 61);
     color:white;
-    font-family: 'Titillium Web', sans-serif;
-    font-size:18px;
-    font-weight:600;
-    border-radius: 50px;
+    border:1px solid white;
+    width:80%;
+    text-align: center;
+    margin:10px;
+    border-radius: 8px;
+    font-family:'Montserrat', sans-serif;
+    font-size: 15px;
+}
+th,td{
+    width:250px;
+    padding:8px 30px;
+}
+
+tr:hover{
+    background-color: rgb(30, 52, 78);
+}
+tr:first-child{
+    background-color: rgb(39, 67, 102);
+}
+.cancel-btn{
+    outline:none;
+    border:none;
+    background-color:rgb(55, 129, 98);
+    padding:10px 20px;
+    border-radius: 5px;
+    color:white;
+    font-family:'Montserrat', sans-serif;
 }
 .cancel-btn:hover{
-    background-color: #35B680;
+    background-color:rgb(79, 165, 129);
 }
