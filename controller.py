@@ -112,7 +112,7 @@ def Doctor_Home(id,name):
         consult,count=h.get_consultations(id) 
         if today!=None and no!=0 and consult!=None and count!=0:
             return render_template("Doctor_home.html",id=id,name=name,today=today,no=no,consult=consult,count=count)
-        elif today==None and n==0 and consult==None and count==0:
+        elif today==None and no==0 and consult==None and count==0:
             return render_template("Doctor_home.html",id=id,name=name,no=0,count=0)
         elif today!=None and no!=0 and consult==None and count==0:
             return render_template("Doctor_home.html",id=id,name=name,today=today,no=no,count=0)
@@ -243,6 +243,9 @@ def History(id,name):
 def Prescription():
     if request.method=="GET":
          return render_template('Prescription.html')
+
+
+
 
 #Logout
 @app.route('/Home')
