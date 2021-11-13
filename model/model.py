@@ -11,6 +11,7 @@ class Hackaholics:
         self.diagnostics=Table("diagnostics",self.meta,autoload=True,autoload_with=engine)
         self.booking_appointment=Table("booking_appointment",self.meta,autoload=True,autoload_with=engine)
         self.booking_consultation=Table("booking_consultation",self.meta,autoload=True,autoload_with=engine)
+        self.prescription=Table("prescription",self.meta,autoload=True,autoload_with=engine)
 
     def insert_into_patient(self,data):
         res=engine.execute(self.patient.insert(),data)
@@ -82,6 +83,17 @@ class Hackaholics:
         results=[dict(r) for r in res] if res else None
         if results:
             return results[0]
+        else:
+            return None
+
+    def get_cancelled_appointment_info(self,id):
+        s = text("select * from booking_appointment where AppointmentId = :x and Status = 'Cancelled'")
+        
+        res=engine.execute(s,x=id)
+        results=[dict(r) for r in res] if res else None
+        if results:
+            print(results)
+            return results
         else:
             return None
 

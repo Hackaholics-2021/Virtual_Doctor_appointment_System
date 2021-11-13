@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Reschduled appointment</title>
+    <title>Reschedule Appointment</title>
     
     <!-- Bootstrap -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
@@ -17,7 +17,7 @@
     <!-- Fontawesome -->
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
     <!-- css -->
-    <link rel="stylesheet" href="../static/css/todays_apppointment.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/todays_apppointment.css') }}">
 
 </head>
 <body>
@@ -29,7 +29,7 @@
                 <span><a href="{{ url_for('Consultation',id=id) }}">Consult</a></span>
                 <span><a href="{{ url_for('Appointment_patient_info',id = id) }}">Book Appointment</a></span>
                 <span><a href="{{url_for('History_patient',id = id)}}">History</a></span>
-                <span><a href="{{ url_for('Patient_profile',id =id) }}" class="active">Profile</a></span>           
+                <span><a href="{{ url_for('Patient_profile',id =id) }}" class="active">Profile</a></span>         
             </div>
         </div>
     </header>
@@ -37,46 +37,54 @@
         <div class="row">
             <div class="col-sm-3 doc">
               <div class="sidenav">
-                <img src="../static/images/profile.png" class="image">
-                <a href="patient_profile#">Appointment History</a><br>
+                <img src="{{ url_for('static', filename='images/profile.png') }}" class="image">
+                <a href="{{url_for('History_patient',id = id)}}">Appointment History</a><br>
                 <a href="{{url_for('Todays_appointment_patient',id = id)}}">Todays Appointment</a><br>
-                <a href="#">Rescheduled Appointment</a><br>
+                <a href="{{ url_for('Rescheduled_appointment_patient',id = id,appointment_id = 0)}}">Reschedule Appointment</a><br>
                 <a href="#">Prescription details</a><br>
                 <a href="{{ url_for('Lab_records_patient',id =id) }}">Lab Records</a><br>
                 <a href="{{ url_for('Patient_profile',id =id) }}">Update profile</a><br>
                 <a href="{{ url_for('Home') }}">Logout</a><br>
                 <span class="icons">
-                    <img src="../static/images/twitter.png" alt="" class="icons1">
-                    <img src="../static/images/facebook-circular-logo .png" alt="" class="icons1">
-                    <img src="../static/images/instagram.png" alt="" class="icons1">
-                    <img src="../static/images/whatsapp.png" alt="" class="icons1">
+                    <img src="{{ url_for('static', filename='images/twitter.png') }}" alt="" class="icons1">
+                    <img src="{{ url_for('static', filename='images/facebook-circular-logo .png') }}" alt="" class="icons1">
+                    <img src="{{ url_for('static', filename='images/instagram.png') }}" alt="" class="icons1">
+                    <img src="{{ url_for('static', filename='images/whatsapp.png') }}" alt="" class="icons1">
                 </span>
               </div>
             </div>
             <div class="col-sm-9" style="margin-top:100px">
-                <h4 style="margin-left:350px;color:rgb(92, 163, 175);font-size: 25px;">Rescheduled Appointment</h4>
-              <table class="font"style="width:100%">
+              <h4 style="margin-left:250px;color:rgb(92, 163, 175);font-size: 25px;">Todays Appointment</h4>
+              <table class="font"style="width:90%">
                 <tr>
                   <th>Sno</th>
                   <th>Doctors Name</th>
                   <th>Specialization</th>
-                  <th>Fees</th>
-                  <th>Mode</th>
+                  <th>Description</th>
+                  <th>Time</th>
                   
                   <th>Date</th>
-                  <th>Cancel Appointment</th>
+                  <th>Reschedule Appointment</th>
                 </tr>
                 <br>
                 <br>
+                {% if out %}
+                {% set count = namespace(value=1) %}
+                {% for row in out %}
                 <tr>
-                  <td>1</td>
-                  <td>Griffin</td>
-                  <td>Cardiology</td>
-                  <td>500</td>
-                  <td>Video</td>
-                  <td>7.10.2021</td>
-                  <td><button type="submit" name="signup" class="cancel-btn" >Cancel</button></td>
+                  <td>{{ count.value }}</td>
+                  <td>{{ row.DName }}</td>
+                  <td>{{ row.Speciality }}</td>
+                  <td>{{ row.Description }}</td>
+                  <td>{{ row.Time }}</td>
+                  <td>{{ row.BookingDate }}</td>
+                  <form action="{{url_for('Rescheduled_appointment_patient',id = id,appointment_id = row.AppointmentId) }}" method = "POST">
+                    <td><button type = "submit" name="signup" class="cancel-btn" >Reschedule</button></td>
+                  </form>
+                  {% set count.value = count.value + 1 %}
                 </tr>
+                {% endfor %}
+                {% endif %}
               </table>
               
             </div>

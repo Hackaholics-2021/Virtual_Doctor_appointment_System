@@ -16,6 +16,7 @@ app.config['MAIL_PASSWORD'] = 'DaggUs4#'
 app.config['MAIL_USE_TLS'] = False  
 app.config['MAIL_USE_SSL'] = True
 
+
 mail = Mail(app)
 
 # session email addresses
@@ -111,7 +112,7 @@ def Login():
         output=obj.get_email_doctor(email)
         if out:
             if out['Password']==password:
-                return render_template("Patient_home.html",id=out['Id'])            
+                return redirect(url_for("Patient_home",id=out['Id'])  )          
             else:
                 flash("Password is wrong.Please enter correct password")
                 return render_template("Login.html",email=out['Email'])
@@ -212,10 +213,17 @@ def Todays_appointment_patient(id):
         today=obj.get_todays_appointment_patient(id)
         return render_template('todays_appointment.html',id = id, today = today)
 
-@app.route('/rescheduled_appointment',methods=["GET","POST"])
-def Rescheduled_appointment_patient():
-    if request.method=="GET":
-        return render_template('rescheduled_appointment.html')
+@app.route('/rescheduled_appointment_patient/<id>/<appointment_id>',methods=["GET","POST"])
+def Rescheduled_appointment_patient(id,appointment_id):
+    if request.method == "GET":
+        obj = Hackaholics()
+        out = obj.get_cancelled_appointment_info(id)
+        return render_template('rescheduled_appointment.html',id = id,out = out)
+
+    if request.method =="POST":
+        obj = Hackaholics()
+        out = obj.get_info_appointment(appointment_id)
+        return render_template('confirm_appointment.html',id = id,appointment_id = appointment_id,data = out)
 
 @app.route('/lab_records/<id>',methods=["GET","POST"])
 def Lab_records_patient(id):
@@ -404,7 +412,7 @@ def Thankyou_appointment(id,appointment_id):
         msg_to_patient=Message('WE4U Virtual Doctor Appointment',sender='hackaholics4@gmail.com',recipients=[out_booking['PEmail']])
         msg_to_patient.html="<h2>Hello "+out_booking['PName']+",</h2><p>Hope you are doing well!</p><p>We hereby inform you that your Appointment request for the doctor named <b> Dr."+out_booking['DName']+"</b> on <b>"+booking_date+"</b> at <b>"+ out_booking['Time']+"</b> has been <b>Booked Successfully!</b><br><h4>We offer you a sincere thanks and gratitude for choosing our service!</h4><p>If you have any questions or concerns, please don't hesitate to contact us hackaholics4@gmail.com. Thanks</p>"
         mail.send(msg_to_patient)
-        return render_template('Patient_home.html',id = id)
+        return render_template('thankyou_appointment.html',id = id)
         
 
 @app.route('/thankyou_consultation/<id>/<doc_id>/<doc_name>/<Patient_name>/<Lang>/<Special>',methods=["GET","POST"])
@@ -419,37 +427,28 @@ def History_patient(id):
     out_booking = obj.get_appointment_info(id)
     return render_template('appointment_history_patient.html',id = id,out_consult = out_consult,out_booking = out_booking)
 
-@app.route('/login/chat/<text>',methods=["GET","POST"])
-def Chat(text):
-    if request.method == "POST":
-        # text = request.form['user-input']
+@app.route('/chat',methods=["GET","POST"])
+def Chat():
+    if request.method == "GET":
+        text = request.args.get('data')
         print(text)
         response = chatbot.get_response(text)
         print(response)
-        return render_template('Patient_home.html',response = response)
-    h=Hackaholics()
-    if request.method=="GET":
-        return render_template("Login.html")
-    elif request.method=="POST":
-        email=request.form["Email"]
-        pwd=request.form["Password"]
-        doc=h.get_email_doctor(email)
-        pat=h.get_email_patient(email)
-        if doc:
-            if doc["Password"]==pwd:
-                return redirect(url_for("Doctor_Home",id=doc["Id"],name=doc["Name"]))
-            else:
-                flash("Please check Your Password")
-                return render_template("Login.html")
-        elif pat:
-            if pat["Password"]==pwd:
-                return render_template("home.html",id=pat["Id"],name=pat["Name"])
-            else:
-                flash("Please check Your Password")
-                return render_template("Login.html")
-        else:
-            flash("Please Register")
-            return render_template("Login.html")
+        return response
+    else:
+        return("Help")
+
+# class Chat(Resource):
+#     @cross_origin()
+#     def get(self):
+#         text = request.args.get('data')
+#         print(text)
+#         response = chatbot.get_response(text)
+#         print(response)
+#         return response
+#     pass
+
+# api.add_resource(Chat, '/chat')
 
 #Doctor Home Page
 @app.route('/DoctorHome/<id>/<name>',methods=["POST","GET"])

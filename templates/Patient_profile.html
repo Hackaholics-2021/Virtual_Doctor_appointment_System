@@ -13,7 +13,7 @@
     <!-- Font awesome -->
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
     <!-- CSS -->
-    <link rel="stylesheet" href="../static/css/Patient_profile.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/Patient_profile.css') }}">
     <title>Document</title>
 </head>
 <body>
@@ -34,7 +34,7 @@
         <img src="../static/images/profile.png" class="image">
         <a href="{{url_for('History_patient',id = id)}}">Appointment History</a><br>
         <a href="{{url_for('Todays_appointment_patient',id = id)}}">Todays Appointment</a><br>
-        <a href="#">Rescheduled Appointment</a><br>
+        <a href="{{ url_for('Rescheduled_appointment_patient',id = id,appointment_id = 0)}}">Reschedule Appointment</a><br>
         <a href="#">Prescription details</a><br>
         <a href="{{ url_for('Lab_records_patient',id =id) }}">Lab Records</a><br>
         <a href="{{ url_for('Patient_profile',id =id) }}">Update profile</a><br>
