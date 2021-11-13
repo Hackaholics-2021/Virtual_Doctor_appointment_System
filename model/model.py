@@ -188,4 +188,11 @@ class Hackaholics:
         else:
             return None
 
-    
+    def get_prescription(self,bid):
+        s=text("select * from prescription where BId=:x")
+        res=engine.execute(s,x=bid)
+        result=[dict(r) for r in res] if res else None
+        if result:
+            return result
+        else:
+            return None

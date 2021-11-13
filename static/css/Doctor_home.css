@@ -324,3 +324,10 @@ a,a:hover{
 .add_medication{
     display: none;
 }
+
+/* Patient Prescription */
+.modal-content{
+    background-color: #343937;
+    color: white;
+
+}
