@@ -483,6 +483,18 @@ def Get_Patient_Details(PId,DId,name):
         res=h.get_patients(DId)
         return render_template('Patients.html',id=DId,name=name,details=details,diagnostics=diagnostics,appointments=appointments,out=res)
 
+
+@app.route('/Patients_Details_Prescription/<PId>/<DId>/<name>/<bid>',methods=["POST","GET"])
+def View_Prescription(PId,DId,name,bid):
+    h=Hackaholics()
+    if request.method=="GET":
+        details,diagnostics,appointments=h.get_patient_details(PId,DId)
+        res=h.get_patients(DId)
+        prescription=h.get_prescription(bid)
+        return render_template('Patients.html',id=DId,name=name,details=details,diagnostics=diagnostics,appointments=appointments,out=res,prescription=prescription)
+
+
+
 #Upcoming
 @app.route('/Upcoming/<id>/<name>',methods=["POST","GET"])
 def Upcoming(id,name):

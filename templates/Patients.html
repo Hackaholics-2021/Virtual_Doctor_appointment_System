@@ -54,13 +54,17 @@
             </div>
             <div class="col-sm-9 details">
                 <div class="row">
-                    <div class="col-sm-7">
+                    <div class="col-sm-8">
                         {% if details and diagnostics and appointments %}
                         {% for de in details %}
                         <h1 style="font-weight: bolder;">{{de.Name}}</h1><hr>
                         <div class="row">
                             <div class="col-sm-4" style="text-align: center;">
-                                <img src="{{ url_for('static', filename='images/man.png') }}" alt="">
+                                {% if de.Gender=='Male' %}
+                                <img src="{{ url_for('static', filename='images/male.png') }}" alt="Male">
+                                {% else %}
+                                <img src="{{ url_for('static', filename='images/female.png') }}" alt="Female">
+                                {% endif %}
                             </div>
                             <div class="col-sm-2 title" >
                                 <p>Age</p>
@@ -81,14 +85,20 @@
                                 <table class="table table-hover table-striped">
                                     <tbody>
                                     {% for ap in appointments %}
-                                      <tr><td>{{ap.Description}}</td><td>{{ap.BookingDate}}</td><td>{{ap.Speciality}}</td><td>{{ap.Status}}</td></tr>
+                                    {% if ap.Status=='Completed' %}
+                                      <tr><td>{{ap.Description}}</td><td>{{ap.BookingDate}}</td><td>{{ap.Speciality}}</td><td>{{ap.Status}}</td><td><a href="{{ url_for('View_Prescription',PId=ap.PId,DId=ap.DId,name=ap.DName,bid=ap.AppointmentId) }}#myModal" ><button style="border-radius: 5px;background-color: #6AC6C4;border: solid 2px #6AC6C4;color: white;" >View Prescription</button></td></tr>
+                                      {% else %}
+                                      <tr><td>{{ap.Description}}</td><td>{{ap.BookingDate}}</td><td>{{ap.Speciality}}</td><td>{{ap.Status}}</td><td><button style="border-radius: 5px;background-color: #495c5b86;border: solid 2px #6AC6C4;color: rgba(255, 255, 255, 0.692);" disabled>View Prescription</button></td></tr>
+                                    {% endif %}
                                     {% endfor %}
                                     </tbody>
                                 </table>
                             </div>
                         </div>
                     </div>
-                    <div class="col-sm-5">
+                    
+
+                    <div class="col-sm-4">
                         <h1>Diagnostics</h1>
                         <div class="diagnostics">
                             {% for da in diagnostics %}
@@ -111,6 +121,45 @@
                 {% endif %}                    
             </div>
         </div>
+        {% if prescription %}
+                    <!-- Modal -->
+                    <div   class="prescription">
+                        <div class="modal-dialog">
+                        
+                        <!-- Modal content-->
+                        <div class="modal-content" >
+                            <div class="modal-header">
+                            
+                            <h1 class="modal-title" id="myModal">Prescription</h1>
+                            </div>
+                            <div class="modal-body">
+                            <table class="table ">
+                                    <thead >
+                                        <tr>
+                                            <td>MEDICATION</td>
+                                            <td>FREQUENCY</td>
+                                            <td>MEAL</td>
+                                            <td>DURATION</td>
+                                        </tr>
+                                    </thead>
+                                {% for out in prescription %}
+                                        <tbody>
+                                            <tr>
+                                                <td>{{ out.Medication }}</td>
+                                                <td>{{ out.Frequency }}</td>
+                                                <td>{{ out.Meal }}</td>
+                                                <td>{{ out.Duration }}</td>
+                                            </tr>
+                                        </tbody>
+                                {% endfor %}
+                            </table>
+                            </div>
+                           
+                        </div>
+                        
+                        </div>
+                    </div>
+                    {% endif %}
     </div>
 </body>
 </html>

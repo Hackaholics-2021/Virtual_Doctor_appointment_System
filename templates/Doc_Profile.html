@@ -40,7 +40,12 @@
             <div class="col-sm-3 doc">
                 <br><br>
                 <div class="pic" >
-                    <img class="profilepic" src="{{ url_for('static', filename='images/man.png') }}" alt="your image" />
+                    {% if data.Gender=='Male' %}
+                    <img class="profilepic" src="{{ url_for('static', filename='images/male.png') }}" alt="Male" />
+                    {% else %}
+                    <img class="profilepic" src="{{ url_for('static', filename='images/female.png') }}" alt="Female" />
+                    {% endif %}
+                    
                 </div>
                 <h1 class="quote">{{data.Name}}<br>
                 {% if data.Rating==1 %}

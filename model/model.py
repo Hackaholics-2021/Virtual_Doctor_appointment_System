@@ -402,7 +402,7 @@ class Hackaholics:
         return res
 
     def get_patients(self,id):
-        s=text("select DISTINCT PId,PName from booking_appointment where DId= :x")
+        s=text("select DISTINCT PId,PName from booking_appointment where DId= :x ")
         res=engine.execute(s,x=id).fetchall()
         results=[dict(r) for r in res] if res else None
         
@@ -423,9 +423,12 @@ class Hackaholics:
         s3=text("select * from booking_appointment where PId= :x and DId= :y")
         res3=engine.execute(s3,x=PId,y=DId).fetchall()
         result3=[dict(r3) for r3 in res3] if res3 else None
-
-        if result1 and result2 and result3:
+        
+        if result1!=None and result2!=None and result3!=None:            
             return result1,result2,result3
+        
+        else:
+            return None,None,None
 
 
     def get_new_upcoming_details(self,id):
@@ -489,7 +492,7 @@ class Hackaholics:
                 result.append(r)
         #result=[dict(r) for r in res] if res else None
         if result!=None:
-            print("result",result,no,today)
+            print(result)
             return result,no
         else:
             return None
@@ -543,4 +546,11 @@ class Hackaholics:
         else:
             return None
 
-    
+    def get_prescription(self,bid):
+        s=text("select * from prescription where BId=:x")
+        res=engine.execute(s,x=bid)
+        result=[dict(r) for r in res] if res else None
+        if result:
+            return result
+        else:
+            return None

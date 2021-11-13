@@ -195,7 +195,7 @@ a,a:hover{
 }
 .latest{    
     overflow:auto;
-    height:220px;
+    height:200px;
     background-color: rgb(255, 255, 255);
 }
 .diagnostics{
@@ -323,4 +323,11 @@ a,a:hover{
 /* Prescription */
 .add_medication{
     display: none;
+}
+
+/* Patient Prescription */
+.modal-content{
+    background-color: #343937;
+    color: white;
+
 }
