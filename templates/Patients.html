@@ -54,7 +54,7 @@
             </div>
             <div class="col-sm-9 details">
                 <div class="row">
-                    <div class="col-sm-7">
+                    <div class="col-sm-8">
                         {% if details and diagnostics and appointments %}
                         {% for de in details %}
                         <h1 style="font-weight: bolder;">{{de.Name}}</h1><hr>
@@ -81,14 +81,14 @@
                                 <table class="table table-hover table-striped">
                                     <tbody>
                                     {% for ap in appointments %}
-                                      <tr><td>{{ap.Description}}</td><td>{{ap.BookingDate}}</td><td>{{ap.Speciality}}</td><td>&#8377;{{ap.Fees}}</td></tr>
+                                      <tr><td>{{ap.Description}}</td><td>{{ap.BookingDate}}</td><td>{{ap.Speciality}}</td><td>{{ap.Status}}</td><td><button class="button" >View Prescription</button></td></tr>
                                     {% endfor %}
                                     </tbody>
                                 </table>
                             </div>
                         </div>
                     </div>
-                    <div class="col-sm-5">
+                    <div class="col-sm-4">
                         <h1>Diagnostics</h1>
                         <div class="diagnostics">
                             {% for da in diagnostics %}

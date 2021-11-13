@@ -110,14 +110,21 @@ def Doctor_Home(id,name):
     if request.method=="GET":
         today,no=h.get_todays_appointment(id)
         consult,count=h.get_consultations(id) 
-        if today!=None and no!=0 and consult!=None and count!=0:
-            return render_template("Doctor_home.html",id=id,name=name,today=today,no=no,consult=consult,count=count)
-        elif today==None and no==0 and consult==None and count==0:
-            return render_template("Doctor_home.html",id=id,name=name,no=0,count=0)
-        elif today!=None and no!=0 and consult==None and count==0:
-            return render_template("Doctor_home.html",id=id,name=name,today=today,no=no,count=0)
-        else:
-            return render_template("Doctor_home.html",id=id,name=name,no=0,consult=consult,count=count)
+        # if today!=None and no!=0 and consult!=None and count!=0:
+        #     print('******************',1)
+        return render_template("Doctor_home.html",id=id,name=name,today=today,no=no,consult=consult,count=count)
+        # elif today==None and no==0 and consult==None and count==0:
+        #     print('******************',2)
+        #     return render_template("Doctor_home.html",id=id,name=name,no=0,count=0)
+        # elif today!=None and no!=0 and consult==None and count==0:
+        #     print('******************',3,today)
+        #     return render_template("Doctor_home.html",id=id,name=name,today=today,no=no,count=0)
+        # elif today==None and no==0 and consult!=None and count!=0:
+        #     print('******************',4,today)
+        #     return render_template("Doctor_home.html",id=id,name=name,no=0,consult=consult,count=count)
+        # else:
+        #     print('********************',5)
+        #     return render_template("Login.html")
 
 # View Patients
 @app.route('/Patients/<id>/<name>',methods=["POST","GET"])
