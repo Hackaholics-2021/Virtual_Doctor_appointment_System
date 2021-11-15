@@ -17,52 +17,62 @@
     <!-- Fontawesome -->
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
     <!-- css -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/Patient_home.css') }}">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/todays_apppointment.css') }}">
-
+  <style>
+    /* Patient Prescription */
+    .modal-content{
+        background-color: #343937;
+        color: white;
+    }
+  </style>
 </head>
 <body>
-    <header>
-        <div class="navigation">
-            <div class="logo">WE4U</div>
-            <div class="links">                   
-                <span><a href="{{ url_for('Patient_home',id = id) }}">Home</a></span>
-                <span><a href="{{ url_for('Consultation',id=id) }}">Consult</a></span>
-                <span><a href="{{ url_for('Appointment_patient_info',id = id) }}">Book Appointment</a></span>
-                <span><a href="{{url_for('History_patient',id = id)}}">History</a></span>
-                <span><a href="{{ url_for('Patient_profile',id =id) }}" class="active">Profile</a></span>         
-            </div>
-        </div>
-    </header>
+    <div class="nav" style="width: 100%;">
+      <div class="logo">
+          <span>WE4U</span>
+      </div>
+      <div class="nav-items">
+          <span><a href="{{ url_for('Patient_home',id=id) }}">Home</a></span>
+          <span><a href="{{ url_for('Consultation',id=id) }}">Consult</a></span>
+          <span><a href="{{ url_for('Appointment_patient_info',id=id) }}">Book appointment</a></span>
+          <span><a href="{{url_for('History_patient',id = id)}}">History</a></span>
+          <span><a href="{{ url_for('Patient_profile',id = id) }}"  class="active">Profile</a></span>
+      </div>
+      <a href="{{ url_for('Home') }}" class="logout-btn">Logout</a>
+    </div>
     <div class="container-fluid">
-        <div class="row">
-            <div class="col-sm-3 doc">
-              <div class="sidenav">
-                <img src="{{ url_for('static', filename='images/profile.png') }}" class="image">
-                <a href="{{url_for('History_patient',id = id)}}">Appointment History</a><br>
-                <a href="{{url_for('Todays_appointment_patient',id = id)}}">Todays Appointment</a><br>
-                <a href="{{ url_for('Rescheduled_appointment_patient',id = id,appointment_id = 0)}}">Reschedule Appointment</a><br>
-                <a href="{{ url_for('Prescription_patient',id =id) }}">Prescription details</a><br>
-                <a href="{{ url_for('Lab_records_patient',id =id) }}">Lab Records</a><br>
-                <a href="{{ url_for('Patient_profile',id =id) }}">Update profile</a><br>
-                <a href="{{ url_for('Home') }}">Logout</a><br>
-                <span class="icons">
-                    <img src="{{ url_for('static', filename='images/twitter.png') }}" alt="" class="icons1">
-                    <img src="{{ url_for('static', filename='images/facebook-circular-logo .png') }}" alt="" class="icons1">
-                    <img src="{{ url_for('static', filename='images/instagram.png') }}" alt="" class="icons1">
-                    <img src="{{ url_for('static', filename='images/whatsapp.png') }}" alt="" class="icons1">
-                </span>
-              </div>
-            </div>
-            <div class="col-sm-9" style="margin-top:100px">
-              <h4 style="margin-left:350px;color:rgb(92, 163, 175);font-size: 25px;">Todays Appointment</h4>
-              <table class="font"style="width:80%">
-                <tr>
-                  <th>Sno</th>
-                  <th>Doctors Name</th>
-                  <th>Medicine</th>
-                  <th>Frequency</th>
-                  <th>Meal</th>
-                  <th>Duration</th>
+      <div class="row">
+      <div class="col-sm-2 doc">
+        <div class="sidenav">
+          <img src="{{ url_for('static', filename='images/profile.png') }}" class="image">
+          <a href="{{url_for('History_patient',id = id)}}">Appointment History</a><br>
+          <a href="{{url_for('Todays_appointment_patient',id = id)}}">Todays Appointment</a><br>
+          <a href="{{ url_for('Rescheduled_appointment_patient',id = id,appointment_id = 0)}}">Reschedule Appointment</a><br>
+          <a href="{{ url_for('Prescription_patient',id =id) }}">Prescription details</a><br>
+          <a href="{{ url_for('Lab_records_patient',id =id) }}">Lab Records</a><br>
+          <a href="{{ url_for('Patient_profile',id =id) }}">Update profile</a><br>
+          <a href="{{ url_for('Home') }}">Logout</a><br>
+          <span class="icons">
+              <img src="{{ url_for('static', filename='images/twitter.png') }}" alt="" class="icons1">
+              <img src="{{ url_for('static', filename='images/facebook-circular-logo .png') }}" alt="" class="icons1">
+              <img src="{{ url_for('static', filename='images/instagram.png') }}" alt="" class="icons1">
+              <img src="{{ url_for('static', filename='images/whatsapp.png') }}" alt="" class="icons1">
+          </span>
+        </div>
+      </div>
+        
+            
+            <div class="col-sm-10" style="margin-top:100px">
+              <h4 style="margin-left:350px;color:rgb(92, 163, 175);font-size: 25px;">Latest Appointments & Prescription</h4>
+              <table class="font" style="width:90%;margin-left:50px;" >
+                <tr style="background-color: rgb(39, 67, 102);">
+                  <th style="text-align: center;">Sno</th>
+                  <th style="text-align: center;">Doctors Name</th>
+                  <th style="text-align: center;">Specialization</th>
+                  <th style="text-align: center;">Description</th>
+                  <th style="text-align: center;">Date</th>
+                  <th style="text-align: center;">Prescription</th>
                 </tr>
                 <br>
                 <br>
@@ -72,17 +82,57 @@
                 <tr>
                   <td>{{ count.value }}</td>
                   <td>{{ row.DName }}</td>
-                  <td>{{ row.Medication }}</td>
-                  <td>{{ row.Frequency }}</td>
-                  <td>{{ row.Meal }}</td>
-                  <td>{{ row.Duration }}</td>
+                  <td>{{ row.Speciality }}</td>
+                  <td>{{ row.Description }}</td>
+                  <td>{{ row.BookingDate }}</td>
+                  {% if row.Status=='Completed' %}
+                    <td><a href="{{ url_for('View_Prescription_Details',bid=row.AppointmentId,id=id) }}#myModal" ><button style="border-radius: 5px;background-color: #6AC6C4;border: solid 2px #6AC6C4;color: white;" >View Prescription</button></td>
+                  {% else %}
+                    <td><button style="border-radius: 5px;background-color: #495c5b86;border: solid 2px #6AC6C4;color: rgba(255, 255, 255, 0.692);" disabled>View Prescription</button></td>
+                  {% endif %}
                   {% set count.value = count.value + 1 %}
                 </tr>
                 {% endfor %}
                 {% endif %}
               </table>
-              
+              {% if prescription %}
+              <!-- Modal -->
+              <div   class="prescription">
+                <div class="modal-dialog">                  
+                  <!-- Modal content-->
+                  <div class="modal-content" >
+                    <div class="modal-header">                      
+                      <h1 class="modal-title" id="myModal">Prescription</h1>
+                    </div>
+                    <div class="modal-body">
+                      <table class="table " style="background-color: #343937;">
+                        <thead style="background-color: #343937;">
+                            <tr>
+                                <td>MEDICATION</td>
+                                <td>FREQUENCY</td>
+                                <td>MEAL</td>
+                                <td>DURATION</td>
+                            </tr>
+                        </thead>
+                        {% for out in prescription %}
+                        <tbody style="background-color: #343937;">
+                            <tr>
+                                <td>{{ out.Medication }}</td>
+                                <td>{{ out.Frequency }}</td>
+                                <td>{{ out.Meal }}</td>
+                                <td>{{ out.Duration }}</td>
+                            </tr>
+                        </tbody>
+                        {% endfor %}
+                      </table>
+                    </div>                      
+                  </div>                  
+                </div>
+              </div>
+            {% endif %}
             </div>
+
+            
             
 </body>
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>

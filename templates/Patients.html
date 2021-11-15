@@ -122,44 +122,40 @@
             </div>
         </div>
         {% if prescription %}
-                    <!-- Modal -->
-                    <div   class="prescription">
-                        <div class="modal-dialog">
-                        
-                        <!-- Modal content-->
-                        <div class="modal-content" >
-                            <div class="modal-header">
-                            
-                            <h1 class="modal-title" id="myModal">Prescription</h1>
-                            </div>
-                            <div class="modal-body">
-                            <table class="table ">
-                                    <thead >
-                                        <tr>
-                                            <td>MEDICATION</td>
-                                            <td>FREQUENCY</td>
-                                            <td>MEAL</td>
-                                            <td>DURATION</td>
-                                        </tr>
-                                    </thead>
-                                {% for out in prescription %}
-                                        <tbody>
-                                            <tr>
-                                                <td>{{ out.Medication }}</td>
-                                                <td>{{ out.Frequency }}</td>
-                                                <td>{{ out.Meal }}</td>
-                                                <td>{{ out.Duration }}</td>
-                                            </tr>
-                                        </tbody>
-                                {% endfor %}
-                            </table>
-                            </div>
-                           
-                        </div>
-                        
-                        </div>
+              <!-- Modal -->
+              <div   class="prescription">
+                <div class="modal-dialog">                  
+                  <!-- Modal content-->
+                  <div class="modal-content" >
+                    <div class="modal-header">                      
+                      <h1 class="modal-title" id="myModal">Prescription</h1>
                     </div>
-                    {% endif %}
+                    <div class="modal-body">
+                      <table class="table ">
+                        <thead >
+                            <tr>
+                                <td>MEDICATION</td>
+                                <td>FREQUENCY</td>
+                                <td>MEAL</td>
+                                <td>DURATION</td>
+                            </tr>
+                        </thead>
+                        {% for out in prescription %}
+                        <tbody>
+                            <tr>
+                                <td>{{ out.Medication }}</td>
+                                <td>{{ out.Frequency }}</td>
+                                <td>{{ out.Meal }}</td>
+                                <td>{{ out.Duration }}</td>
+                            </tr>
+                        </tbody>
+                        {% endfor %}
+                      </table>
+                    </div>                      
+                  </div>                  
+                </div>
+              </div>
+            {% endif %}
     </div>
 </body>
 </html>

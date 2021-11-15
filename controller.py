@@ -215,10 +215,19 @@ def Todays_appointment_patient(id):
 
 @app.route('/prescription_patient/<id>',methods=["GET","POST"])
 def Prescription_patient(id):
+    h=Hackaholics()
     if request.method=="GET":
-        obj = Hackaholics()
-        out=obj.get_prescription_info(id)
-        return render_template('prescription_patient.html',id = id, out = out)
+        res=h.get_appointment_info(id)
+        return render_template('prescription_patient.html',out=res,id=id)
+
+#View Prescription Details
+@app.route('/Detailed_Prescription/<bid>/<id>',methods=['POST','GET'])
+def View_Prescription_Details(bid,id):
+    h=Hackaholics()
+    if request.method=="GET":
+        res=h.get_appointment_info(id)
+        prescription=h.get_prescription(bid)
+        return render_template('prescription_patient.html',out=res,id=id,prescription=prescription)
 
 @app.route('/rescheduled_appointment_patient/<id>/<appointment_id>',methods=["GET","POST"])
 def Rescheduled_appointment_patient(id,appointment_id):
@@ -694,9 +703,6 @@ def Logout():
 def Doctor_register():
     if request.method=="GET":
         return render_template('Doctor_register.html')
-
-
-
 
 
 

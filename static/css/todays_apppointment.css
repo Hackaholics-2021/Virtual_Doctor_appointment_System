@@ -59,7 +59,7 @@ a{
 .sidenav {
     height:100%;
     position: fixed;
-    top:68px;
+    
     left: 0;
     background-color:#343937;
     overflow-x: hidden;
@@ -195,9 +195,7 @@ th,td{
 tr:hover{
     background-color: rgb(30, 52, 78);
 }
-tr:first-child{
-    background-color: rgb(39, 67, 102);
-}
+
 .cancel-btn{
     outline:none;
     border:none;
@@ -212,4 +210,11 @@ tr:first-child{
     background-color:rgb(79, 165, 129);
     color:white;
     text-decoration: none;
+}
+
+.prescription table{
+    background-color: #343937;
+}
+.prescription tr:hover{
+    background-color: #343937;
 }
