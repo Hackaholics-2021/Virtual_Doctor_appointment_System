@@ -63,14 +63,6 @@
                         <p class="text-content">Hi there! Looks like you need my help.</p>
                         <p class="text-content">I can help you for sure! Tell me what brings you here..</p>
                     </div>
-                    <div class="user-line"> 
-                        <span>You<img src="{{ url_for('static', filename='images/line.png') }}" alt="" width="93%" height="5px">
-                        </span>
-                    </div>
-                    <div class="usercontent">
-                        <p class="text-content">I have fever.I have fever.I have fever.I have fever.</p>
-                    </div>
-                    
                 </div>
                 <form action = "#" class="user-types">
                     <div class="text-area">
@@ -80,43 +72,53 @@
                 </form>
                 <script>
                     document.getElementsByClassName("send")[0].addEventListener("click",async function(){
-                        var text = document.getElementsByName("user-input")[0].value;
+                        // var text = document.getElementsByName("user-input")[0].value;
+                        // var settings = {
+                        //     'url': "{{ url_for('Chat') }}",
+                        //     'method': "GET",
+                        //     'contentType': 'application/json;charset=UTF-8',
+                        //     'data': {'data':userText},
+                        //     'success':function(response){
+                        //         alert(response);
+                        //         document.getElementsByClassName("topbar")[0].innerHTML = response;
+                        //     }
+                        // };
+                        
+                        // $.ajax(settings).done(function (response) {
+                        //     console.log(response);
+                        // });
+                        
+                        let userText = $("[name = 'user-input']").val();
+                        console.log(userText);
+                        let user_line = `<div class="user-line"> <span>You<img src="{{ url_for('static', filename='images/line.png') }}" alt="" width="93%" height="5px"></span></div>`;
+                        let userHtml = `<div class="usercontent">
+                            <p class="text-content">`+userText+`</p>
+                        </div>`
+                        $("[name = 'user-input']").val("");
+                        $(".chatbox").append(user_line);
+                        $(".chatbox").append(userHtml);
+                        document.getElementsByClassName('user-types')[0].scrollIntoView({block: 'end', behavior: 'smooth'});
+                        var chatbot = document.getElementsByClassName("right")[0];
                         var settings = {
                             'url': "{{ url_for('Chat') }}",
                             'method': "GET",
                             'contentType': 'application/json;charset=UTF-8',
-                            'data': {'data':userText},
-                            'success':function(response){
-                                alert(response);
-                                document.getElementsByClassName("topbar")[0].innerHTML = response;
-                            }
+                            'data': {'data':userText}
                         };
+                        $.ajax(settings).done(function(data) {
+                            var bot_line = `<div class="bot-line">
+                                    <span>Robbie <img src="{{ url_for('static', filename='images/line.png') }}" alt="" width="87%" height="5px">
+                                    </span>
+                                </div>`
+                            var botHtml = `<div class="botcontent">
+                                    <p class="text-content">`+data +`</p>
+                                </div>`;
+                            $(".chatbox").append(bot_line);
+                            $(".chatbox").append(botHtml);
+                            chatbot.getElementsByClassName('user-types')[0].scrollIntoView({block: 'end', behavior: 'smooth',inline:"nearest"});
+                            
+                        });       
                         
-                        $.ajax(settings).done(function (response) {
-                            console.log(response);
-                        });
-                        
-                        // let userText = $("[name = 'user-input']").val();
-                        // let user_line = `<div class="user-line"> <span>You<img src="{{ url_for('static', filename='images/line.png') }}" alt="" width="93%" height="5px"></span></div>`;
-                        // let userHtml = `<div class="usercontent">
-                        //     <p class="text-content">`+userText+`</p>
-                        // </div>`
-                        // $("[name = 'user-input']").val("");
-                        // $(".chatbox").append(user_line);
-                        // $(".chatbox").append(userHtml);
-                        // document.getElementsByClassName('.user-types')[0].scrollIntoView({block: 'start', behavior: 'smooth'});
-                        // $.ajax(settings).done(function(data) {
-                        //     var bot_line = `<div class="bot-line">
-                        //             <span>Robbie <img src="{{ url_for('static', filename='images/line.png') }}" alt="" width="87%" height="5px">
-                        //             </span>
-                        //         </div>`
-                        //     var botHtml = `<div class="botcontent">
-                        //             <p class="text-content">`+data +`</p>
-                        //         </div>`;
-                        //     $(".chatbox").append(bot_line);
-                        //     $(".chatbox").append(botHtml);
-                        //     document.getElementsByClassName('.user-types')[0].scrollIntoView({block: 'start', behavior: 'smooth'});
-                        // });             
                     });
                 </script>
             </div>
