@@ -15,7 +15,7 @@
     <!-- CSS -->
     <link rel="stylesheet" href="{{ url_for('static', filename='css/Patient_home.css') }}">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/consultation_meeting_info.css') }}">
-    <title>Appointment Meeting Information</title>
+    <title>Consultation Meeting Information</title>
 </head>
 <body style="background-color: #F0F5F7;">
     <div class="nav">
@@ -40,7 +40,7 @@
                 <div class="left-credential-side">
                     <div class="meeting-link">
                         <span><b>Meeting Link:</b></span>
-                        <span class="link-for-meet value" onclick="window.open('https://meet.google.com/rhq-nyec-gae')"><a href="{{ url_for('Thankyou_appointment_completed',id=id,doc_id = doc_id) }}" >Join the meeting</a></span>
+                        <span class="link-for-meet value" onclick="window.open('https://meet.google.com/rhq-nyec-gae')"><a href="{{ url_for('Doctor_Home',id=id,name = name) }}" >Join the meeting</a></span>
                     </div>
                     <div class="note">
                         <span><b>Note:</b></span>

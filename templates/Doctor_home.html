@@ -122,7 +122,7 @@
                         <td>{{out.Time}}</td>
                         <td>{{out.Language}}</td>
                         <td>{{out.Speciality}}</td>
-                        <td><a href="#"><button class="accept" >Start</button></a></td>
+                        <td><a href="{{ url_for('Consult_meeting_info_doc',id = id,name = name) }}"><button class="accept" >Start</button></a></td>
                     </tr>
                     {% endfor %}
                     

@@ -21,7 +21,7 @@
     <!-- Fontawesome -->
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
     <!-- css -->
-    <link rel="stylesheet" href="../static/css/Patient_profile.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/Patient_profile.css') }}">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/Doctor_home.css') }}">
 
 </head>
@@ -43,7 +43,7 @@
         <a href="{{url_for('History_patient',id = id)}}">Appointment History</a><br>
         <a href="{{url_for('Todays_appointment_patient',id = id)}}">Todays Appointment</a><br>
         <a href="{{ url_for('Rescheduled_appointment_patient',id = id,appointment_id = 0)}}">Reschedule Appointment</a><br>
-        <a href="#">Prescription details</a><br>
+        <a href="{{ url_for('Prescription_patient',id =id) }}">Prescription details</a><br>
         <a href="{{ url_for('Lab_records_patient',id =id) }}">Lab Records</a><br>
         <a href="{{ url_for('Patient_profile',id =id) }}">Update profile</a><br>
         <a href="{{ url_for('Home') }}">Logout</a><br>
@@ -74,7 +74,7 @@
                     <table class="table table-striped">
                         {% if out_booking %}
                         <thead>
-                            <tr><th>Doctor Name</th><th>Doctor Email</th><th>Appointment Date</th><th>Time</th><th>Description</th><th>State</th><th>District</th></tr>
+                            <tr><th>Doctor Name</th><th>Doctor Email</th><th>Appointment Date</th><th>Time</th><th>Description</th><th>Status</th></tr>
                         </thead>
                         <tbody>
                             
@@ -85,8 +85,7 @@
                                 <td>{{out.BookingDate}}</td>
                                 <td>{{out.Time}}</td>
                                 <td>{{out.Description}}</td>
-                                <td>{{out.State}}</td>
-                                <td>{{out.District}}</td>
+                                <td>{{out.Status}}</td>
                             </tr>
                             {% endfor %}
                             {% else %}
@@ -104,7 +103,7 @@
                     <table class="table table-striped">
                         {% if out_consult %}
                         <thead>
-                            <tr><th>Doctor Name</th><th>Consultation Date</th><th>Time</th><th>Language</th><th>Speciality</th></tr>
+                            <tr><th>Doctor Name</th><th>Consultation Date</th><th>Time</th><th>Language</th><th>Speciality</th><th>Status</th></th></tr>
                         </thead>
                         <tbody>
                             
@@ -115,6 +114,7 @@
                                 <td>{{out.Time}}</td>
                                 <td>{{out.Language}}</td>
                                 <td>{{out.Speciality}}</td>
+                                <td>{{out.Status}}</td>
                             </tr>
                             {% endfor %}
                             {% else %}

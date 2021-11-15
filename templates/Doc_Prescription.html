@@ -35,37 +35,44 @@
         <div class="container" style="width: 85%;">
             
             <table class="table" >                
-                <tr style="font-weight: bold;"><td style="padding-left: 55px;">Medication</td><td style="padding-right: 70px;padding-left: 80px;">Frequency</td><td style="padding-right: 120px;">Meal</td><td style="padding-right: 100px;">Duration</td></tr>                
+                <tr style="font-weight: bold;"><td style="padding-left: 55px;">Medication</td><td style="padding-right: 70px;padding-left: 80px;">Frequency</td><td style="padding-right: 120px;">Meal</td><td style="padding-right: 100px;">Duration</td></tr>   
+                {% for row in out %}
+                <tr><td>{{row.Medication}}</td><td>{{row.Frequency}}</td><td>{{row.Meal}}</td><td>{{row.Duration}}</td></tr>   
+                {% endfor %}         
             </table>              
-                <form action="#" method="get" class="add_medication">    
+                <form action="{{ url_for('Prescription',bid = bid) }}" method="POST" class="add_medication">    
                     <table class="table"> 
+                        
                         <tr >
                             <td ><input type="text" class="Medication" name="Medication" style="width: 200px;" required></td>
                             <td>
-                                <select  class="Frequency" style="width: 200px; text-align: center;" required>
-                                    <option>1-0-0</option>
-                                    <option>0-1-0</option>
-                                    <option>0-0-1</option>
-                                    <option>1-1-0</option>
-                                    <option>1-0-1</option>
-                                    <option>0-1-1</option>
-                                    <option>1-1-1</option>
+                                <select  class="Frequency" name = "Frequency" style="width: 200px; text-align: center;" required>
+                                    <option value = "1-0-0">1-0-0</option>
+                                    <option value = "0-1-0">0-1-0</option>
+                                    <option value = "0-0-1">0-0-1</option>
+                                    <option value = "1-1-0">1-1-0</option>
+                                    <option value = "1-0-1">1-0-1</option>
+                                    <option value = "0-1-1">0-1-1</option>
+                                    <option value = "1-1-1">1-1-1</option>
                                 </select>
                             </td>
                             <td>
-                                <select  class="Meal" style="width: 200px;text-align: center;" required>
-                                    <option>Before Meal</option>
-                                    <option>After Meal</option>
+                                <select  class="Meal" name ="Meal" style="width: 200px;text-align: center;" required>
+                                    <option value = "Before Meal">Before Meal</option>
+                                    <option value = "After Meal">After Meal</option>
                                 </select>
                             </td>
                             <td><input type="text" class="Duration" name="Duration"  style="width: 200px;" required></td>
-                            <td><a href="url_for('Add_Medication')"><button class="accept" onclick="add_to_table()">Add</button></a></td>
+                            <td><button class="accept" type = "submit" onclick="add_to_table()">Add</button></td>
                         </tr>
                     </table>   
                 </form>
                 
             
             <button class="accept" onclick="add_med()">Add Medication</button>
+            <br>
+            <br>
+            <a href="{{url_for('Doctor_Home',id=id,name=name) }}" class="accept" style = "color:white;text-align:center">Assign</a>
         </div>        
     </div>
     <script>

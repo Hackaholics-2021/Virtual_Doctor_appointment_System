@@ -41,6 +41,13 @@ class Hackaholics:
         else:
             return None
 
+    def insert_prescription_info(self,data):
+        res=engine.execute(self.prescription.insert(),data)
+        if res:
+            return res
+        else:
+            return None
+
     def get_email_patient(self,email):
         s=self.patient.select().where(self.patient.c.Email==email)
         res=engine.execute(s)
@@ -86,8 +93,17 @@ class Hackaholics:
         else:
             return None
 
+    def get_prescription_info(self,id):
+        s=self.prescription.select().where(self.prescription.c.PId==id)
+        res=engine.execute(s)
+        results=[dict(r) for r in res] if res else None
+        if results:
+            return results
+        else:
+            return None
+
     def get_cancelled_appointment_info(self,id):
-        s = text("select * from booking_appointment where AppointmentId = :x and Status = 'Cancelled'")
+        s = text("select * from booking_appointment where PId = :x and Status = 'Cancelled'")
         
         res=engine.execute(s,x=id)
         results=[dict(r) for r in res] if res else None
@@ -108,6 +124,7 @@ class Hackaholics:
         stmt = self.booking_consultation.update().where(self.booking_consultation.c.ConsultationId == consult_id).values(Status = "Closed")
         res = engine.execute(stmt)
         if res:
+            print("UPDATED STATUS")
             return res
         else:
             return None
@@ -122,6 +139,14 @@ class Hackaholics:
 
     def update_profile_patient(self,id,data):
         stmt = self.patient.update().where(self.patient.c.Id == id).values(data)
+        res = engine.execute(stmt)
+        if res:
+            return res
+        else:
+            return None
+
+    def update_diagnostics(self,id,data):
+        stmt = self.diagnostics.update().where(self.diagnostics.c.Id == id).values(data)
         res = engine.execute(stmt)
         if res:
             return res
@@ -524,6 +549,7 @@ class Hackaholics:
                 result.append(r)
         #result=[dict(r) for r in res] if res else None
         if result!=None:
+            print(result,no)
             return result,no
         else:
             return None

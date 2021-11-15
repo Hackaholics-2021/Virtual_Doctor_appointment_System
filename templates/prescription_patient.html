@@ -59,28 +59,23 @@
                 <tr>
                   <th>Sno</th>
                   <th>Doctors Name</th>
-                  <th>Specialization</th>
-                  <th>Description</th>
-                  <th>Time</th>
-                  
-                  <th>Date</th>
-                  <th>Action</th>
-                  <th>Cancel Appointment</th>
+                  <th>Medicine</th>
+                  <th>Frequency</th>
+                  <th>Meal</th>
+                  <th>Duration</th>
                 </tr>
                 <br>
                 <br>
-                {% if today %}
+                {% if out %}
                 {% set count = namespace(value=1) %}
-                {% for row in today %}
+                {% for row in out %}
                 <tr>
                   <td>{{ count.value }}</td>
                   <td>{{ row.DName }}</td>
-                  <td>{{ row.Speciality }}</td>
-                  <td>{{ row.Description }}</td>
-                  <td>{{ row.Time }}</td>
-                  <td>{{ row.BookingDate }}</td>
-                  <td><a href = "{{ url_for('Appointment_meeting_info',id = id,doc_id = row.DId) }}" type="submit" name="signup" class="cancel-btn">Start</a></td>
-                  <td><a href = "{{ url_for('Cancel_appointment_patient',id = id,appointment_id = row.AppointmentId) }}" type="submit" name="signup" class="cancel-btn" >Cancel</a></td>
+                  <td>{{ row.Medication }}</td>
+                  <td>{{ row.Frequency }}</td>
+                  <td>{{ row.Meal }}</td>
+                  <td>{{ row.Duration }}</td>
                   {% set count.value = count.value + 1 %}
                 </tr>
                 {% endfor %}

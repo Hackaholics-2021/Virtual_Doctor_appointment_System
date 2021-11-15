@@ -41,7 +41,7 @@
                 <a href="{{url_for('History_patient',id = id)}}">Appointment History</a><br>
                 <a href="{{url_for('Todays_appointment_patient',id = id)}}">Todays Appointment</a><br>
                 <a href="{{ url_for('Rescheduled_appointment_patient',id = id,appointment_id = 0)}}">Reschedule Appointment</a><br>
-                <a href="#">Prescription details</a><br>
+                <a href="{{ url_for('Prescription_patient',id =id) }}">Prescription details</a><br>
                 <a href="{{ url_for('Lab_records_patient',id =id) }}">Lab Records</a><br>
                 <a href="{{ url_for('Patient_profile',id =id) }}">Update profile</a><br>
                 <a href="{{ url_for('Home') }}">Logout</a><br>

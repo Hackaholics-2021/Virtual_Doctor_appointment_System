@@ -15,7 +15,7 @@
     <!-- CSS -->
     <link rel="stylesheet" href="{{ url_for('static', filename='css/Patient_home.css') }}">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/thankyou.css') }}">
-    <title>Thank you consultation</title>
+    <title>Thankyou appointment completed</title>
 </head>
 <body>
     <div class="nav">
@@ -29,7 +29,7 @@
             <span><a href="{{url_for('History_patient',id = id)}}">History</a></span>
             <span><a href="{{ url_for('Patient_profile',id =id) }}">Profile</a></span>
         </div>
-        <a href="{{ url_for('Home') }}" class="logout-btn">Logout</a>
+        <a href="#" class="logout-btn">Logout</a>
     </div>
     <div class="full_body">
         <div class="success-title">
@@ -44,7 +44,7 @@
         <div class="star-rating">
             <div style="text-align: center;"><h3>Please rate your experience!</h3></div>
             <div class="star-input">
-                <form style="text-align: center;" action="{{ url_for('Consult_meeting_info',id = id,doc_id = doc_id,doc_name = doc_name,Patient_name=Patient_name,Lang=Lang,Special=Special) }}" method="POST">
+                <form style="text-align: center;" action="{{ url_for('Thankyou_appointment_completed',id = id,doc_id = doc_id) }}" method="POST">
                     <input type="radio" name="rating" id="rating-5" value=5>
                     <label for="rating-5" class="fas fa-star"></label>
                     <input type="radio" name="rating" id="rating-4" value=4>

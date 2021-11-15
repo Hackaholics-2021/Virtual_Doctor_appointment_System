@@ -213,6 +213,13 @@ def Todays_appointment_patient(id):
         today=obj.get_todays_appointment_patient(id)
         return render_template('todays_appointment.html',id = id, today = today)
 
+@app.route('/prescription_patient/<id>',methods=["GET","POST"])
+def Prescription_patient(id):
+    if request.method=="GET":
+        obj = Hackaholics()
+        out=obj.get_prescription_info(id)
+        return render_template('prescription_patient.html',id = id, out = out)
+
 @app.route('/rescheduled_appointment_patient/<id>/<appointment_id>',methods=["GET","POST"])
 def Rescheduled_appointment_patient(id,appointment_id):
     if request.method == "GET":
@@ -231,6 +238,25 @@ def Lab_records_patient(id):
         obj = Hackaholics()
         out = obj.get_info_diagnostics(id)
         return render_template('lab_records.html',id = id, out = out)
+
+    if request.method == "POST":
+        obj = Hackaholics()
+        data = {
+            'CT':request.form['ctscan'],
+            'MRI':request.form['mriscan'],
+            'ECG':request.form['ECG'],
+            'EEG':request.form['EEG'],
+            'Gastroscopy':request.form['gastroscopy'],
+            'Eye':request.form['eye'],
+            'PET':request.form['pet'],
+            'Xrays':request.form['xray'],
+            'Ultrasound':request.form['ultra'],
+            'Biopsy':request.form['biopsy']
+        }
+        out = obj.update_diagnostics(id,data)
+        out = obj.get_info_diagnostics(id)
+        return render_template('lab_records.html',id = id, out = out)
+
         
 @app.route('/consult_filter/<id>/<Patient_name>/<Gender>/<Language>/<Specialization>/<category>',methods=["GET","POST"])
 def Consult_filter(id,Patient_name,Gender,Language,Specialization,category):
@@ -287,10 +313,10 @@ def Consult_meeting_info(id,doc_id,doc_name,Patient_name,Lang,Special):
             'DName':doc_name,
             'Language': Lang,
             'Status':'Pending',
-            'ConsultationDate':date.today().strftime("%Y-%M-%d"),
+            'ConsultationDate':date.today(),
             'Fees':"500",
             'Speciality':Special,
-            'Time':datetime.now().strftime("%H:%M:%S")
+            'Time':datetime.datetime.now().strftime("%H:%M:%S")
         }
         print("insertdata",insert_consult_data)
         out = obj.insert_consult_info(insert_consult_data)
@@ -301,9 +327,17 @@ def Consult_meeting_info(id,doc_id,doc_name,Patient_name,Lang,Special):
         print(rating)
         obj=Hackaholics()
         consult_id = obj.get_pending_status()
+        out = obj.get_info_doctor(doc_id)
+        old_rating = out['Rating']
+        rating = (old_rating+rating)//2
         out = obj.update_doctor_rating(rating,doc_id)
         out = obj.update_consult_status(consult_id)
         return redirect(url_for('Patient_home',id=id))
+
+@app.route('/consult_meeting_info/<id>/<name>',methods=["GET","POST"])
+def Consult_meeting_info_doc(id,name):
+    if request.method=="GET":
+        return render_template('consult_meeting_info_doc.html',id = id,name = name)
     
 @app.route('/appointment_meeting_info_doc/<id>/<appointment_id>/<name>',methods=["GET","POST"])
 def Appointment_meeting_info_doc(id,appointment_id,name):
@@ -311,6 +345,11 @@ def Appointment_meeting_info_doc(id,appointment_id,name):
         obj=Hackaholics()
         out = obj.update_appointment_info_status(appointment_id)
         return render_template('appointment_meeting_info_doc.html',id=id,name = name,appointment_id = appointment_id)
+
+@app.route('/appointment_meeting_info/<id>/<doc_id>',methods=["GET","POST"])
+def Appointment_meeting_info(id,doc_id):
+    if request.method=="GET":
+        return render_template('appointment_meeting_info.html',id=id,doc_id = doc_id)
 
 @app.route('/book_filter/<id>/<Patient_name>/<Gender>/<State>/<District>/<Specialization>/<Description>/<category>',methods=["GET"])
 def Book_filter(id,Patient_name,Gender,State,District,Specialization,Description,category):
@@ -413,7 +452,26 @@ def Thankyou_appointment(id,appointment_id):
         msg_to_patient.html="<h2>Hello "+out_booking['PName']+",</h2><p>Hope you are doing well!</p><p>We hereby inform you that your Appointment request for the doctor named <b> Dr."+out_booking['DName']+"</b> on <b>"+booking_date+"</b> at <b>"+ out_booking['Time']+"</b> has been <b>Booked Successfully!</b><br><h4>We offer you a sincere thanks and gratitude for choosing our service!</h4><p>If you have any questions or concerns, please don't hesitate to contact us hackaholics4@gmail.com. Thanks</p>"
         mail.send(msg_to_patient)
         return render_template('thankyou_appointment.html',id = id)
+
+@app.route('/cancel_appointment_patient/<id>/<appointment_id>',methods=["GET","POST"])
+def Cancel_appointment_patient(id,appointment_id):
+    if request.method=="GET":
+        obj = Hackaholics()
+        out = obj.cancel_appointment(appointment_id)
+        return redirect( url_for('Todays_appointment_patient',id = id))
         
+@app.route('/thankyou_appointment_completed/<id>/<doc_id>',methods=["GET","POST"])
+def Thankyou_appointment_completed(id,doc_id):
+    if request.method=="GET":
+        return render_template('thankyou_appointment_completed.html',id=id,doc_id = doc_id)
+
+    if request.method == "POST":
+        rating = request.form['rating']
+        print(rating)
+        obj=Hackaholics()
+        out = obj.update_doctor_rating(rating,doc_id)
+        return redirect( url_for('Patient_home',id = id))
+
 
 @app.route('/thankyou_consultation/<id>/<doc_id>/<doc_name>/<Patient_name>/<Lang>/<Special>',methods=["GET","POST"])
 def Thankyou_consultation(id,doc_id,doc_name,Patient_name,Lang,Special):
@@ -598,10 +656,29 @@ def History(id,name):
         return render_template('Doc_history.html',id=id,name=name,appointment=appointment,consult=consult)
 
 #Precription
-@app.route('/Prescription',methods=["POST","GET"])
-def Prescription():
+@app.route('/Prescription/<bid>',methods=["POST","GET"])
+def Prescription(bid):
     if request.method=="GET":
-         return render_template('Doc_Prescription.html')
+         return render_template('Doc_Prescription.html',bid = bid)
+
+    if request.method == "POST":
+        prescription_id = uuid.uuid4().hex
+        obj = Hackaholics()
+        out_app = obj.get_info_appointment(bid)
+        data={
+            'Id': prescription_id,
+            'BId':bid,
+            'PId':out_app['PId'],
+            'DId':out_app['DId'],
+            'Medication':request.form['Medication'],
+            'Frequency':request.form['Frequency'],
+            'Meal':request.form['Meal'],
+            'Duration':request.form['Duration']
+        }
+        out = obj.insert_prescription_info(data)
+        out = obj.get_info_appointment(bid)
+        out_presc = obj.get_prescription(bid)
+        return render_template('Doc_Prescription.html',bid =bid,out = out_presc,id = out['DId'],name = out['DName'])
 
 
 
@@ -617,6 +694,7 @@ def Logout():
 def Doctor_register():
     if request.method=="GET":
         return render_template('Doctor_register.html')
+
 
 
 
