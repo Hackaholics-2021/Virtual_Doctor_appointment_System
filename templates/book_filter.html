@@ -33,7 +33,7 @@
     </div>
     <div class="full_body">
         <div class="header">
-            Here are the doctors who are online currently
+            Here are the doctors who are available for booking
         </div>
         <form action="#" method="POST">
             <div class="filter">
@@ -95,7 +95,7 @@
                 </div>
                 <div class="name-about">
                     <span class="name">
-                        Dr. {{i.Name}} &nbsp;&nbsp;&nbsp;&nbsp;<img src="{{ url_for('static', filename='images/new-moon.png') }}" alt="" width="10px" height="10px"> &nbsp;online
+                        Dr. {{i.Name}} &nbsp;&nbsp;&nbsp;&nbsp;<img src="{{ url_for('static', filename='images/new-moon.png') }}" alt="" width="10px" height="10px"> &nbsp;available
                     </span>
                     <span class="about">{{i.AboutMe}}</span>
                 </div>

@@ -314,107 +314,86 @@ class Hackaholics:
         else:
             return None
 
-    def get_email_doctor_filter_booking(self,email_addresses,State,District,Specialization):
+    def get_email_doctor_filter_booking(self,State,District,Specialization):
         res=[]
         s = text("select * from doctor where  Specialization = :y and State = :m and District = :l")
         res=engine.execute(s,y=Specialization,m=State,l=District).fetchall()
         print(res,State,Specialization)
-        results = []
-        for i in range(len(res)):
-            for j in email_addresses:
-                if i>=0 and res[i]['Email'] == j:
-                    results.append(res[i])
+        results=[dict(r) for r in res] if res else None
         if results:
+            print(results)
             return results
         else:
             return None
 
-    def get_email_doctor_rating_lth_booking(self,email_addresses,State,District,Specialization):
+    def get_email_doctor_rating_lth_booking(self,State,District,Specialization):
         res=[]
         s = text("select * from doctor where  Specialization = :y and State = :l and District = :m order by Rating asc")
         res=engine.execute(s,y=Specialization,l=State,m=District).fetchall()
         print(res,State,Specialization)
-        results = []
-        for i in range(len(res)):
-            for j in email_addresses:
-                if i>=0 and res[i]['Email'] == j:
-                    results.append(res[i])
+        results=[dict(r) for r in res] if res else None
         if results:
+            print(results)
             return results
         else:
             return None
 
-    def get_email_doctor_rating_htl_booking(self,email_addresses,State,District,Specialization):
+    def get_email_doctor_rating_htl_booking(self,State,District,Specialization):
         res=[]
         s = text("select * from doctor where  Specialization = :y and State = :l and District = :m order by Rating desc")
         res=engine.execute(s,y=Specialization,l=State,m=District).fetchall()
         print(res,State,Specialization)
-        results = []
-        for i in range(len(res)):
-            for j in email_addresses:
-                if i>=0 and res[i]['Email'] == j:
-                    results.append(res[i])
+        results=[dict(r) for r in res] if res else None
         if results:
+            print(results)
             return results
         else:
             return None
 
-    def get_email_doctor_experience_htl_booking(self,email_addresses,State,District,Specialization):
+    def get_email_doctor_experience_htl_booking(self,State,District,Specialization):
         res=[]
         s = text("select * from doctor where  Specialization = :y and State = :l and District = :m order by Experience desc")
         res=engine.execute(s,y=Specialization,l=State,m=District).fetchall()
         print(res,State,Specialization)
-        results = []
-        for i in range(len(res)):
-            for j in email_addresses:
-                if i>=0 and res[i]['Email'] == j:
-                    results.append(res[i])
+        results=[dict(r) for r in res] if res else None
         if results:
+            print(results)
             return results
         else:
             return None
 
-    def get_email_doctor_experience_lth_booking(self,email_addresses,State,District,Specialization):
+    def get_email_doctor_experience_lth_booking(self,State,District,Specialization):
         res=[]
         s = text("select * from doctor where  Specialization = :y and State = :l and District = :m order by Experience asc")
         res=engine.execute(s,y=Specialization,l=State,m=District).fetchall()
         print(res,State,Specialization)
-        results = []
-        for i in range(len(res)):
-            for j in email_addresses:
-                if i>=0 and res[i]['Email'] == j:
-                    results.append(res[i])
+        results=[dict(r) for r in res] if res else None
         if results:
+            print(results)
             return results
         else:
             return None
 
-    def get_email_doctor_male_booking(self,email_addresses,State,District,Specialization):
+    def get_email_doctor_male_booking(self,State,District,Specialization):
         res=[]
         s = text("select * from doctor where  Specialization = :y and State = :l and District = :m and Gender = 'Male'")
         res=engine.execute(s,y=Specialization,l=State,m=District).fetchall()
         print(res,State,Specialization)
-        results = []
-        for i in range(len(res)):
-            for j in email_addresses:
-                if i>=0 and res[i]['Email'] == j:
-                    results.append(res[i])
+        results=[dict(r) for r in res] if res else None
         if results:
+            print(results)
             return results
         else:
             return None
 
-    def get_email_doctor_female_booking(self,email_addresses,State,District,Specialization):
+    def get_email_doctor_female_booking(self,State,District,Specialization):
         res=[]
         s = text("select * from doctor where  Specialization = :y and State = :l and District = :m and Gender = 'Female'")
         res=engine.execute(s,y=Specialization,l=State,m=District).fetchall()
         print(res,State,Specialization)
-        results = []
-        for i in range(len(res)):
-            for j in email_addresses:
-                if i>=0 and res[i]['Email'] == j:
-                    results.append(res[i])
+        results=[dict(r) for r in res] if res else None
         if results:
+            print(results)
             return results
         else:
             return None

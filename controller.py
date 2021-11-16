@@ -365,33 +365,32 @@ def Book_filter(id,Patient_name,Gender,State,District,Specialization,Description
     obj = Hackaholics()
     if request.method=="GET":
         data_doc=[]
-        print("email",email_addresses)
         if category == "all":
-            out = obj.get_email_doctor_filter_booking(email_addresses,State,District,Specialization)
+            out = obj.get_email_doctor_filter_booking(State,District,Specialization)
             if out:
                 data_doc.append(out)
         elif category == "r_lth":
-            out = obj.get_email_doctor_rating_lth_booking(email_addresses,State,District,Specialization)
+            out = obj.get_email_doctor_rating_lth_booking(State,District,Specialization)
             if out:
                 data_doc.append(out)
         elif category == "r_htl":
-            out = obj.get_email_doctor_rating_htl_booking(email_addresses,State,District,Specialization)
+            out = obj.get_email_doctor_rating_htl_booking(State,District,Specialization)
             if out:
                 data_doc.append(out)
         elif category == "e_htl":
-            out = obj.get_email_doctor_experience_htl_booking(email_addresses,State,District,Specialization)
+            out = obj.get_email_doctor_experience_htl_booking(State,District,Specialization)
             if out:
                 data_doc.append(out)
         elif category == "e_lth":
-            out = obj.get_email_doctor_experience_lth_booking(email_addresses,State,District,Specialization)
+            out = obj.get_email_doctor_experience_lth_booking(State,District,Specialization)
             if out:
                 data_doc.append(out)
         elif category == "male":
-            out = obj.get_email_doctor_male_booking(email_addresses,State,District,Specialization)
+            out = obj.get_email_doctor_male_booking(State,District,Specialization)
             if out:
                 data_doc.append(out)
         elif category == "female":
-            out = obj.get_email_doctor_female_booking(email_addresses,State,District,Specialization)
+            out = obj.get_email_doctor_female_booking(State,District,Specialization)
             if out:
                 data_doc.append(out)
 
