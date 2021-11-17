@@ -1,3 +1,9 @@
+VIRTUAL DOCTOR APPOINTMENT WITH AUTOMATED CHATBOT SYSTEM
+
+PPT : https://docs.google.com/presentation/d/1TCHYqP-efllJbzepS7EwSiXKWacjXj73/edit?usp=sharing&ouid=105752074088732463729&rtpof=true&sd=true
+
+YOUTUBE : https://youtu.be/mT95iEywoTY
+
 Consulting Doctors instantly is the need of the hour, with everyone dealing with the second wave in their own way and with their own struggles due to the lockdown restrictions and the overall COVID situation.
 Our virtual doctor consultation and automated system is a web portal that people can count on and get on the spot online consultation directly with doctors.
 Our project not only focuses on online consultation, appointments but also provides an automated  prescription chatbot for ER services.
